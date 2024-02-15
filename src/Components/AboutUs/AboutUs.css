@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap");
+
+header {
+  text-align: center;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Style for section headings */
+h1,
+h2 {
+  color: #ffa500; /* Orange color */
+}
+.about-us-container {
+  background-color: #f5e5d4;
+  font-family: 'Playfair Display', serif;
+}
+/* Style for button container */
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+
+
+
+/* Add styling for the header image */
+header {
+  text-align: center;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Style for section headings */
+h1,
+h2 {
+  color: #ffa500; /* Orange color */
+}
+
+/* Style for button container */
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+/* Style for orange buttons */
+.orange-button {
+  background-color: #ff6200;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #ff8200; /* Slightly darker shade on hover */
+  }
+}

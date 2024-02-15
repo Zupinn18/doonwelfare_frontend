@@ -1,0 +1,247 @@
+@keyframes glow {
+    0% {
+      transform: scale(1);
+      box-shadow: 0px 0px 10px orangered;
+      background-color: #FE6104; /* Add this line */
+    }
+    100% {
+      transform: scale(1.1);
+      box-shadow: 0px 0px 20px rgb(201, 133, 7);
+      background-color: orange; /* Change to your desired color */
+    }
+  }
+
+
+  .mobile-donate{
+    display: none;
+    z-index: 3;
+    color: white;
+    background: linear-gradient(45deg, orange, red) ;
+  }
+  .card-title{
+    font-size: 18px;
+  }
+/* Add this CSS for the donor card layout */
+.donors-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.scanner{
+  width: 500px;
+  margin: 0 auto;
+}
+.ambu-img{
+  width: 500px;
+  margin: 0 auto;
+}
+.contain{
+  background-color: white;
+}
+bottom {
+  box-sizing: border-box;
+  padding: 100px 0;
+  min-height: 50vh;
+}
+
+#bottom {
+  background: #fff url(http://portfolio.queenofwhisks.com/demo/overlay/stripe-diagonal-broken.png);
+}
+
+.ribbon-container {
+  background: transparent !important;
+  position: relative;
+  z-index: 1;
+}
+.ribbon {
+  background: rgb(255, 100, 0) url(http://portfolio.queenofwhisks.com/demo/overlay/noise.png);
+  box-shadow: 2px 6px 12px rgba(0,0,0,0.5);
+  font-family: Charter, serif;
+  font-size: 20px;
+  line-height: 1.0;
+  text-align: center;
+  margin: 0 auto;
+  padding: 0.25em 0;
+  position: relative;
+  width: 70%;
+  color: white !important;
+}
+.ribbon:before,
+.ribbon:after {
+  border: 1.5em solid rgb(255, 100, 0);
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -1em;
+  z-index: -1;
+}
+.ribbon:before {
+  left: -2em;
+  border-right-width: 1.5em;
+  border-left-color: transparent;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+}
+
+.ribbon:after {
+  right: -2em;
+  border-left-width: 1.5em;
+  border-right-color: transparent;
+  box-shadow: -2px 2px 2px rgba(0,0,0,0.5);
+}
+.ribbon-content {
+  border-top: 0.0625em dashed hsl(30, 90%, 44%);
+  border-bottom: 0.0625em dashed hsl(30, 90%, 44%);
+  box-shadow: inset 0px 1px 1px rgba(0,0,0,0.08), inset 0px -1px 1px rgba(255,255,255,0.08), 0px -1px 1px rgba(255,255,255,0.2), 0px 1px 1px rgba(0,0,0,0.08);
+  display: block;
+  padding: 0.6875em 0;
+}
+.ribbon-content:before,
+.ribbon-content:after {
+  content: '';
+  display: block;
+  position: absolute;
+  border-style: solid;
+  border-color: hsl(30, 80%, 40%) transparent transparent transparent;
+  bottom: -1em;
+}
+.ribbon-content:before {
+  left: 0;
+  border-width: 1em 0 0 1em;
+}
+.ribbon-content:after {
+  right: 0;
+  border-width: 1em 1em 0 0;
+}
+.ribbon a {
+  color: hsl(30, 90%, 40%);
+  text-decoration: none;
+  text-shadow: 1px 1px 1px rgba(255,255,255,0.25);
+}
+.ribbon a:hover {
+  color: hsl(30, 90%, 43%);
+}
+.underpage {
+  box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.25);
+  box-sizing: border-box;
+  color: #444;
+  font-family: Garamond, 'Goudy Old Style', Times, 'Times New Roman', serif;
+  line-height: 1.5;
+  margin: 0 auto;
+  padding: 4.5em 1.5em 1.5em;
+  position: relative;
+  top: -4em;
+  width: 65%;
+  z-index: -1;
+}
+.underpage p:last-child {
+  margin-bottom: 0;
+}
+.donor-card {
+  width: 100%;
+  max-width: 280px;
+}
+.donors-container {
+  max-height: 400px; /* Adjust the max height as needed */
+  overflow-y: auto;
+}
+.ambulanceitem{
+  width: 500px;
+  margin: 0 auto;
+}
+/* Add this CSS to your stylesheet */
+@media (max-width: 767px) {
+  .donors-row{
+    height: 200px;
+    
+  }
+  .custom 
+  {
+    text-align: center;
+  }
+  .custom button{
+    margin-top: 10px;
+  }
+}
+@media (max-width: 768px) {
+.mob-btn{
+  width: 150px !important;
+}
+}
+
+  @media (max-width: 768px) {
+    .main-section{
+      padding-top: 100px;
+    }
+    .donation-box{
+      display: none;
+    }
+    .mobile-donate{
+      display: block;
+    }
+    .ambulanceitem{
+      width: 300px !important;
+    }
+    .scanner{
+      width: 300px !important;
+    }
+    .ambuitembtn{
+      margin-top: 30px !important;
+    }
+  }
+
+  .glow {
+    animation: glow-animation 1s ease-in-out infinite alternate;
+    transition: transform 2s, box-shadow 2s;
+    box-shadow: 0px 0px 10px rgba(0, 128, 0, 0.8); /* Green box shadow color */
+  }
+  
+  @keyframes glow-animation {
+    0% {
+      transform: scale(1);
+      box-shadow: 0px 0px 10px rgba(0, 128, 0, 0.8);
+    }
+    100% {
+      transform: scale(1.05);
+      box-shadow: 0px 0px 20px rgba(0, 128, 0, 1);
+    }
+  }
+  @media (max-width: 768px) {
+    .navbar {
+      
+      background-color: #f7f7f7 !important; /* Add this line to set the background color to white */
+    }
+    
+    .navbar .donate-button{
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .box-image img {
+      height: 200px !important; /* Adjust the height to your desired value for mobile view */
+    }
+    .name {
+      padding: 0px !important;
+      margin: 0px !important;
+    }
+    .description{
+      padding: 0px !important;
+      margin: 0px !important;
+    }
+    .cert{
+      padding: 10px 40px !important;
+    }
+  }
+  @media (min-width: 768px) {
+   .des{
+    width: 50%;
+   }
+    
+  }
+
+  .smaller-image {
+    text-align: center !important;
+    margin: 0 auto !important;
+    max-width: 100px; /* Adjust the max width as needed */
+    max-height: auto; /* Adjust the max height as needed */
+  }

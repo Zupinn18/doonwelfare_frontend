@@ -1,0 +1,20 @@
+/* Add this CSS to create a moving line (curve) */
+.moving-line {
+    width: 50px;
+    height: 2px;
+    background-color: white;
+    position: relative;
+    top: 5px;
+    margin: 0 auto;
+    animation: moveLine 2s infinite alternate;
+  }
+  
+  @keyframes moveLine {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(20px); /* Adjust the distance the line should move */
+    }
+  }
+  

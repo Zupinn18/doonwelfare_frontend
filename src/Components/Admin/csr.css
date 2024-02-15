@@ -1,0 +1,16 @@
+.csr-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .csr-table th, .csr-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .csr-table th {
+    background-color: #f2f2f2;
+  }
+  

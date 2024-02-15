@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+body,a,span,p,h1,h2,h3{
+  font-family: 'Quicksand', sans-serif;
+}
+
+.donate-container-mobile{
+  display: none !important;
+  position: fixed !important;
+  bottom: 0;
+  background-color: orange !important;
+  z-index: 2;
+}
+
+.container .card-body .text-center{
+  font-size: 1rem !important;
+  color: black !important;
+}
+
+
+.container .news-section .testimonial-card-wrapper {
+  width: 100% !important; /* Ensure the wrapper takes 100% width on smaller screens */
+  box-sizing: border-box !important; /* Include padding and border in the total width */
+}
+/* Add this CSS to your stylesheet */
+.scrollable-donation-box {
+  position: absolute;
+  right: 0;
+  top: 130px;
+  z-index: 1;
+  /* max-height: calc(100vh - 220px); */
+  overflow-y: auto;
+}
+.fixed-cart-box {
+  position: fixed;
+  top: 15%;
+  right: 0px; /* Position on the right side */
+  z-index: 1000; /* Ensure it appears above other content */
+  width: 450px; /* Adjust the width as needed */
+  background-color: #fff; /* Background color */
+  border: 1px solid #ccc; /* Border */
+  padding: 10px; /* Padding */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle effect */
+}
+/* Add this to your CSS
+ */
+.donate-button {
+    animation: backgroundAnimation 2s infinite alternate; /* Customize the animation duration */
+  }
+  @media (max-width: 768px) {
+    .container .card-body .text-center{
+      font-size: 1rem !important;
+    }
+
+    .container .cert .card-body{
+      margin: 10px !important;
+      padding: 10px !important;
+      height: 70px !important;
+    }
+    .donate-button{
+      margin-left: 150px;
+
+    }
+    .slider-btn{
+      padding: 8px 10px !important;
+      font-size: 14px !important;
+    }
+    .donate-container-mobile{
+      display: block !important;
+    }
+   nav{
+    text-align: center;
+   }
+   .carousel-nav{
+    margin-top: 90px;
+   }
+   .carousel h3{
+    font-size: 20px !important;
+    font-weight: 700 !important;
+   }
+   .carousel p{ 
+    font-size: 18px !important;
+   } 
+   .container.card-body{
+    margin-bottom: 30px !important;
+    height: 100px !important;
+   }
+   .vid{
+    width: 350px !important;
+   }
+  }
+
+
+/* Add this CSS to your stylesheet */
+.glow-button {
+  background-color: yellow !important;
+  color: black !important;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 2px solid white;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 10px 5px yellow; /* Add constant glow effect */
+}
+
+.glow-button:hover {
+  background-color: white;
+  color: black;
+  border-color: black;
+  box-shadow: 0 0 10px 5px yellow; /* Maintain the glow effect on hover */
+}
+
+  .fixed-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Ensure the navbar is above other content */
+    /* Add any other styles you need */
+  }
+  .gradient-button {
+    background: linear-gradient(to right, #ff6a00, #ff9900);
+    color: white;
+    font-size: 24px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .gradient-button:hover {
+    background: linear-gradient(to right, #ff9900, #ff6a00);
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px rgba(255, 165, 0, 0.8); /* Orange box shadow color */
+  }
+  
+  
+.logo {
+    border-radius: 50px;
+    animation: backgroundAnimation 2s infinite alternate; /* Customize the animation duration */
+  }
+  
+
+  /* YourComponent.css */
+
+/* YourComponent.css */
+
+/* YourComponent.css */
+
+/* Button row container */
+.button-row {
+  display: flex;
+  gap: 15px; /* Adjust the gap as needed */
+}
+
+/* Dropdown button style */
+.dropdown-btn {
+  background: linear-gradient(to right, #ff9900, #ff6a00) #eb9006;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.button-row {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  gap: 15px; /* Adjust the gap as needed */
+}
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  transform: translateX(-50%);
+  transform: translatey(-50%);
+  text-align: center;
+  display: none;
+  position: absolute;
+  border-radius: 5px;
+  left: 50%;
+  color: black;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  
+}
+
+/* Show the dropdown content on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+  
+}
+
+/* Adjust styling of the dropdown items as needed */
+.dropdown-content p {
+  white-space: nowrap; /* Prevent wrapping */
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis; /* Add ellipsis (...) for overflow text */
+  display: inline-block;
+  margin-left : 10px ;
+  margin-right: 10px;
+}
+
+/* Adjust styling of the buttons as needed */
+/* .dropdown-btn:hover {
+  background-color: #d0d0d0;
+} */
+.cart-items-container {
+  max-height: 120px; /* Set your desired maximum height */
+  overflow-y: auto; /* Enable vertical scrollbar if needed */
+  border: 1px solid #ccc; /* Add a border for better visibility */
+}
+
+.cart-items-list {
+  padding: 10px;
+}
+
+
+
+  @keyframes glow {
+    0% {
+      transform: scale(1);
+      box-shadow: 0px 0px 10px orangered;
+      background-color: #FE6104; /* Add this line */
+    }
+    100% {
+      transform: scale(1.1);
+      box-shadow: 0px 0px 20px rgb(201, 133, 7);
+      background-color: orange; /* Change to your desired color */
+    }
+  }
+  .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the overlay background color and opacity as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    color: white;
+  }
+  
+  .card:hover .card-overlay {
+    opacity: 1; /* Show the overlay on hover */
+  }
+  
+
+  .center-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px; /* Set the desired height */
+  }
+  
+  
+  .slick-slide {
+    margin: 0 5px !important; /* Added margin to create space between slides */
+    margin-bottom: 50px !important;
+    flex: 100px 0 auto !important; /* Added to prevent shrinking of slides */
+  }
+  
+  .slick-track {
+    height: auto !important;
+    display: flex !important;
+    justify-content: space-between !important; /* Added to create space between slides */
+  }
+  

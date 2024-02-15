@@ -1,0 +1,82 @@
+@media (max-width: 767px) {
+  .navbar {
+    background: rgb(247 247 247) !important; /* Set background color for mobile view */
+    transition: background-color 0.3s ease, color 0.3s ease !important;
+  }
+  .nav-link {
+      font-size: 20px ; /* Adjust the font size for smaller screens */
+    }
+
+    .donate_button{
+      font-size: 20px ; /* Adjust the font size for smaller screens */
+      margin-bottom: 30px !important;
+    }
+    .icon {
+      margin-left: 50px !important;
+      font-size: 16px !important; /* Adjust the font size for the button text */
+      padding: 10px 20px !important; /* Adjust the padding for the button */
+    }
+}
+
+@media (min-width: 1000px) and (max-width: 1462px) {
+  .me-auto{
+    margin: 0px !important;
+  }
+  .s-txt{
+    font-size:18px !important;
+    font-weight: 700 !important;
+   }
+   a{
+    padding: 0 !important;
+   }
+   ul{
+    margin: 0 !important;
+    padding: 0 !important;
+   }
+  /* Your CSS rules for screens between 990px and 1440px go here */
+  .nav-link {
+    padding: 0px !important;
+    font-size: 10px ; /* Adjust the font size for smaller screens */
+  }
+  .icon {
+    margin-left: 40px !important;
+    font-size: 12px !important; /* Adjust the font size for the button text */
+    padding: 10px 20px !important; /* Adjust the padding for the button */
+  }
+  
+}
+@media (min-width: 992px) and (max-width: 1208px){
+  .nav-link{
+    font-size: 12px !important;
+  }
+  .navbar-brand img{
+    height: 70px !important;
+  }
+  .log2{
+    height: 70px !important;
+  }
+}
+
+.navbar-nav a {
+  text-decoration: none;
+}
+.navbar-nav .nav-item{
+color: white !important;
+}
+.nav-link {
+font-weight:700 ;
+font-size: 15px !important; /* Adjust the font size for smaller screens */
+}
+@media (max-width: 1400px){
+.s-txt{
+font-size: 22px ;
+font-weight: 700 !important;
+}
+a{
+padding: 0 ;
+}
+ul{
+margin: 0 ;
+padding: 0;
+}
+}

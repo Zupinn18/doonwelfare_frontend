@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+a {
+  text-decoration: none;
+}
+* {
+  font-family: "Quicksand", serif;
+  box-sizing: border-box;
+}
+
+body,
+a,
+span,
+p,
+
+ul,li{
+  font-family: 'Robot', sans-serif !important;
+}
+h1{
+  font-family: 'Robot', sans-serif !important;
+}
+h2{
+  font-family: 'Playfair Display', sans-serif !important;
+}
+h3 {
+  font-family: 'Playfair Display', sans-serif !important;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  scroll-behavior: smooth;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+:root {
+  --primary: rgb(255, 100, 0);
+}
+
+.paypal-buttons-context-iframe {
+  position: relative;
+  z-index: 0;
+}
+
+.floating-icon {
+  position: fixed;
+  bottom: 190px;
+  left: 0px;
+  z-index: 999; /* Adjust the z-index to ensure it appears above other content */
+  cursor: pointer;
+}
+.phone-icon{
+  width: 35px;
+  bottom: 150px !important;
+}
+.whatsapp-icon{
+  width: 35px;
+}
+
+.youtube-icon{
+  width: 35px;
+  bottom: 230px !important;
+}
+
+.instagram-icon{
+  width: 35px;
+  bottom: 270px !important;
+}
+.facebook-icon{
+  width: 35px;
+  bottom: 310px !important;
+}
+
+

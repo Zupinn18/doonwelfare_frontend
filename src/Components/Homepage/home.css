@@ -1,0 +1,267 @@
+@media (max-width: 768px) {
+  .home-header {
+    margin-top:70px;
+    
+  }
+  .caption-content{
+   font-size: 2px;
+  }
+  .card-box{
+    height: 150px;
+    margin-bottom: 100px;
+  }
+  .txt{
+    font-size: 14px !important;
+  }
+  
+}
+.test .container .mt-5 .testimonial-section{margin-bottom: .5rem !important}
+.card-box{
+  border:1px solid white;
+  box-shadow: 0 0 1px 2px white;
+  overflow: hidden;
+  border-radius: 20px !important;
+}
+/* Custom CSS for the carousel */
+.carousel-inner {
+  position: relative;
+}
+
+/* Dull image effect with backdrop filter */
+.dull-image {
+  filter: brightness(0.9) ; /* Adjust these values as needed */
+}
+
+/* Overlay for the images */
+.carousel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); */
+  
+}
+.slider-container {
+  height: 100%;
+}
+
+.carousel-item {
+  height: 100vh;
+}
+
+.card {
+  transition: background-color 0.3s ease; /* Smooth background color transition on hover */
+}
+
+.card:hover {
+  background-color: #000; /* Dark black background color on hover */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+/* Add this CSS to control the fade-in/fade-out animation */
+.card .card-content {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .card-content {
+  opacity: 1;
+}
+
+.text-bright {
+  color: rgb(0, 0, 0);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  top: 30%;
+  font-size: 50px;
+  backdrop-filter: blur(1px);
+ 
+}
+/* Add this CSS to your styles.css or a separate stylesheet */
+
+
+.btn-donate{
+  padding: 13px 25px;
+}
+.animation-card{
+  height: 150px;
+}
+@media (max-width: 768px) {
+  .container .mt-5 .card-body{
+    margin-bottom: 300px !important;
+    height: 150px !important;
+  }
+  .container .mt-5{
+    margin-bottom: -50px !important;
+  }
+
+  .card-box {
+    margin-bottom: 30px !important;
+  }
+  .text {
+    font-size: 18px !important;
+    background-color: transparent !important;
+  }
+  .btn-donate {
+    font-size: 18px !important;
+    padding: 10px 10px !important;
+  }
+  p.fs-4.p-5.mt-5.aos-init.aos-animate {
+    /* padding: 10px !important; */
+    font-size: 14px !important;
+  }
+  .text-bright {
+    font-size: 18px !important;
+  }
+  .card-text {
+    font-size: 18px !important;
+  }
+  .carousel-item {
+    height: 100% !important;
+  }
+  .px-5.mx-5 {
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+
+  .testimonial-card {
+    /* margin-bottom: 0; */
+    /* height:700px !important;
+    width: 700px !important; */
+    padding: 10px 200px 10px 10px !important;
+    margin: 200px !important;
+    /* padding: 0 40px 30px 40px !important;
+    margin-top: 30px !important; */
+  }
+
+  .testimonial-card-wrapper {
+    width: 100% !important; /* Ensure the wrapper takes 100% width on smaller screens */
+    box-sizing: border-box !important; /* Include padding and border in the total width */
+  }
+  .testimonial-section {
+    height: auto !important;
+    margin-top: 10% !important;
+  }
+
+   /* Ensure the list doesn't hide overflowing content */
+  .slick-list {
+    overflow: visible !important;
+  }
+
+
+  .testimonial-slide {
+    background-color: white;
+    display: flex !important;
+    flex-direction: column;
+    padding: 0px;
+    border-radius: 0px;
+    text-align: center;
+    height: auto; /* Adjusted height */
+    align-items: center;
+    justify-content: center; /* Added to center horizontally */
+  }
+
+  .testimonial-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto; /* Center the image horizontally */
+    margin-bottom: 10px;
+  }
+
+  .testimonial-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .testimonial-text {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .testimonial-author {
+    font-weight: bold;
+    color: #494848;
+  }
+
+  /* Testimonials Slider */
+  .slick-track {
+    height: auto !important;
+    display: flex !important;
+    justify-content: space-between !important; /* Added to create space between slides */
+  }
+
+  .slick-slide {
+    margin: 0 10px !important;
+    margin-bottom: 50px !important;
+    flex: 10px 0 auto !important;
+  }
+}
+/* YourComponent.css */
+
+.testimonial-slide {
+  background-color: white;
+  display: flex !important;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  height: 350px;
+  align-items: center;
+  justify-content: center; /* Added to center horizontally */
+}
+
+.testimonial-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto; /* Center the image horizontally */
+  margin-bottom: 10px;
+}
+
+.testimonial-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.testimonial-text {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.testimonial-author {
+  font-weight: bold;
+  color: #494848;
+}
+
+
+.testimonial-section .slick-slide {
+  margin: 0px 25px !important; /* Added margin to create space between slides */
+  margin-bottom: 10px !important;
+  flex: 100px 0 auto !important; /* Added to prevent shrinking of slides */
+}
+
+.award-section .slick-slide {
+  margin: 0px 15px !important; /* Added margin to create space between slides */
+  margin-bottom: 10px !important;
+  flex: 100px 0 auto !important; /* Added to prevent shrinking of slides */
+}
+
+
+.slick-track {
+  height: auto !important;
+  display: flex !important;
+  justify-content: space-between !important; /* Added to create space between slides */
+}
+
+
+
+
+
