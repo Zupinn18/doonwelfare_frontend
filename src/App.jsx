@@ -73,13 +73,13 @@ function AppContent() {
     <div>
     {renderNavbar()}
     {/* Floating Phone Icon */}
-   <a href="tel:7900283333" className="floating-icon phone-icon ph " 
-   style={{background:"#2196f3", border:"1px solid #2196f3", borderRadius:"0px 0px 10px 0px"}}>
+    <a href="tel:7900283333" className="floating-icon phone-icon ph " 
+      style={{background:"#2196f3", border:"1px solid #2196f3", borderRadius:"0px 0px 10px 0px"}}>
       <img src={PhoneIcon} alt="Call Us" />
       </a>
       <div className="phone-name" >Phone
-    <span className="triangle-left-ph" ></span>
-    </div>
+      <span className="triangle-left-ph" ></span>
+        </div>
 
     {/* Floating WhatsApp Icon */}
     <a href="https://wa.me/7900283333" className="floating-icon whatsapp-icon wa " 

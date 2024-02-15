@@ -236,28 +236,61 @@ body::-webkit-scrollbar {
   animation: forwards;
 }
 
+/* 
+@media screen and (min-width: 1000px) {
+  .yt{
+    background-color: red;
+  }
+  .fb{
+    background-color: #2596be;
+  }
+  .ig{
+    background-color: rgba(217,40,144,255);
+  }
+  .wa{
+    background-color:#4cb051;
+  }
+  .ph{
+    background-color: #2196f3;
+  }
+} */
+
 @media screen and (max-width: 1000px) {
   .phone-icon{
-    width: 25px;
-    bottom: 150px !important;
+    width: 2%;
   }
   .whatsapp-icon{
-    width: 20px;
+    width: 2%;
   }
   
   .youtube-icon{
-    width: 20px;
+    width: 2%;
   }
   
   .instagram-icon{
-    width: 20px;
-    bottom: 270px !important;
+    width: 2%;
+    top: 55%;
   }
   .facebook-icon{
-    width: 25px;
-    bottom: 330px !important;
+
+    width: 5% !important;
+    top: 45%;
   }
+  .facebook-name{
+    font-size: 10px;
+    top: 46%;
+    left: 6%;
+    height: 4%;
+  }
+
   .floating-icon{
-    background-color: transparent;
+    width: 2%;
   }
+  .whatsapp-name{
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 600px){
+  
 }
