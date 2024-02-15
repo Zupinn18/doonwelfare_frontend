@@ -48,6 +48,7 @@ import lp2 from '../../assets/lp2.png'
 import lp3 from '../../assets/lp3.png'
 import "./Langing.css";
 import "./Campaign.css";
+import userImg from '../../assets/userImg.png';
 // Import images and other assets as needed
 
 const LandingPage = () => {
@@ -506,7 +507,6 @@ const handleButtonClick = () => {
       });
   }, []);
   
-  
   return (
     <>
   <div className="col-md-8 scrollable">    
@@ -549,18 +549,19 @@ const handleButtonClick = () => {
           </Link>
 
           <div className="ml-auto">
-            <ul className="navbar-nav mb-2 mb-lg-0">
+            <ul className="navbar-nav mb-2">
               <li className="nav-item">
                 <Link className="nav-link" to="/donate" aria-current="page">
                   <a
-                    className="nav-link donate-button"
+                    className="nav-link donate-button fs-5 "
                     href="#"
                     style={{
                       backgroundColor: "#FE6104",
                       color: "white",
-                      padding: "5px 10px",
+                      padding: "10px 20px",
                       borderRadius: "5px",
                       fontWeight: 700,
+                      fontSize:"25px",
                       animation: "glow 1s infinite alternate",
                       transition: "transform 1s, box-shadow 2s",
                       boxShadow: "0px 0px 10px rgba(255, 165, 0, 0.8)", // Orange box shadow color
@@ -1546,12 +1547,18 @@ Our mision
             
           )}
       <div className="recent-donor-box" style={{ margin: "2px 40px 0px 20px"}}>
-      <h4>Recent Donors</h4>
-      <ul>
+      <h4 className="recent" >Recent Donors</h4>
+      <ul className="donors" >
         {recentDonors.map((donor, index) => (
-          <li key={index}>
-            {donor.email || "Anonymous"} - {new Date(donor.createdAt * 1000).toLocaleString()}
-          </li>
+          <div key={index} className="donor-detail" >
+              <div className="donor-img" >
+                <img src={userImg} alt="User Image" loading="lazy" width="30px" />
+              </div>
+              <div className="donor-info" >
+                <p className="donor-name" >{donor.email || "Anonymous"}</p>
+                <p className="donor-date" >{new Date(donor.createdAt * 1000).toLocaleString()}</p>
+              </div>
+          </div>
         ))}
       </ul>
     </div>

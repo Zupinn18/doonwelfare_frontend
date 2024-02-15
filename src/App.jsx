@@ -73,28 +73,61 @@ function AppContent() {
     <div>
     {renderNavbar()}
     {/* Floating Phone Icon */}
-   <a href="tel:7900283333" className="floating-icon phone-icon" style={{background:"#2196f3", border:"1px solid #2196f3", borderRadius:"0px 12px 12px 0px"}}>
+   <a href="tel:7900283333" className="floating-icon phone-icon ph " 
+   style={{background:"#2196f3", border:"1px solid #2196f3", borderRadius:"0px 0px 10px 0px"}}>
       <img src={PhoneIcon} alt="Call Us" />
       </a>
-   
+      <div className="phone-name" >Phone
+    <span className="triangle-left-ph" ></span>
+    </div>
 
     {/* Floating WhatsApp Icon */}
-    <a href="https://wa.me/7900283333" className="floating-icon whatsapp-icon" >
+    <a href="https://wa.me/7900283333" className="floating-icon whatsapp-icon wa " 
+    style={{
+        backgroundColor:"#4cb051",
+        padding:"20px 50px",
+      }} 
+    >
       <img src={WhatsAppIcon}alt="WhatsApp"  />
     </a>
+    <div className="whatsapp-name" >WhatsApp
+    <span className="triangle-left-wa" ></span>
+    </div>
 
-    <a href="https://www.instagram.com/doon_animalwelfare?igsh=MW9lamd0eDg5aHN5Mg==" className="floating-icon instagram-icon" >
+    <a href="https://www.instagram.com/doon_animalwelfare?igsh=MW9lamd0eDg5aHN5Mg==" className="floating-icon instagram-icon ig " style={{
+        backgroundColor:"rgba(217,40,144,255)",
+        padding:"20px 50px",
+      }} >
   <img src={InstagramIcon} alt="Instagram" />
     </a>
+    <div className="instagram-name" >Instagram
+    <span className="triangle-left-ig" ></span>
+    </div>
 
     
-    <a href="https://youtube.com/@doonanimalwelfare4452?si=GLWErr5sEX8bab5u" className="floating-icon youtube-icon" >
+    <a href="https://youtube.com/@doonanimalwelfare4452?si=GLWErr5sEX8bab5u" className="floating-icon youtube-icon yt "
+    style={{
+        backgroundColor:"red",
+        padding:"20px 50px",
+      }}
+     >
       <img src={youtube} alt="YouTube" />
     </a>
+    <div className="Youtube-name" >Youtube
+    <span className="triangle-left-yt" ></span>
+    </div>
     
-    <a href="https://www.facebook.com/doonanimalwelfare?mibextid=ZbWKwL" className="floating-icon facebook-icon" >
-      <img src={FacebookIcon} alt="Facebook" />
-    </a>
+      <a href="https://www.facebook.com/doonanimalwelfare?mibextid=ZbWKwL" className="floating-icon facebook-icon" 
+      style={{
+        backgroundColor:"#2596be",
+        padding:"20px 50px",
+        borderRadius:"0px 10px 0px 0px ",
+      }} >
+        <img src={FacebookIcon} alt="Facebook" />
+      </a>
+      <div className="facebook-name" >Facebook
+      <span className="triangle-left" ></span>
+      </div>
 
       <Routes>
         <Route path="/login" element={<Login />} />
