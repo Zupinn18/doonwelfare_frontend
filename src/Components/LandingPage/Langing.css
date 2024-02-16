@@ -356,8 +356,8 @@ body,a,span,p,h1,h2,h3{
   }
 
   .donor-item {
-    max-height: 120px; /* Set your desired maximum height */
-    overflow-y: auto; /* Enable vertical scrollbar if needed */
+    max-height: 120px; 
+    overflow-y: auto; 
   }
   
   .donate-button{
