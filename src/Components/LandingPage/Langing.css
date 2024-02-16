@@ -346,6 +346,7 @@ body,a,span,p,h1,h2,h3{
 }
 
   .donate-button{
+
     padding: 10px 20px ;
   }
 
@@ -359,3 +360,8 @@ body,a,span,p,h1,h2,h3{
     overflow-y: auto; /* Enable vertical scrollbar if needed */
   }
   
+=======
+    padding: 10px 20px !important;
+    margin-right: 30px;
+  }
+
