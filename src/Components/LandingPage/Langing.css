@@ -274,4 +274,67 @@ body,a,span,p,h1,h2,h3{
     display: flex !important;
     justify-content: space-between !important; /* Added to create space between slides */
   }
+
+
+  /* Donor card CSS */
+
+  .donors{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: start;
+    margin-left: -30px;
+  }
   
+  .donor-detail{
+    display: flex;
+    gap: 10px;
+    background-color: #ccc;
+    border-radius: 10px;
+  }
+
+  .donor-img{
+    width: 10%;
+    height: 20%;
+    margin-left: 10px;
+    margin-top: 5px;
+    background-color: white;
+    border-radius: 50%;
+  }
+
+  .donor-img img{
+    align-items: center;
+    border-radius: 100%;
+    margin: 5px;
+  }
+
+  .donor-info{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+  }
+
+  .donor-name{
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .donor-date{
+    font-size: 14px;
+    margin-top: -15px;
+  }
+
+  .recent{
+    color: white;
+    margin-bottom: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: rgb(201, 133, 7);
+    border-radius: 5px;
+    padding: 10px
+  }
+
+  .donate-button{
+    padding: 10px 20px ;
+  }
