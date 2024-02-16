@@ -85,7 +85,6 @@ function AppContent() {
     <a href="https://wa.me/7900283333" className="floating-icon whatsapp-icon wa " 
     style={{
         backgroundColor:"#4cb051",
-        padding:"20px 50px",
       }} 
     >
       <img src={WhatsAppIcon}alt="WhatsApp"  />
@@ -96,7 +95,6 @@ function AppContent() {
 
     <a href="https://www.instagram.com/doon_animalwelfare?igsh=MW9lamd0eDg5aHN5Mg==" className="floating-icon instagram-icon ig " style={{
         backgroundColor:"rgba(217,40,144,255)",
-        padding:"20px 50px",
       }} >
   <img src={InstagramIcon} alt="Instagram" />
     </a>
@@ -108,7 +106,6 @@ function AppContent() {
     <a href="https://youtube.com/@doonanimalwelfare4452?si=GLWErr5sEX8bab5u" className="floating-icon youtube-icon yt "
     style={{
         backgroundColor:"red",
-        padding:"20px 50px",
       }}
      >
       <img src={youtube} alt="YouTube" />
@@ -120,7 +117,6 @@ function AppContent() {
       <a href="https://www.facebook.com/doonanimalwelfare?mibextid=ZbWKwL" className="floating-icon facebook-icon" 
       style={{
         backgroundColor:"#2596be",
-        padding:"20px 50px",
         borderRadius:"0px 10px 0px 0px ",
       }} >
         <img src={FacebookIcon} alt="Facebook" />

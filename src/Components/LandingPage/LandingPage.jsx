@@ -494,7 +494,7 @@ const handleButtonClick = () => {
       .then(response => {
         // Extract email and status from the fetched data, filtering by status 'captured'
         const filteredDonors = response.data.items.map(item => ({
-          email: item.email ? item.email.split('@')[0].replace(/\d/g, '') : "Anonymous",
+          email: item.upi.vpa ? item.upi.vpa.split('@')[0].replace(/\d/g, '') : "Anonymous",
           status: item.status,
           createdAt: item.created_at // assuming the timestamp field is named "created_at"
         })).filter(donor => donor.status === 'captured');
