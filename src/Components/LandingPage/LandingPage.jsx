@@ -1555,7 +1555,7 @@ Our mision
         }}>
       <h4 className="recent" >Recent Donors</h4>
       <div className="donor-item" >
-        <ul className="donors" >
+        <ul className="donors">
           {recentDonors.map((donor, index) => (
             <div key={index} className="donor-detail"  >
                 <div className="donor-img" >
