@@ -336,5 +336,6 @@ body,a,span,p,h1,h2,h3{
   }
 
   .donate-button{
-    padding: 10px 20px ;
+    padding: 10px 20px !important;
+    margin-right: 30px;
   }
