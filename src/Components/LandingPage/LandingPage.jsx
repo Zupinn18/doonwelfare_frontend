@@ -1494,7 +1494,8 @@ Our mision
       </div>
     </div>
     {/* Recent Donor Box */}
-    <div className={`cart-box p-3 border bg-light ${isCartFixed ? 'fixed-cart-box' : ''}`} style={{ margin: "2px 40px 0px 20px" }}>
+    <div className={`cart-box p-3 border bg-light ${isCartFixed ? 'fixed-cart-box' : ''}`} 
+    style={{ margin: "2px 40px 0px 20px" }}>
     <p className="fw-bold fs-3">Items Added to Cart</p>
             <div className="cart-items-container">
             <div className="cart-items-list">
@@ -1505,7 +1506,7 @@ Our mision
               ))}
             </div>
           </div>
-          <div className="row">
+          <div className="row mb-5 ">
             {/* Left Column */}
             <div className="col-md-6">
               <p style={{ fontSize: "18px" }}>
@@ -1518,7 +1519,9 @@ Our mision
                   style={{
                     background: "linear-gradient(to right, #ff9900, #ff6a00) #eb9006",
                     color: "white",
-                    fontWeight: "bold"
+                    fontWeight: "bold",
+                    fontSize:"13px"
+
                   }}
                 >
                   {buttonText}
@@ -1546,21 +1549,26 @@ Our mision
             </button>
             
           )}
-      <div className="recent-donor-box" style={{ margin: "2px 40px 0px 20px"}}>
+      <div className="recent-donor-box" 
+      style={{ 
+        margin: "2px 40px 0px 20px",
+        }}>
       <h4 className="recent" >Recent Donors</h4>
-      <ul className="donors" >
-        {recentDonors.map((donor, index) => (
-          <div key={index} className="donor-detail" >
-              <div className="donor-img" >
-                <img src={userImg} alt="User Image" loading="lazy" width="30px" />
-              </div>
-              <div className="donor-info" >
-                <p className="donor-name" >{donor.email || "Anonymous"}</p>
-                <p className="donor-date" >{new Date(donor.createdAt * 1000).toLocaleString()}</p>
-              </div>
-          </div>
-        ))}
-      </ul>
+      <div className="donor-item" >
+        <ul className="donors" >
+          {recentDonors.map((donor, index) => (
+            <div key={index} className="donor-detail"  >
+                <div className="donor-img" >
+                  <img src={userImg} alt="User Image" loading="lazy" width="30px" />
+                </div>
+                <div className="donor-info" >
+                  <p className="donor-name" >{donor.email || "Anonymous"}</p>
+                  <p className="donor-date" >{new Date(donor.createdAt * 1000).toLocaleString()}</p>
+                </div>
+            </div>
+          ))}
+        </ul>
+      </div>
     </div>
       </div>
 
