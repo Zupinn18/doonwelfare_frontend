@@ -1494,8 +1494,8 @@ Our mision
       </div>
     </div>
     {/* Recent Donor Box */}
-    <div className={`cart-box p-4 border bg-light ${isCartFixed ? 'fixed-cart-box' : ''}`} 
-    style={{ margin: "2px 40px 0px 20px" }}>
+    <div className={`cart-box  p-3 border bg-light ${isCartFixed ? 'fixed-cart-box' : ''}`} 
+    style={{ margin: "2px 40px 0px 20px" }}> {/*t R b l*/}
     <p className="fw-bold fs-3">Items Added to Cart</p>
             <div className="cart-items-container">
             <div className="cart-items-list">
@@ -1552,11 +1552,11 @@ Our mision
           )}
       <div className="recent-donor-box" 
       style={{ 
-        margin: "2px 40px 0px 20px",
+        margin: "0px 40px 10px 20px",
         }}>
       <h4 className="recent" >Recent Donors</h4>
       <div className="donor-item" >
-        <ul className="donors">
+        <ul className="donors" >
           {recentDonors.map((donor, index) => (
             <div key={index} className="donor-detail"  >
                 <div className="donor-img" >
@@ -1571,8 +1571,11 @@ Our mision
         </ul>
       </div>
     </div>
+    <div className="col-md-6">
+            <iframe className="vid" width="300" height="200" src="https://www.youtube.com/embed/Ydj-Fz6UGwY?si=R22XoljvKxJU0nX_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style={{marginLeft:'20px'}}></iframe>
+          </div>
       </div>
-
+      
   </div>
   
 )}
