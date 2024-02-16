@@ -1494,7 +1494,7 @@ Our mision
       </div>
     </div>
     {/* Recent Donor Box */}
-    <div className={`cart-box p-3 border bg-light ${isCartFixed ? 'fixed-cart-box' : ''}`} 
+    <div className={`cart-box p-4 border bg-light ${isCartFixed ? 'fixed-cart-box' : ''}`} 
     style={{ margin: "2px 40px 0px 20px" }}>
     <p className="fw-bold fs-3">Items Added to Cart</p>
             <div className="cart-items-container">
@@ -1520,8 +1520,9 @@ Our mision
                     background: "linear-gradient(to right, #ff9900, #ff6a00) #eb9006",
                     color: "white",
                     fontWeight: "bold",
-                    fontSize:"13px"
-
+                    fontSize:"13px",
+                    marginTop: "20px",
+                    marginLeft: "30px"
                   }}
                 >
                   {buttonText}
@@ -1531,7 +1532,7 @@ Our mision
             
             {/* Right Column */}
             <div className="col-md-6">
-            <img src={paytm} alt="QR Code" style={{ width: '100px', height: '100px', marginLeft:"50px" }} />
+            <img src={paytm} alt="QR Code" style={{ width: '150px', height: '150px', marginLeft:"10px", marginTop: "20px" }} />
             </div>
           </div>
           {buttonText === "Donate" && (
