@@ -353,10 +353,47 @@ const handleRazorpayPayment = async () => {
 
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
+
+    const phoneNo = options.contact;
+    await sendWhatsAppNotification(phoneNo);
+
   } catch (error) {
     console.error('Error processing Razorpay payment:', error);
   }
 };
+
+
+//send whatsapp message
+async function sendWhatsAppNotification(phoneNo) {
+  try {
+
+    // Make a POST request to Interkart API to send WhatsApp message
+    const response = await axios.post('https://api.interakt.ai/v1/public/message/', {
+      "countryCode": "+91",
+      "phoneNumber": phoneNo,
+      "fullPhoneNumber": phoneNo, // Optional, Either fullPhoneNumber or phoneNumber + CountryCode is required
+      "callbackData": "Congratulations for placing your order",
+      "type": "Template",
+      "template": {
+          "name": "orderplaced",
+          "languageCode": "en",
+          "bodyValues": [
+              "hello",
+              "21"
+          ]
+      }
+  }, {
+      headers: {
+        'Authorization': 'Basic Mzc5YnZSc2M2VHVNSzBLbHRnclZjNTZCSXlhejdQdGwyeFNJM1dUUnZCNDo=',
+        'Content-Type': 'application/json'
+      }
+    });
+
+    // console.log('WhatsApp notification sent successfully:', response);
+  } catch (error) {
+    console.error('Error sending WhatsApp notification:', error.message);
+  }
+}
 
 
   
