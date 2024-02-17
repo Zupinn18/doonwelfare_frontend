@@ -1555,7 +1555,7 @@ Our mision
           )}
       <div className="recent-donor-box" 
       style={{ 
-        margin: "0px 40px 10px 20px",
+        margin: "0px 0px 0px 0px",
         }}>
       <h4 className="recent text-center" style={{fontSize: "15px"}}>Recent Donors</h4>
       <div className="donor-item" >
