@@ -257,24 +257,27 @@ body::-webkit-scrollbar {
 
 @media screen and (max-width: 1000px) {
   .phone-icon{
-    width: 2%;
+    width: 20px !important;
+    bottom: 163px !important
   }
   .whatsapp-icon{
-    width: 2%;
+    width: 20px !important;
   }
   
   .youtube-icon{
-    width: 2%;
+    width: 20px !important;
+    bottom: 215px !important;
   }
   
   .instagram-icon{
-    width: 2%;
-    top: 55%;
+    width: 20px !important;
+    bottom: 240px !important;
   }
   .facebook-icon{
 
-    width: 5% !important;
-    top: 45%;
+    width: 20px !important;
+    /* top: 45%; */
+    bottom: 265px !important;
   }
   .facebook-name{
     font-size: 10px;
@@ -292,5 +295,38 @@ body::-webkit-scrollbar {
 }
 
 @media screen and (max-width: 600px){
+  .phone-icon{
+    width: 20px !important;
+    margin-top: -10px;
+  }
+  .whatsapp-icon{
+    width: 20px !important;
+  }
   
+  .youtube-icon{
+    width: 20px !important;
+  }
+  
+  .instagram-icon{
+    width: 20px !important;
+ 
+  }
+  .facebook-icon{
+
+    width: 20px !important;
+    /* top: 45%; */
+  }
+  .facebook-name{
+    font-size: 10px;
+    top: 46%;
+    left: 6%;
+    height: 4%;
+  }
+
+  .floating-icon{
+    width: 2%;
+  }
+  .whatsapp-name{
+    font-size: 10px;
+  }
 }

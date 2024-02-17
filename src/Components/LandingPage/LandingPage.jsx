@@ -1494,8 +1494,8 @@ Our mision
       </div>
     </div>
     {/* Recent Donor Box */}
-    <div className={`cart-box p-3 border bg-light ${isCartFixed ? 'fixed-cart-box' : ''}`} 
-    style={{ margin: "2px 40px 0px 20px" }}>
+    <div className={`cart-box  p-3 border bg-light ${isCartFixed ? 'fixed-cart-box' : ''}`} 
+    style={{ margin: "2px 40px 0px 20px" }}> {/*t R b l*/}
     <p className="fw-bold fs-3">Items Added to Cart</p>
             <div className="cart-items-container">
             <div className="cart-items-list">
@@ -1520,8 +1520,9 @@ Our mision
                     background: "linear-gradient(to right, #ff9900, #ff6a00) #eb9006",
                     color: "white",
                     fontWeight: "bold",
-                    fontSize:"13px"
-
+                    fontSize:"13px",
+                    marginTop: "20px",
+                    marginLeft: "30px"
                   }}
                 >
                   {buttonText}
@@ -1531,7 +1532,7 @@ Our mision
             
             {/* Right Column */}
             <div className="col-md-6">
-            <img src={paytm} alt="QR Code" style={{ width: '100px', height: '100px', marginLeft:"50px" }} />
+            <img src={paytm} alt="QR Code" style={{ width: '150px', height: '150px', marginLeft:"10px", marginTop: "20px" }} />
             </div>
           </div>
           {buttonText === "Donate" && (
@@ -1551,7 +1552,7 @@ Our mision
           )}
       <div className="recent-donor-box" 
       style={{ 
-        margin: "2px 40px 0px 20px",
+        margin: "0px 40px 10px 20px",
         }}>
       <h4 className="recent" >Recent Donors</h4>
       <div className="donor-item" >
@@ -1570,8 +1571,11 @@ Our mision
         </ul>
       </div>
     </div>
+    <div className="col-md-6">
+            <iframe className="vid" width="300" height="200" src="https://www.youtube.com/embed/Ydj-Fz6UGwY?si=R22XoljvKxJU0nX_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style={{marginLeft:'20px'}}></iframe>
+          </div>
       </div>
-
+      
   </div>
   
 )}
