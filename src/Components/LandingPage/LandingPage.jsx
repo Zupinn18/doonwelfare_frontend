@@ -1554,7 +1554,7 @@ Our mision
       style={{ 
         margin: "0px 40px 10px 20px",
         }}>
-      <h4 className="recent" >Recent Donors</h4>
+      <h4 className="recent text-center" style={{fontSize: "15px"}}>Recent Donors</h4>
       <div className="donor-item" >
         <ul className="donors" >
           {recentDonors.map((donor, index) => (

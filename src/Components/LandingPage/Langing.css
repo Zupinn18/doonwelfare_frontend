@@ -30,6 +30,9 @@ body,a,span,p,h1,h2,h3{
   /* max-height: calc(100vh - 220px); */
   overflow-y: auto;
 }
+
+
+
 .fixed-cart-box {
   position: fixed;
   top: 15%;
