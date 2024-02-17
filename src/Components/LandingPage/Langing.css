@@ -30,8 +30,45 @@ body,a,span,p,h1,h2,h3{
   /* max-height: calc(100vh - 220px); */
   overflow-y: auto;
 }
+.burst-12  {
+  position: absolute;
+  z-index: 1;
+}
+.burst-12 {
+  background: linear-gradient(to left, #ff9900, #ff6a00) #eb9006;
+  width: 80px;
+  height: 80px;
+  position: relative;
+  text-align: center;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: glowing 1s infinite;
+  cursor: pointer;
+}
+.burst-12:before {
+  transform: rotate(30deg);
+}
+.burst-12:after {
+  transform: rotate(60deg);
+}
+.burst-12 span {
+  position: absolute;
+  z-index: 1;
+  justify-content: center;
 
-
+}
+.burst-12:before, .burst-12:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 80px;
+  width: 80px;
+  background: linear-gradient(to right, #ff9900, #ff6a00) #eb9006;
+  animation: glowing 1s infinite;
+}
 
 .fixed-cart-box {
   position: fixed;

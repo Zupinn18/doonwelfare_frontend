@@ -1514,7 +1514,7 @@ Our mision
                 <br />
               </p>
               <button
-                  className={`btn Add to cart ${buttonText === "Add Item to Donate" ? "glow" : ""}`}
+                  className={`btn Add to cart burst-12 ${buttonText === "Add Item to Donate" ? "glow" : ""}`}
                   onClick={handleButtonClick}
                   style={{
                     background: "linear-gradient(to right, #ff9900, #ff6a00) #eb9006",
@@ -1522,10 +1522,13 @@ Our mision
                     fontWeight: "bold",
                     fontSize:"13px",
                     marginTop: "20px",
-                    marginLeft: "30px"
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                    borderRadius: "0"
                   }}
                 >
                   {buttonText}
+                  <span>Add item to Donate</span>
                 </button>
 
             </div>
