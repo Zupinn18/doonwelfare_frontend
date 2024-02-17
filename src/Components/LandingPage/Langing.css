@@ -367,7 +367,7 @@ body,a,span,p,h1,h2,h3{
 
   .recent{
     color: white;
-    margin-bottom: 100px;
+    margin-bottom: 5px;
     font-size: 25px;
     font-weight: bold;
     background: linear-gradient(to right, #ff9900, #ff6a00) #eb9006;
@@ -393,7 +393,7 @@ body,a,span,p,h1,h2,h3{
 
   .donor-item {
     max-height: 120px; 
-    overflow-y: auto;
+    overflow-y: auto; 
   }
   
   .donate-button{
