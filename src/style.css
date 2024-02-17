@@ -236,49 +236,7 @@ body::-webkit-scrollbar {
   animation: forwards;
 }
 
-/* 
-@media screen and (min-width: 1000px) {
-  .yt{
-    background-color: red;
-  }
-  .fb{
-    background-color: #2596be;
-  }
-  .ig{
-    background-color: rgba(217,40,144,255);
-  }
-  .wa{
-    background-color:#4cb051;
-  }
-  .ph{
-    background-color: #2196f3;
-  }
-} */
-
-@media screen and (max-width: 1000px) {
-  .phone-icon{
-    width: 20px !important;
-    bottom: 163px !important
-  }
-  .whatsapp-icon{
-    width: 20px !important;
-  }
   
-  .youtube-icon{
-    width: 20px !important;
-    bottom: 215px !important;
-  }
-  
-  .instagram-icon{
-    width: 20px !important;
-    bottom: 240px !important;
-  }
-  .facebook-icon{
-
-    width: 20px !important;
-    /* top: 45%; */
-    bottom: 265px !important;
-  }
   .facebook-name{
     font-size: 10px;
     top: 46%;
@@ -292,8 +250,11 @@ body::-webkit-scrollbar {
   .whatsapp-name{
     font-size: 10px;
   }
-}
+} */
 
+<<<<<<< HEAD
+
+=======
 @media screen and (max-width: 600px){
   .phone-icon{
     width: 20px !important;
@@ -330,3 +291,4 @@ body::-webkit-scrollbar {
     font-size: 10px;
   }
 }
+>>>>>>> 4ec5e4d712c885d9f06224b12c33a1324e160eac
