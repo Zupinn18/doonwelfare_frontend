@@ -237,24 +237,6 @@ body::-webkit-scrollbar {
 }
 
 /* 
-@media screen and (min-width: 1000px) {
-  .yt{
-    background-color: red;
-  }
-  .fb{
-    background-color: #2596be;
-  }
-  .ig{
-    background-color: rgba(217,40,144,255);
-  }
-  .wa{
-    background-color:#4cb051;
-  }
-  .ph{
-    background-color: #2196f3;
-  }
-} */
-
 @media screen and (max-width: 1000px) {
   .phone-icon{
     width: 2%;
@@ -289,8 +271,5 @@ body::-webkit-scrollbar {
   .whatsapp-name{
     font-size: 10px;
   }
-}
+} */
 
-@media screen and (max-width: 600px){
-  
-}
