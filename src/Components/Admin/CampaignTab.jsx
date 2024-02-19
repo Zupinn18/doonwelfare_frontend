@@ -110,14 +110,6 @@ function CampaignTab() {
     }
   };
   
-  
-
-  
-
-  
-  
-  
-
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -376,53 +368,55 @@ function CampaignTab() {
               </TableRow>
             </TableHead>
             <TableBody>
-            {campaigns.map((item, index) => (
-              <TableRow key={item._id}>
-                <TableCell>{item.title}</TableCell>
-                <TableCell>{item.description}</TableCell>
-                <TableCell>{item.amount}</TableCell>
-                <TableCell>{item.requirement}</TableCell>
-                <TableCell>
-                  {item.imageUrl ? (
-                    <img src={item.imageUrl} alt={item.name} width="100" />
-                  ) : (
-                    "No Image"
-                  )}
-                </TableCell>
-                <TableCell>
-                  <Button
-                    variant="contained"
-                    color="error"
-                    onClick={() => handleDeleteCampaign(item._id)}
-                  >
-                    Delete
-                  </Button>
-                  {/* Buttons to move campaign */}
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => handleMoveCampaign(index, 'up')}
-                    disabled={index === 0} // Disable if already at the top
-                  >
-                    Move Up
-                  </Button>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => handleMoveCampaign(index, 'down')}
-                    disabled={index === campaigns.length - 1} // Disable if already at the bottom
-                  >
-                    Move Down
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
+              {campaigns.map((item, index) => (
+                <TableRow key={item._id}>
+                  <TableCell>{item.title}</TableCell>
+                  <TableCell>{item.description}</TableCell>
+                  <TableCell>{item.amount}</TableCell>
+                  <TableCell>{item.requirement}</TableCell>
+                  <TableCell>
+                    {item.imageUrl ? (
+                      <img src={item.imageUrl} alt={item.name} width="100" />
+                    ) : (
+                      "No Image"
+                    )}
+                  </TableCell>
+                  <TableCell>
+                    {/* Delete button */}
+                    <Button
+                      variant="contained"
+                      color="error"
+                      onClick={() => handleDeleteCampaign(item._id)}
+                    >
+                      Delete
+                    </Button>
+                    {/* Buttons to move campaign */}
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={() => handleMoveCampaign(index, 'up')}
+                      disabled={index === 0} // Disable if already at the top
+                    >
+                      Move Up
+                    </Button>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={() => handleMoveCampaign(index, 'down')}
+                      disabled={index === campaigns.length - 1} // Disable if already at the bottom
+                    >
+                      Move Down
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </TableContainer>
       </div>
 
       <ToastContainer />
+      {/* Button to save campaign updates */}
       <Button variant="contained" color="primary" onClick={handleSaveUpdate}>
         Save Update
       </Button>

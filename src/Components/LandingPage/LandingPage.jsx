@@ -208,6 +208,25 @@ const LandingPage = () => {
   const [recentDonors, setRecentDonors] = useState([]);
 
 
+  // Function to move the campaign
+  const moveCampaign = (index, direction) => {
+    // Create a copy of the campaigns array
+    const updatedCampaigns = [...campaigns];
+    // Swap the positions based on the direction
+    if (direction === 'up' && index > 0) {
+      const temp = updatedCampaigns[index];
+      updatedCampaigns[index] = updatedCampaigns[index - 1];
+      updatedCampaigns[index - 1] = temp;
+    } else if (direction === 'down' && index < updatedCampaigns.length - 1) {
+      const temp = updatedCampaigns[index];
+      updatedCampaigns[index] = updatedCampaigns[index + 1];
+      updatedCampaigns[index + 1] = temp;
+    }
+    // Update the campaigns state with the new order
+    setCampaigns(updatedCampaigns);
+  };
+
+
   // const buttonText = list === 0 ? "Add Item to Donate" : "Donate";
   // const [quickLinksCampaigns, setQuickLinksCampaigns] = useState([]);
 
@@ -731,6 +750,7 @@ const handleButtonClick = () => {
             Featured Campaign
           </h2>
           <div className="row mt-3">
+            
             {featuredCampaigns.map((campaign, index) => (
               <div className="col-md-6 mb-5 px-4" key={index}>
                 <div
@@ -882,6 +902,7 @@ const handleButtonClick = () => {
                 </div>
               </div>
             ))}
+            
           </div>
         </div>
       </div>
