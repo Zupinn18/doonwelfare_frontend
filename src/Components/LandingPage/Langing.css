@@ -319,12 +319,12 @@ body,a,span,p,h1,h2,h3{
   /* Donor card CSS */
 
   .donors{
-    width: 100% !important;
     display: flex !important;
     flex-direction: column;
     gap: 8px !important;
     justify-content: start;
-    margin-left: -30px !important;
+    margin-left: auto !important;
+    margin-right: auto;
   }
   
   .donor-detail{
@@ -364,16 +364,20 @@ body,a,span,p,h1,h2,h3{
     font-size: 14px;
     margin-top: -15px;
   }
-
-  .recent{
+  .recent-donor-box{
+    height: -100px;
+  }
+  .recent {
     color: white;
     margin-bottom: 5px;
     font-size: 25px;
     font-weight: bold;
     background: linear-gradient(to right, #ff9900, #ff6a00) #eb9006;
     border-radius: 5px;
-    padding: 5px
-  }
+    padding: 5px;
+    margin-left: 25%;
+    margin-right: 25%;
+}
 
 ::-webkit-scrollbar {
     -webkit-appearance: none;

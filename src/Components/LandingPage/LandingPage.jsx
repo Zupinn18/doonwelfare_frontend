@@ -1574,28 +1574,25 @@ Our mision
             </button>
             
           )}
-      <div className="recent-donor-box" 
-      style={{ 
-        margin: "-40px 100px 0px 100px",
-        padding: "-100px",
-        }}>
-      <h4 className="recent text-center" style={{fontSize: "15px"}}>Recent Donors</h4>
-      <div className="donor-item" >
-        <ul className="donors" >
-          {recentDonors.map((donor, index) => (
-            <div key={index} className="donor-detail"  >
-                <div className="donor-img" >
-                  <img src={userImg} alt="User Image" loading="lazy" width="30px" />
+     <div className="recent-donor-box" style={{ margin: "-40px 0px 0px 0px", padding: "20px", borderRadius: "10px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>
+        <h4 className="recent text-center" style={{ fontSize: "20px", marginBottom: "20px" }}>Recent Donors</h4>
+        <div className="donor-item" >
+          <ul className="donors" >
+            {recentDonors.map((donor, index) => (
+              <div key={index} className="donor-detail" style={{ marginBottom: "-5px", padding: "5px", borderRadius: "10px", backgroundColor: "#f8f9fa", display: "flex", alignItems: "center" }}>
+                <div className="donor-img" style={{ marginRight: "10px" }}>
+                  <img src={userImg} alt="User Image" loading="lazy" width="50px" style={{ borderRadius: "50%", border: "2px solid #fff" }} />
                 </div>
-                <div className="donor-info" >
-                  <p className="donor-name" >{donor.email || "Anonymous"}</p>
-                  <p className="donor-date" >{new Date(donor.createdAt * 1000).toLocaleString()}</p>
+                <div className="donor-info">
+                  <p className="donor-name" style={{ fontSize: "16px", fontWeight: "bold", margin: "0" }}>{donor.email || "Anonymous"}</p>
+                  <p className="donor-date" style={{ fontSize: "14px", color: "#6c757d", margin: "5px 0 0 0" }}>{new Date(donor.createdAt * 1000).toLocaleString()}</p>
                 </div>
-            </div>
-          ))}
-        </ul>
+              </div>
+            ))}
+          </ul>
+        </div>
       </div>
-    </div>
+
     <div className="col-md-6 p-5">
             <iframe className="vid" width="300" height="200" src="https://www.youtube.com/embed/Ydj-Fz6UGwY?si=R22XoljvKxJU0nX_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style={{marginLeft:'20px'}}></iframe>
           </div>
