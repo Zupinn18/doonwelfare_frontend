@@ -528,7 +528,7 @@ const handleButtonClick = () => {
   
   return (
     <>
-  <div className="col-md-8 scrollable px-5">    
+  <div className="col-md-8 scrollable px-3">    
     <Helmet>
         <title>Gaushala Donation | Donate for Cows at Shri Krishna Dham</title>
         <meta name="You can donate for cows for a month, a year or a lifetime. This will help us to save thousands of cows, who are injured and sick. " />
