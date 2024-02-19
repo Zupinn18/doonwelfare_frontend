@@ -1575,11 +1575,11 @@ Our mision
             
           )}
      <div className="recent-donor-box" style={{ margin: "-40px 0px 0px 0px", padding: "20px", borderRadius: "10px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>
-        <h4 className="recent text-center" style={{ fontSize: "20px", marginBottom: "20px" }}>Recent Donors</h4>
+        <h4 className="recent text-center" style={{ fontSize: "15px", marginBottom: "20px" }}>Recent Donors</h4>
         <div className="donor-item" >
           <ul className="donors" >
             {recentDonors.map((donor, index) => (
-              <div key={index} className="donor-detail" style={{ marginBottom: "-5px", padding: "5px", borderRadius: "10px", backgroundColor: "#f8f9fa", display: "flex", alignItems: "center" }}>
+              <div key={index} className="donor-detail" style={{ marginBottom: "-5px", marginLeft:"-30px" ,padding: "5px", borderRadius: "10px", backgroundColor: "rgb(255 204 160)", display: "flex", alignItems: "center" }}>
                 <div className="donor-img" style={{ marginRight: "10px" }}>
                   <img src={userImg} alt="User Image" loading="lazy" width="50px" style={{ borderRadius: "50%", border: "2px solid #fff" }} />
                 </div>
