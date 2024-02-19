@@ -102,7 +102,7 @@ function Navbar() {
       <Link className="donate_button nav-link fa-bounce mt-3" to="/landing-page" aria-current="page">
         <a
           style={{
-            backgroundColor: "FF8C00",
+            backgroundColor: "#FF8C00",
             color: "white",
             fontSize: "16px",
             fontWeight: "500",
