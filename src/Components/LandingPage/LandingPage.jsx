@@ -509,7 +509,7 @@ const handleButtonClick = () => {
   
   return (
     <>
-  <div className="col-md-8 scrollable">    
+  <div className="col-md-8 scrollable px-5">    
     <Helmet>
         <title>Gaushala Donation | Donate for Cows at Shri Krishna Dham</title>
         <meta name="You can donate for cows for a month, a year or a lifetime. This will help us to save thousands of cows, who are injured and sick. " />
@@ -1394,7 +1394,7 @@ Our mision
 
   <div className="col-md-4">
     {buttonText !== "Donate" && (
-  <div className="col-md-4 mt-0 m-0 p-0 donation-box scrollable-donation-box">
+  <div className="col-md-4 mt-0 m-0 p-0 px-3 donation-box scrollable-donation-box">
     <div className="p-3 border bg-light" style={{ margin: "2px 40px 0px 20px" }}>
       <div className="d-flex row gap-2">
         <div className="box-image">
@@ -1494,7 +1494,7 @@ Our mision
       </div>
     </div>
     {/* Recent Donor Box */}
-    <div className={`cart-box  p-3 border bg-light ${isCartFixed ? 'fixed-cart-box' : ''}`} 
+    <div className={`cart-box px-3 border bg-light ${isCartFixed ? 'fixed-cart-box' : ''}`} 
     style={{ margin: "2px 40px 0px 20px" }}> {/*t R b l*/}
     <p className="fw-bold fs-3">Items Added to Cart</p>
             <div className="cart-items-container">
@@ -1520,9 +1520,9 @@ Our mision
                     background: "linear-gradient(to right, #ff9900, #ff6a00) #eb9006",
                     color: "white",
                     fontWeight: "bold",
-                    fontSize:"13px",
+                    fontSize:"20px",
                     marginTop: "20px",
-                    marginLeft: "auto",
+                    marginLeft: "50px",
                     marginRight: "auto",
                     borderRadius: "0"
                   }}
@@ -1555,7 +1555,8 @@ Our mision
           )}
       <div className="recent-donor-box" 
       style={{ 
-        margin: "0px 0px 0px 0px",
+        margin: "-40px 100px 0px 100px",
+        padding: "-100px",
         }}>
       <h4 className="recent text-center" style={{fontSize: "15px"}}>Recent Donors</h4>
       <div className="donor-item" >
@@ -1574,8 +1575,8 @@ Our mision
         </ul>
       </div>
     </div>
-    <div className="col-md-6 j">
-            <iframe className="vid" width="400" height="200" src="https://www.youtube.com/embed/Ydj-Fz6UGwY?si=R22XoljvKxJU0nX_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style={{marginLeft:'20px'}}></iframe>
+    <div className="col-md-6 p-5">
+            <iframe className="vid" width="300" height="200" src="https://www.youtube.com/embed/Ydj-Fz6UGwY?si=R22XoljvKxJU0nX_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style={{marginLeft:'20px'}}></iframe>
           </div>
       </div>
       
