@@ -1420,8 +1420,8 @@ Our mision
 
           {/* Button 2 */}
           <div className="dropdown">
-            <button className="dropdown-btn">Assured</button>
-            <div className="dropdown-content" style={{ left: "50%", transform: "translateX(-50%)" }}>
+            <button className="dropdown-btn" style={{background: "linear-gradient(to right, #ff9900, #ff6a00) #eb9006"}}>Assured</button>
+            <div className="dropdown-content" style={{ left: "50%", transform: "translateX(-50%)"}}>
               
               <p>
                 <strong>Animal Welfare Board Of India</strong>
@@ -1433,7 +1433,7 @@ Our mision
 
           {/* Button 3 */}
           <div className="dropdown">
-            <button className="dropdown-btn">Verified NGO</button>
+            <button className="dropdown-btn" style={{background: "linear-gradient(to right, #ff9900, #ff6a00) #eb9006"}}>Verified NGO</button>
             <div className="dropdown-content" style={{ left: "50%", transform: "translateX(-50%)" }}>
             <p>
                 <strong>Doon Animal Welfare Foundation</strong>
