@@ -26,7 +26,7 @@ const AllBlog = () => {
           <h1 style={{position: 'absolute', top: '70%', left: '50%', transform: 'translate(-50%, -50%)',color:"black"}}>Blogs</h1>
       </div>
   
-      <div className="row justify-content-center" style={{padding:"50px 200px 0px 200px"}}>
+      <div className="row justify-content-center" style={{padding:"50px"}}>
     {
       blogs.map((blog) => {
         return (

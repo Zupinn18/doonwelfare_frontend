@@ -104,7 +104,7 @@ function Navbar() {
           style={{
             backgroundColor: "#FF8C00",
             color: "white",
-            fontSize: "20px",
+            fontSize: "16px",
             fontWeight: "500",
             borderRadius: "50px",
             textDecoration: "none",

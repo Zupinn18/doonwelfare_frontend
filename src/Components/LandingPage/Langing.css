@@ -73,9 +73,9 @@ body,a,span,p,h1,h2,h3{
 .fixed-cart-box {
   position: fixed;
   top: 15%;
-  right: 50px; /* Position on the right side */
+  right: 0px; /* Position on the right side */
   z-index: 1000; /* Ensure it appears above other content */
-  width: 370px; /* Adjust the width as needed */
+  width: 470px; /* Adjust the width as needed */
   background-color: #fff; /* Background color */
   border: 1px solid #ccc; /* Border */
    /* Padding */
@@ -319,12 +319,12 @@ body,a,span,p,h1,h2,h3{
   /* Donor card CSS */
 
   .donors{
-    width: 100%;
-    display: flex;
+    display: flex !important;
     flex-direction: column;
-    gap: 8px;
+    gap: 8px !important;
     justify-content: start;
-    margin-left: -30px;
+    margin-left: auto !important;
+    margin-right: auto;
   }
   
   .donor-detail{
@@ -364,16 +364,20 @@ body,a,span,p,h1,h2,h3{
     font-size: 14px;
     margin-top: -15px;
   }
-
-  .recent{
+  .recent-donor-box{
+    height: -100px;
+  }
+  .recent {
     color: white;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     font-size: 25px;
     font-weight: bold;
     background: linear-gradient(to right, #ff9900, #ff6a00) #eb9006;
     border-radius: 5px;
-    padding: 5px
-  }
+    padding: 5px;
+    margin-left: 25%;
+    margin-right: 25%;
+}
 
 ::-webkit-scrollbar {
     -webkit-appearance: none;
@@ -393,7 +397,7 @@ body,a,span,p,h1,h2,h3{
 
   .donor-item {
     max-height: 120px; 
-    overflow-y: auto;
+    overflow-y: auto; 
   }
   
   .donate-button{

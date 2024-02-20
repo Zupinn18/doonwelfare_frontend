@@ -208,6 +208,25 @@ const LandingPage = () => {
   const [recentDonors, setRecentDonors] = useState([]);
 
 
+  // Function to move the campaign
+  const moveCampaign = (index, direction) => {
+    // Create a copy of the campaigns array
+    const updatedCampaigns = [...campaigns];
+    // Swap the positions based on the direction
+    if (direction === 'up' && index > 0) {
+      const temp = updatedCampaigns[index];
+      updatedCampaigns[index] = updatedCampaigns[index - 1];
+      updatedCampaigns[index - 1] = temp;
+    } else if (direction === 'down' && index < updatedCampaigns.length - 1) {
+      const temp = updatedCampaigns[index];
+      updatedCampaigns[index] = updatedCampaigns[index + 1];
+      updatedCampaigns[index + 1] = temp;
+    }
+    // Update the campaigns state with the new order
+    setCampaigns(updatedCampaigns);
+  };
+
+
   // const buttonText = list === 0 ? "Add Item to Donate" : "Donate";
   // const [quickLinksCampaigns, setQuickLinksCampaigns] = useState([]);
 
@@ -509,7 +528,7 @@ const handleButtonClick = () => {
   
   return (
     <>
-  <div className="col-md-8 scrollable">    
+  <div className="col-md-8 scrollable px-3">    
     <Helmet>
         <title>Gaushala Donation | Donate for Cows at Shri Krishna Dham</title>
         <meta name="You can donate for cows for a month, a year or a lifetime. This will help us to save thousands of cows, who are injured and sick. " />
@@ -731,6 +750,7 @@ const handleButtonClick = () => {
             Featured Campaign
           </h2>
           <div className="row mt-3">
+            
             {featuredCampaigns.map((campaign, index) => (
               <div className="col-md-6 mb-5 px-4" key={index}>
                 <div
@@ -892,6 +912,7 @@ const handleButtonClick = () => {
                 </div>
               </div>
             ))}
+            
           </div>
         </div>
       </div>
@@ -1404,7 +1425,7 @@ Our mision
 
   <div className="col-md-4">
     {buttonText !== "Donate" && (
-  <div className="col-md-4 mt-0 m-0 p-0 donation-box scrollable-donation-box">
+  <div className="col-md-4 mt-0 m-0 p-0 px-3 donation-box scrollable-donation-box">
     <div className="p-3 border bg-light" style={{ margin: "2px 40px 0px 20px" }}>
       <div className="d-flex row gap-2">
         <div className="box-image">
@@ -1430,8 +1451,8 @@ Our mision
 
           {/* Button 2 */}
           <div className="dropdown">
-            <button className="dropdown-btn">Assured</button>
-            <div className="dropdown-content" style={{ left: "50%", transform: "translateX(-50%)" }}>
+            <button className="dropdown-btn" style={{background: "linear-gradient(to right, #ff9900, #ff6a00) #eb9006"}}>Assured</button>
+            <div className="dropdown-content" style={{ left: "50%", transform: "translateX(-50%)"}}>
               
               <p>
                 <strong>Animal Welfare Board Of India</strong>
@@ -1443,7 +1464,7 @@ Our mision
 
           {/* Button 3 */}
           <div className="dropdown">
-            <button className="dropdown-btn">Verified NGO</button>
+            <button className="dropdown-btn" style={{background: "linear-gradient(to right, #ff9900, #ff6a00) #eb9006"}}>Verified NGO</button>
             <div className="dropdown-content" style={{ left: "50%", transform: "translateX(-50%)" }}>
             <p>
                 <strong>Doon Animal Welfare Foundation</strong>
@@ -1504,7 +1525,7 @@ Our mision
       </div>
     </div>
     {/* Recent Donor Box */}
-    <div className={`cart-box  p-3 border bg-light ${isCartFixed ? 'fixed-cart-box' : ''}`} 
+    <div className={`cart-box px-3 border bg-light ${isCartFixed ? 'fixed-cart-box' : ''}`} 
     style={{ margin: "2px 40px 0px 20px" }}> {/*t R b l*/}
     <p className="fw-bold fs-3">Items Added to Cart</p>
             <div className="cart-items-container">
@@ -1530,9 +1551,9 @@ Our mision
                     background: "linear-gradient(to right, #ff9900, #ff6a00) #eb9006",
                     color: "white",
                     fontWeight: "bold",
-                    fontSize:"13px",
+                    fontSize:"20px",
                     marginTop: "20px",
-                    marginLeft: "auto",
+                    marginLeft: "50px",
                     marginRight: "auto",
                     borderRadius: "0"
                   }}
@@ -1563,28 +1584,26 @@ Our mision
             </button>
             
           )}
-      <div className="recent-donor-box" 
-      style={{ 
-        margin: "0px 40px 10px 20px",
-        }}>
-      <h4 className="recent text-center" style={{fontSize: "15px"}}>Recent Donors</h4>
-      <div className="donor-item" >
-        <ul className="donors" >
-          {recentDonors.map((donor, index) => (
-            <div key={index} className="donor-detail"  >
-                <div className="donor-img" >
-                  <img src={userImg} alt="User Image" loading="lazy" width="30px" />
+     <div className="recent-donor-box" style={{ margin: "-40px 0px 0px 0px", padding: "20px", borderRadius: "10px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>
+        <h4 className="recent text-center" style={{ fontSize: "15px", marginBottom: "20px" }}>Recent Donors</h4>
+        <div className="donor-item" >
+          <ul className="donors" >
+            {recentDonors.map((donor, index) => (
+              <div key={index} className="donor-detail" style={{ marginBottom: "-5px", marginLeft:"-30px" ,padding: "5px", borderRadius: "10px", backgroundColor: "rgb(255 204 160)", display: "flex", alignItems: "center" }}>
+                <div className="donor-img" style={{ marginRight: "10px" }}>
+                  <img src={userImg} alt="User Image" loading="lazy" width="50px" style={{ borderRadius: "50%", border: "2px solid #fff" }} />
                 </div>
-                <div className="donor-info" >
-                  <p className="donor-name" >{donor.email || "Anonymous"}</p>
-                  <p className="donor-date" >{new Date(donor.createdAt * 1000).toLocaleString()}</p>
+                <div className="donor-info">
+                  <p className="donor-name" style={{ fontSize: "16px", fontWeight: "bold", margin: "0" }}>{donor.email || "Anonymous"}</p>
+                  <p className="donor-date" style={{ fontSize: "14px", color: "#6c757d", margin: "5px 0 0 0" }}>{new Date(donor.createdAt * 1000).toLocaleString()}</p>
                 </div>
-            </div>
-          ))}
-        </ul>
+              </div>
+            ))}
+          </ul>
+        </div>
       </div>
-    </div>
-    <div className="col-md-6">
+
+    <div className="col-md-6 p-5">
             <iframe className="vid" width="300" height="200" src="https://www.youtube.com/embed/Ydj-Fz6UGwY?si=R22XoljvKxJU0nX_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style={{marginLeft:'20px'}}></iframe>
           </div>
       </div>

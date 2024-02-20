@@ -119,7 +119,7 @@ function AppContent() {
       <a href="https://www.facebook.com/doonanimalwelfare?mibextid=ZbWKwL" className="floating-icon facebook-icon" 
       style={{
         backgroundColor:"#2596be",
-        borderRadius:"0px 10px 0px 0px ",
+        borderRadius:"0px 10px 0px 0px",
       }} >
         <img src={FacebookIcon} alt="Facebook" />
       </a>
