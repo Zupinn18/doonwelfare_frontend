@@ -17,11 +17,11 @@ function Footer() {
       <div className="container py-4">
         <div className="row gx-2"> {/* Added the gx-2 class to reduce the horizontal gap */}
           <div className="col-md-3">
-            <img
+            {/* <img
               src={logo}
               alt="Logo"
               className="img-fluid footer-logo"
-            />
+            /> */}
             <p className="fw-bold mt-3">
               DOON ANIMAL WELFARE(SHRI KRISHNA DHAM GAUSHALA) SHIMLA BYE PASS ROAD,<br /> GRAM HASANPUR, <br /> NEAR SHIVALIK COLLAGE DEHRADUN  248011 <br /> Uttrakhand, India
             </p>
@@ -85,7 +85,7 @@ function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/" style={linkStyle}>
+                <Link to="/webstories" style={linkStyle}>
                   web stories
                 </Link>
               </li>

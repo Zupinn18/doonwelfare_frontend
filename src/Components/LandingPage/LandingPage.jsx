@@ -761,7 +761,7 @@ const handleButtonClick = () => {
                   style={{
                     backgroundColor:
                       cardBackgroundColors[index % cardBackgroundColors.length],
-                    boxShadow: "10px 5px 5px black",
+                    boxShadow: "5px 5px 5px 0px",
                   }}
                   className="d-flex"
                 >
