@@ -762,15 +762,20 @@ const handleButtonClick = () => {
                   className="d-flex"
                 >
                   <div className="row no-gutters">
-                    <div className="col-md-12 p-0">
-                      <img
-                        loading="lazy"
-                        src={campaign.imageUrl}
-                        className="card-img"
-                        alt={campaign.title}
-                        style={{ maxHeight: "400px" }}
-                      />
-                    </div>
+                    <Link to={{
+                              pathname: `/campaign/${campaign._id}`,
+                              state: {campaign}
+                          }} >
+                      <div className="col-md-12 p-0 cursor-pointer ">
+                        <img
+                          loading="lazy"
+                          src={campaign.imageUrl}
+                          className="card-img"
+                          alt={campaign.title}
+                          style={{ maxHeight: "400px" }}
+                        />
+                      </div>
+                    </Link>
                     <div
                       className="col-md-12 d-flex align-items-center"
                       style={{
@@ -781,15 +786,20 @@ const handleButtonClick = () => {
                       }}
                     >
                       <div className="card-body text-center" style={{ color: "black" }}>
-                        <h5
-                          className="card-title text-dark mt-2"
-                          style={{
-                            fontWeight: 700,
-                            fontSize: "22px",
-                          }}
-                        >
-                          {campaign.title}
-                        </h5>
+                        <Link to={{
+                              pathname: `/campaign/${campaign._id}`,
+                              state: {campaign}
+                          }} className="text-decoration-none" >
+                          <h5
+                            className="card-title text-dark mt-2"
+                            style={{
+                              fontWeight: 700,
+                              fontSize: "22px",
+                            }}
+                          >
+                            {campaign.title}
+                          </h5>
+                        </Link>
                         <p
                           className="card-text text-dark mt-3"
                           style={{ fontWeight: 500, fontSize: '16px', overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitBoxOrient: 'vertical', lineHeight: '1.5em' }}
