@@ -28,6 +28,7 @@ import PhoneIcon from "./assets/telephone.webp";
 import CSR from "./Components/CSR/CSR";
 import Blogs from "./Components/Blogs/Blogs";
 import AllBlogs from "./Components/Blog/AllBlog";
+import CampaignDetail from "./Components/CampaignDetail/CampaignDetail";
 
 function App() {
   return (
@@ -61,7 +62,8 @@ function AppContent() {
       currentPathname === "/contact" ||
       currentPathname === "/our-team" ||
       currentPathname === "/csr" ||
-      currentPathname === "/blogs" 
+      currentPathname === "/blogs" || 
+      currentPathname === "/campaign/:id"
     ) {
       return <Navbar />;
     } else {
@@ -136,7 +138,7 @@ function AppContent() {
         <Route path="/adopt-animal" element={<AdoptAnimal />} />
         <Route path="/make-donation" element={<MakeADonation />} />
         <Route path="/feed-animal" element={<FeedAnimal />} />
-        <Route path="/campaign/:id" element={<Campaign />} />
+        {/* <Route path="/campaign/:id" element={<Campaign />} /> */}
         <Route path="/landing-page" element={<LandingPage />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/privacy" element={<Privacy />} />
@@ -148,6 +150,7 @@ function AppContent() {
         <Route path="/csr" element={<CSR/>} />
         <Route path="/blogs/:id" element={<Blogs/>} />
         <Route path="/blogs" element={<AllBlogs/>} />
+        <Route path="/campaign/:id" element={<CampaignDetail/> } />
       </Routes>
     </div>
   );

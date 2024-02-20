@@ -250,11 +250,7 @@ body::-webkit-scrollbar {
   .whatsapp-name{
     font-size: 10px;
   }
-} */
 
-<<<<<<< HEAD
-
-=======
 @media screen and (max-width: 600px){
   .phone-icon{
     width: 20px !important;
@@ -291,4 +287,3 @@ body::-webkit-scrollbar {
     font-size: 10px;
   }
 }
->>>>>>> 4ec5e4d712c885d9f06224b12c33a1324e160eac

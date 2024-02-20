@@ -144,17 +144,27 @@ const Campaign = () => {
 
   const fetchCampaignDetails = async () => {
     try {
+      // const response = await axios.get(
+      //   `https://ngo-node.onrender.com/api/campaigns/${id}`
+      // );
       const response = await axios.get(
-        `https://ngo-node.onrender.com/api/campaigns/${id}`
+        "https://ngo-node.onrender.com/api/campaigns"
       );
+
+      var currObj = response.data.filter(item => item._id === id);
+      console.log("API Response current object with id is:", currObj);
+      console.log("id is:", id);
+
       if (response.status === 200) {
-        setCampaignDetails(response.data);
+        setCampaignDetails(currObj);
         setList(response.data.amount || 0);
       }
     } catch (e) {
       console.log(e);
     }
   };
+
+  console.log("camapaign details", CampaignDetails);
 
   const fetchCampaignItems = async () => {
     try {
@@ -280,12 +290,13 @@ const Campaign = () => {
     setRecentDonors(simulatedRecentDonors);
     fetchCampaignDetails();
     fetchCampaignItems();
-    fetchCampaignamount();
+    // fetchCampaignamount();
     fetchCampaigns();
   }, []);
+
+
   return (
-    <>
-      
+    <> 
       <nav className={`navbar navbar-expand-lg ${navbarBackground} fixed-navbar`} style={{ fontSize: "22px", backgroundColor: "#f7f7f7", transition: "background-color 0.3s" }}>
   <div className="container">
     <Link className="navbar-brand" to="/">
@@ -900,7 +911,7 @@ const Campaign = () => {
       </div>
       <Footer />
     </>
-  );
+  )
 };
 
 export default Campaign;
