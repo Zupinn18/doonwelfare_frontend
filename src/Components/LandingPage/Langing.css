@@ -404,3 +404,18 @@ body,a,span,p,h1,h2,h3{
     padding: 10px 20px !important;
     margin-right: 25px;
   }
+
+  .amount-note{
+    margin: 15px;
+    font-size: 18px;
+    color: red;
+    font-weight: 500;
+  }
+
+  .show{
+    display: block;
+  }
+
+  .not-show{
+    display: none;
+  }

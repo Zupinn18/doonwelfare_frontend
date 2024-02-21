@@ -55,7 +55,12 @@ const LandingPage = () => {
   
   const [list, setList] = useState(0);
   const [buttonText, setButtonText] = useState("Add Item to Donate");
+  const [note, setNote] = useState(false);
 
+  const handleNote = () => {
+    setNote(true);
+  }
+  
   const resetAmount = () => {
     setList(0);
     setButtonText("Add Item to Donate");
@@ -206,7 +211,6 @@ const LandingPage = () => {
   const [showQuantityInput, setShowQuantityInput] = useState(false);
   const [showFullDescription, setShowFullDescription] = useState(false);
   const [recentDonors, setRecentDonors] = useState([]);
-
 
   // Function to move the campaign
   const moveCampaign = (index, direction) => {
@@ -418,6 +422,7 @@ const LandingPage = () => {
 
 
 const handleCustomAmountChange = (campaignId, amount) => {
+  handleNote();
   setCustomAmounts((prevAmounts) => ({
     ...prevAmounts,
     [campaignId]: amount,
@@ -434,11 +439,16 @@ const handlePaymentSuccess = (donorName) => {
 
 const handleButtonClick = () => {
   const totalAmount = cartItems.reduce((total, item) => total + item.totalAmount, 0);
-  alert(`Total Donation Amount: Rs ${totalAmount}`);
-  localStorage.setItem("amount", totalAmount);
-  navigate("/cart"); // Replace "/donation" with the actual path to your donation page
-  setShowQuantityInput(!showQuantityInput);
-  setShowQuantities(!showQuantities);
+
+  if(totalAmount<100){
+    alert(`Minimum Donation Amount should be Rs. 100  `);
+  }else{
+    alert(`Total Donation Amount: Rs ${totalAmount}`);
+    localStorage.setItem("amount", totalAmount);
+    navigate("/cart"); // Replace "/donation" with the actual path to your donation page
+    setShowQuantityInput(!showQuantityInput);
+    setShowQuantities(!showQuantities);
+  }
 };
 
 
@@ -525,6 +535,8 @@ const handleButtonClick = () => {
         console.error('Error fetching donors:', error);
       });
   }, []);
+
+  console.log("note ", note);
   
   return (
     <>
@@ -895,17 +907,19 @@ const handleButtonClick = () => {
                         )}
 
                         {!campaignQuantities[campaign._id] && (
-                            <input
+                           <>
+                           <input
                               type="number"
-                              className="form-control form-control-lg text-center me-2"
+                              className="form-control form-control-lg text-center me-2 ip "
                               placeholder="Enter custom Amount"
                               onChange={(e) => handleCustomAmountChange(campaign._id, parseInt(e.target.value, 10) || 0)}
                               style={{ width: '50%', fontSize:'20px',color: 'balck' }}
                             />
+                           </>                
                           )}
                       </div>
-
-                        
+                      <div className={`amount-note ${note === true ? "show":"not-show" } `}
+                                  >Minimum Donation amount should be Rs. 100</div>  
                       </div>
                     </div>
                   </div>
