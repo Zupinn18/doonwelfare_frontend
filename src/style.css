@@ -237,26 +237,9 @@ body::-webkit-scrollbar {
 }
 
   
-  .facebook-name{
-    font-size: 10px;
-    top: 46%;
-    left: 6%;
-    height: 4%;
-  }
+  
 
-  .floating-icon{
-    width: 2%;
-  }
-  .whatsapp-name{
-    font-size: 10px;
-  }
-
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 362bd96528e1e631b65d3e4a940fc68022f24211
-@media screen and (max-width: 600px){
+@media screen and (max-width: 700px){
   .phone-icon{
     width: 20px !important;
     margin-top: -10px;
@@ -280,8 +263,8 @@ body::-webkit-scrollbar {
   }
   .facebook-name{
     font-size: 10px;
-    top: 46%;
-    left: 6%;
+    top: 55%;
+    left: 4%;
     height: 4%;
   }
 
@@ -290,5 +273,44 @@ body::-webkit-scrollbar {
   }
   .whatsapp-name{
     font-size: 10px;
+    top: 71%;
+    left: 4%;
+    height: 4%;
+  }
+  .instagram-name{
+    font-size: 10px;
+    top: 60%;
+    left: 4%;
+    height: 4%;
+  }
+  .Youtube-name{
+    font-size: 10px;
+    top: 66%;
+    left: 4%;
+    height: 4%;
+  }
+  .phone-name{
+    font-size: 10px;
+    bottom: 20%;
+    left: 4%;
+    height: 4%;
+  }
+}
+
+@media screen and (min-width: 700px){
+  .facebook-name,.instagram-name,.Youtube-name,.whatsapp-name,.phone-name{
+    left: 5%;
+  }
+}
+
+@media screen and (min-width: 924px){
+  .facebook-name,.instagram-name,.Youtube-name,.whatsapp-name,.phone-name{
+    left: 4%;
+  }
+}
+
+@media screen and (min-width: 1100px){
+  .facebook-name,.instagram-name,.Youtube-name,.whatsapp-name,.phone-name{
+    left: 3%;
   }
 }
