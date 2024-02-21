@@ -207,7 +207,6 @@ const LandingPage = () => {
   const [showFullDescription, setShowFullDescription] = useState(false);
   const [recentDonors, setRecentDonors] = useState([]);
 
-
   // Function to move the campaign
   const moveCampaign = (index, direction) => {
     // Create a copy of the campaigns array
@@ -434,11 +433,16 @@ const handlePaymentSuccess = (donorName) => {
 
 const handleButtonClick = () => {
   const totalAmount = cartItems.reduce((total, item) => total + item.totalAmount, 0);
-  alert(`Total Donation Amount: Rs ${totalAmount}`);
-  localStorage.setItem("amount", totalAmount);
-  navigate("/cart"); // Replace "/donation" with the actual path to your donation page
-  setShowQuantityInput(!showQuantityInput);
-  setShowQuantities(!showQuantities);
+
+  if(totalAmount<100){
+    alert(`Minimum Donation Amount should be Rs. 100  `);
+  }else{
+    alert(`Total Donation Amount: Rs ${totalAmount}`);
+    localStorage.setItem("amount", totalAmount);
+    navigate("/cart"); // Replace "/donation" with the actual path to your donation page
+    setShowQuantityInput(!showQuantityInput);
+    setShowQuantities(!showQuantities);
+  }
 };
 
 
