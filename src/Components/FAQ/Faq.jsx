@@ -22,10 +22,10 @@ const faqData = [
     },
     {
         question:"How do I get an 80G tax-receipt for my donations ?",
-        answer:"You will automatically get a tax-receipt for each of your donation via mail. Please make sure you enter the PAN number while donating. You can also write to us at contact@doghomefoundation.com to receive a tax-receipt for your donation.",
+        answer:"You will automatically get a tax-receipt for each of your donation via mail. Please make sure you enter the PAN number while donating. You can also write to us at doonanimalwelfarefoundation@gmail.com to receive a tax-receipt for your donation.",
     },
     {
-        question:"How to claim Tax-Exemption for my contributions on Donatekart ?",
+        question:"How to claim Tax-Exemption for my contributions on DOON ANIMAL WELFARE ?",
         answer:` After you complete your donation successfully, you will find the 'GET 80G' button on the payment success page. Please fill in your PAN number, complete address, and name as per PAN and submit. Your 80G certificate will be generated and sent via email within 24 hours.
         Alternatively, you can get your 80G receipt in a few simple steps:      
         1.	Log in to your account using the same email ID you used for the donation

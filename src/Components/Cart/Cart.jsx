@@ -18,6 +18,7 @@ import FormHelperText from '@mui/material/FormHelperText';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import Footer from  "../Footer/footer";
+import './Cart.css';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -65,6 +66,14 @@ const Cart = () => {
   const [amountInDollars, setAmountInDollars] = useState(""); 
   const [paytmPaymentUrl, setPaytmPaymentUrl] = useState('');
   const [token,setToken] = useState('');
+  const [note, setNote] = useState(false);
+
+  const handleNote = () => {
+    if(note==false){
+      setNote(true);
+    }
+  }
+
   
   const [dollarFormData, setDollarFormData] = useState({
     dollarAmount: "", // Dollar amount input field
@@ -277,10 +286,13 @@ const handleDollarAmountSubmit = (e) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // You can handle form submission here
-
-    // Move to the next step
-    if (currentStep < 2) {
-      setCurrentStep(currentStep + 1);
+    if(amountInRupees<100 || amountInDollars<1){
+      alert("Min. Donation amount should be Rs 100 or 1$ ");
+    }else{
+      // Move to the next step
+      if (currentStep < 2) {
+        setCurrentStep(currentStep + 1);
+      }
     }
   };
 
@@ -330,6 +342,8 @@ const handleRazorpayPayment = async () => {
     });
 
     if (!response.ok) {
+      const contact = formData.mobileNumber;
+      await sendWhatsAppNotificationPaymentFailed(contact);
       throw new Error('Failed to create Razorpay order');
     }
 
@@ -358,12 +372,14 @@ const handleRazorpayPayment = async () => {
     await sendWhatsAppNotification(phoneNo);
 
   } catch (error) {
+    const contact = formData.mobileNumber;
+    await sendWhatsAppNotificationPaymentFailed(contact);
     console.error('Error processing Razorpay payment:', error);
   }
 };
 
 
-//send whatsapp message
+//send whatsapp message for successfull payments
 async function sendWhatsAppNotification(phoneNo) {
   try {
 
@@ -375,12 +391,50 @@ async function sendWhatsAppNotification(phoneNo) {
       "callbackData": "Congratulations for placing your order",
       "type": "Template",
       "template": {
-          "name": "orderplaced",
+          "name": "thanks_message_to_donor_",
           "languageCode": "en",
           "bodyValues": [
               "hello",
               "21"
-          ]
+          ],
+          "buttonValues": {
+            
+          }
+      }
+  }, {
+      headers: {
+        'Authorization': 'Basic Mzc5YnZSc2M2VHVNSzBLbHRnclZjNTZCSXlhejdQdGwyeFNJM1dUUnZCNDo=',
+        'Content-Type': 'application/json'
+      }
+    });
+
+    // console.log('WhatsApp notification sent successfully:', response);
+  } catch (error) {
+    console.error('Error sending WhatsApp notification:', error.message);
+  }
+}
+
+//send whatsapp message for unsuccessfull payments
+async function sendWhatsAppNotificationPaymentFailed(phoneNo) {
+  try {
+
+    // Make a POST request to Interkart API to send WhatsApp message
+    const response = await axios.post('https://api.interakt.ai/v1/public/message/', {
+      "countryCode": "+91",
+      "phoneNumber": phoneNo,
+      "fullPhoneNumber": phoneNo, // Optional, Either fullPhoneNumber or phoneNumber + CountryCode is required
+      "callbackData": "Congratulations for placing your order",
+      "type": "Template",
+      "template": {
+          "name": "payment_failed_messages",
+          "languageCode": "en",
+          "bodyValues": [
+              "hello",
+              "21"
+          ],
+          "buttonValues": {
+            
+          }
       }
   }, {
       headers: {
@@ -548,6 +602,7 @@ async function sendWhatsAppNotification(phoneNo) {
                     </FormControl>
 
                     <div className="d-flex mt-3 justify-content-between">
+                      <div>
                       <TextField
                         id="outlined-basic"
                         label="Amount ($)"
@@ -556,7 +611,11 @@ async function sendWhatsAppNotification(phoneNo) {
                         name="amount"
                         value={amountInDollars}
                         onChange={(e) => setAmountInDollars(e.target.value)}
+                        onClick={handleNote}
                       />
+                      <div className={`amount-dollar ${note === true ? "show":"not-show" } `}>Min. Donation amount should be $ 1</div>  
+                      </div>
+              
                       <TextField
                         id="outlined-basic"
                         label="Mobile Number"
@@ -678,6 +737,7 @@ async function sendWhatsAppNotification(phoneNo) {
                       </Select>
                     </FormControl>
                     <div className="d-flex mt-3 justify-content-between">
+                      <div>
                       <TextField
                         id="outlined-basic"
                         label="Amount (₹)"
@@ -686,7 +746,10 @@ async function sendWhatsAppNotification(phoneNo) {
                         name="amount"
                         value={amountInRupees}
                         onChange={handleRupeesAmountChange} 
+                        onClick={handleNote}
                       />
+                      <div className={`amount-dollar ${note === true ? "show":"not-show" } `}>Min. Donation amount should be Rs 100</div> 
+                      </div>
                       <TextField
                         id="outlined-basic"
                         label="Mobile Number"

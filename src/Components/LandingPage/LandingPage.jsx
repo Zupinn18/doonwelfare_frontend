@@ -757,8 +757,8 @@ const handleButtonClick = () => {
       <div className="container-fluid bg-light" style={{borderBottom:"3px solid orange"}}>
       <div className="container my-5 py-0">
         <div className="row">
-          <h2 style={{ fontWeight: 700, color: "black" }}>Make a Donation</h2>
-          <h2 style={{ fontSize: "22px", fontWeight: 700 }}>
+          <h2 style={{ fontWeight: 700, color: "black", textAlign:"center" }}>Make a Donation</h2>
+          <h2 style={{ fontSize: "22px", fontWeight: 700, textAlign:"center" }}>
             Featured Campaign
           </h2>
           <div className="row mt-3">
