@@ -774,10 +774,10 @@ const handleButtonClick = () => {
                   className="d-flex"
                 >
                   <div className="row no-gutters">
-                    {/* <Link to={{
+                    <Link to={{
                               pathname: `/campaign/${campaign._id}`,
                               state: {campaign}
-                          }} > */}
+                          }} >
                       <div className="col-md-12 p-0 cursor-pointer ">
                         <img
                           loading="lazy"
@@ -787,7 +787,7 @@ const handleButtonClick = () => {
                           style={{ maxHeight: "400px" }}
                         />
                       </div>
-                    {/* </Link> */}
+                    </Link>
                     <div
                       className="col-md-12 d-flex align-items-center"
                       style={{
