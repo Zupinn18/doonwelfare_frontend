@@ -340,7 +340,7 @@ const CampaignDetail = () => {
                 <div className='campaign-content' >
                     <div className='campagin-first' >
                         {/* campagin image */}
-                        <img src={campaign[0]?.imageUrl} width='80%' style={{
+                        <img src={campaign[0]?.imageUrl} width='60%' style={{
                             marginTop:"150px",
                             alignSelf:"center"
                         }} />
@@ -365,31 +365,37 @@ const CampaignDetail = () => {
 
                         {/* video */}
                         <iframe
-                            width="100%"
+                            width="80%"
                             height="400"
                             src="https://www.youtube.com/embed/snuAvoQRN_w"
                             frameBorder="0"
                             allowFullScreen
                             title="Doon Animal Welfare Trust Video"
+                            style={{
+                              alignSelf:"center"
+                            }}
                           ></iframe>
 
                           {/* content-text */}
                           <div className='campagin-text' >
-                            <p>{campaign[0]?.description}</p>
-                            <img src={campaign[0]?.imageUrl} width='60%' style={{
-                            marginTop:"150px",
-                            alignSelf:"center"
+                            <p style={{
+                              width:"100%",
+                              textAlign:"justify",
+                            }}
+                            >{campaign[0]?.description}</p>
+                            <img src={campaign[0]?.imageUrl} width='50%' style={{
+                            alignSelf:"center",
+                            marginBottom:"30px"
                             }} />
-                            <p>
-                            Join our animal welfare association's campaign to protect and advocate for the well-being of all animals. 
-                            Through our initiatives, we strive to promote responsible pet ownership by encouraging adoption from shelters 
-                            and advocating for spaying and neutering programs to control the population of stray animals. Our campaign 
-                            also focuses on <b>educating communities</b> about the proper care and treatment of pets, including providing resources 
-                            for nutrition, exercise, and healthcare. Furthermore, we actively lobby for stronger laws and regulations to 
-                            prevent animal cruelty and exploitation, ensuring that every creature is treated with compassion and respect. 
-                            By joining our cause, you become the voice for those who cannot speak for themselves, helping to create a world 
-                            where animals live free from harm and neglect. Make a difference today and stand with us in our mission to 
-                            protect the paws and claws of all creatures, great and small.
+                            <p className='campaign-text-last' style={{
+                              width:"100%",
+                              textAlign:"justify"
+                            }} >
+                            <b>Doon Animal Welfare is like a safe place for over four thousand cows that really need help. Mrs. Milli Kaur work really hard to save and take care of these cows.</b>
+
+                            <h4 className='mt-4' >About NGO</h4>
+                            <p><b>Shri Krishna Dham Gaushala</b>, started in Dehradun, Uttarakhand, by founder <b>Mrs. Milli Kaur</b>. It is a special place for over 4000+ cows, including calves. They are experts at rescuing abandoned or sick cows. They not only give them medical help but also lots of love and care. Every day, they rescue cows and build strong connections with each one. 
+                            They believe that every bit of money spent on these cows is like planting seeds of kindness.</p>
                             </p>
                           </div>
                         

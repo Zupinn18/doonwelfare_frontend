@@ -1,0 +1,13 @@
+.amount-dollar{
+    font-size: 12px;
+    color: red;
+    font-weight: 500;
+  }
+
+  .show{
+    display: block;
+  }
+
+  .not-show{
+    display: none;
+  }

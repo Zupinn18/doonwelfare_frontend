@@ -757,8 +757,8 @@ const handleButtonClick = () => {
       <div className="container-fluid bg-light" style={{borderBottom:"3px solid orange"}}>
       <div className="container my-5 py-0">
         <div className="row">
-          <h2 style={{ fontWeight: 700, color: "black" }}>Make a Donation</h2>
-          <h2 style={{ fontSize: "22px", fontWeight: 700 }}>
+          <h2 style={{ fontWeight: 700, color: "black", textAlign:"center" }}>Make a Donation</h2>
+          <h2 style={{ fontSize: "22px", fontWeight: 700, textAlign:"center" }}>
             Featured Campaign
           </h2>
           <div className="row mt-3">
@@ -774,10 +774,10 @@ const handleButtonClick = () => {
                   className="d-flex"
                 >
                   <div className="row no-gutters">
-                    {/* <Link to={{
+                    <Link to={{
                               pathname: `/campaign/${campaign._id}`,
                               state: {campaign}
-                          }} > */}
+                          }} >
                       <div className="col-md-12 p-0 cursor-pointer ">
                         <img
                           loading="lazy"
@@ -787,7 +787,7 @@ const handleButtonClick = () => {
                           style={{ maxHeight: "400px" }}
                         />
                       </div>
-                    {/* </Link> */}
+                    </Link>
                     <div
                       className="col-md-12 d-flex align-items-center"
                       style={{
