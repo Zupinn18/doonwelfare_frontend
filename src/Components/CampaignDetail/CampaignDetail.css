@@ -33,9 +33,10 @@ body,a,span,p,h1,h2,h3{
     font-size: 32px;
     font-weight: 700;
     text-align: center;
-    background-color: gainsboro;
+    background: linear-gradient(to right, #ff9900, #ff6a00) #eb9006;
     padding: 8px 12px;
     border-radius: 10px;
+    color: white;
 }
 
 .cards-campaign{
