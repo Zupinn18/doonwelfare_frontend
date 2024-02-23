@@ -416,7 +416,7 @@ async function sendWhatsAppNotification(phoneNo) {
       }
     });
 
-    console.log('WhatsApp notification sent successfully:', response);
+    // console.log('WhatsApp notification sent successfully:', response);
   } catch (error) {
     console.error('Error sending WhatsApp notification:', error.message);
   }
