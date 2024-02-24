@@ -368,8 +368,16 @@ const handleRazorpayPayment = async () => {
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
 
-    const phoneNo = options.contact;
-    await sendWhatsAppNotification(phoneNo);
+    // const phoneNo = formData.mobileNumber;
+    // await sendWhatsAppNotification(phoneNo);
+    //validation check and send whatsapp notifications
+    if (response.razorpay_payment_id == 'undefined' ||  response.razorpay_payment_id < 1) {
+      const contact = formData.mobileNumber;
+      await sendWhatsAppNotificationPaymentFailed(contact);
+    } else {
+      const phoneNo = formData.mobileNumber;
+      await sendWhatsAppNotification(phoneNo);
+    }
 
   } catch (error) {
     const contact = formData.mobileNumber;
@@ -386,8 +394,8 @@ async function sendWhatsAppNotification(phoneNo) {
     // Make a POST request to Interkart API to send WhatsApp message
     const response = await axios.post('https://api.interakt.ai/v1/public/message/', {
       "countryCode": "+91",
-      "phoneNumber": phoneNo,
-      "fullPhoneNumber": phoneNo, // Optional, Either fullPhoneNumber or phoneNumber + CountryCode is required
+      "phoneNumber": `${phoneNo}`,
+      "fullPhoneNumber": "", // Optional, Either fullPhoneNumber or phoneNumber + CountryCode is required
       "callbackData": "Congratulations for placing your order",
       "type": "Template",
       "template": {
@@ -421,8 +429,8 @@ async function sendWhatsAppNotificationPaymentFailed(phoneNo) {
     // Make a POST request to Interkart API to send WhatsApp message
     const response = await axios.post('https://api.interakt.ai/v1/public/message/', {
       "countryCode": "+91",
-      "phoneNumber": phoneNo,
-      "fullPhoneNumber": phoneNo, // Optional, Either fullPhoneNumber or phoneNumber + CountryCode is required
+      "phoneNumber": `${phoneNo}`,
+      "fullPhoneNumber": "", // Optional, Either fullPhoneNumber or phoneNumber + CountryCode is required
       "callbackData": "Congratulations for placing your order",
       "type": "Template",
       "template": {
@@ -584,7 +592,7 @@ async function sendWhatsAppNotificationPaymentFailed(phoneNo) {
                     international donations. `All donations are processed over a
                     secure payment gateway.
                   </p>
-                  <form onSubmit={handleSubmit}>
+                  <form onSubmit={handleSubmit}  >
                     <FormControl fullWidth className="mt-3">
                       <InputLabel id="donation-type-label">
                         Donation Type
