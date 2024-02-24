@@ -195,6 +195,8 @@ function ItemTab() {
     }
   };
 
+  console.log("items data is:", items);
+
   return (
     <div
       style={{
@@ -329,7 +331,7 @@ function ItemTab() {
             <TableBody>
               {items.map((item) => (
                 <TableRow key={item._id}>
-                  <TableCell>{item.campaignData.title}</TableCell>
+                  {/* <TableCell>{item.campaignData.title}</TableCell> */}
                   <TableCell>{item.name}</TableCell>
                   <TableCell>{item.description}</TableCell>
                   <TableCell>{item.amount}</TableCell>
