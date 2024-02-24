@@ -19,6 +19,8 @@ import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import Footer from  "../Footer/footer";
 import './Cart.css';
+import ThankYou from './ThankYou'; // Import ThankYou component
+import Sorry from './Sorry_page'; // Import Sorry component
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -374,9 +376,11 @@ const handleRazorpayPayment = async () => {
     if (response.razorpay_payment_id == 'undefined' ||  response.razorpay_payment_id < 1) {
       const contact = formData.mobileNumber;
       await sendWhatsAppNotificationPaymentFailed(contact);
+      history.push('/Sorry_page');
     } else {
       const phoneNo = formData.mobileNumber;
       await sendWhatsAppNotification(phoneNo);
+      history.push('/thank-you');
     }
 
   } catch (error) {
@@ -386,7 +390,36 @@ const handleRazorpayPayment = async () => {
   }
 };
 
+// const handleSuccessfulPayment = () => {
+//   setPaymentStatus('captured');
+//   history.push('/thank-you');
+// };
 
+// Function to handle failed payment
+// const handleFailedPayment = () => {
+//   setPaymentStatus('failed');
+//   history.push('/sorry');
+// };
+
+// Assuming you have a function to process Razorpay payment and call the appropriate function based on payment status
+const processRazorpayPayment = async () => {
+  try {
+    // Process payment and determine status
+    if (paymentIsSuccessful) {
+      handleSuccessfulPayment();
+    } else {
+      handleFailedPayment();
+    }
+  } catch (error) {
+    console.error('Error processing payment:', error);
+    handleFailedPayment();
+  }
+};
+
+useEffect(() => {
+  // Call your function to process Razorpay payment when component mounts
+  processRazorpayPayment();
+}, []);
 //send whatsapp message for successfull payments
 async function sendWhatsAppNotification(phoneNo) {
   try {
