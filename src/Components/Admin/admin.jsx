@@ -11,6 +11,7 @@ import Box from "@mui/material/Box";
 import Visitors from "./Visitors";
 import BlogsTab from "./BlogsTab";
 import RazorpayOrderForm from "./RazorpayOrderForm"
+import CampaignData from "./campaignData";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -87,6 +88,7 @@ const Admin = () => {
           <Tab label="Visitors" {...a11yProps(4)} />
           <Tab label="Blogs" {...a11yProps(5)} />
           <Tab label="RazorpayOrderForm" {...a11yProps(6)} />
+          <Tab label="Add Campaign Data" {...a11yProps(7)} />
         </Tabs>
         <TabPanel value={value} index={0} style={{ width: "100%" }}>
           <CampaignTab />
@@ -108,6 +110,9 @@ const Admin = () => {
         </TabPanel>
         <TabPanel value={value} index={6} style={{ width: "100%" }}>
         <RazorpayOrderForm/>
+        </TabPanel>
+        <TabPanel value={value} index={7} style={{ width: "100%" }}>
+        <CampaignData />
         </TabPanel>
       </Box>
     </div>

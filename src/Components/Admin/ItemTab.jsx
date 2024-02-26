@@ -64,7 +64,6 @@ function ItemTab() {
             }
           })
         );
-  
         setItems(updateItems);
       } else {
         console.error("Failed to fetch items:", response.data);

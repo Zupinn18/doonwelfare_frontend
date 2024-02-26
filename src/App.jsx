@@ -29,6 +29,9 @@ import CSR from "./Components/CSR/CSR";
 import Blogs from "./Components/Blogs/Blogs";
 import AllBlogs from "./Components/Blog/AllBlog";
 import CampaignDetail from "./Components/CampaignDetail/CampaignDetail";
+import ThankYou from './Components/Cart/ThankYou';
+// import Sorry from './Components/Cart/Sorry_page';
+import SorryPage from "./Components/Cart/SorryPage";
 
 function App() {
   return (
@@ -63,7 +66,9 @@ function AppContent() {
       currentPathname === "/our-team" ||
       currentPathname === "/csr" ||
       currentPathname === "/blogs" || 
-      currentPathname === "/campaign/:id"
+      currentPathname === "/campaign/:id"|| 
+      currentPathname === "/thank-you" || 
+      currentPathname === "/sorry"
     ) {
       return <Navbar />;
     } else {
@@ -151,6 +156,9 @@ function AppContent() {
         <Route path="/blogs/:id" element={<Blogs/>} />
         <Route path="/blogs" element={<AllBlogs/>} />
         <Route path="/campaign/:id" element={<CampaignDetail/> } />
+        <Route path="/thank-you" element={<ThankYou/>} />
+        <Route path="/sorry" element={<SorryPage/>} />
+
       </Routes>
     </div>
   );

@@ -10,6 +10,7 @@ const PaymentsList = () => {
       .then(response => {
         // Set the payments state with the fetched data
         setPayments(response.data.items);
+        console.log("data is ",response.data.items);
       })
       .catch(error => {
         // Handle errors
