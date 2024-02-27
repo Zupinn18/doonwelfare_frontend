@@ -20,7 +20,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Footer from  "../Footer/footer";
 import './Cart.css';
 import ThankYou from './ThankYou'; // Import ThankYou component
-import Sorry from './Sorry_page'; // Import Sorry component
+import SorryPage from "./SorryPage";// Import Sorry component
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -69,6 +69,7 @@ const Cart = () => {
   const [paytmPaymentUrl, setPaytmPaymentUrl] = useState('');
   const [token,setToken] = useState('');
   const [note, setNote] = useState(false);
+  const [payments, setPayments] = useState([]);
 
   const handleNote = () => {
     if(note==false){
@@ -346,6 +347,7 @@ const handleRazorpayPayment = async () => {
     if (!response.ok) {
       const contact = formData.mobileNumber;
       await sendWhatsAppNotificationPaymentFailed(contact);
+      navigate('/sorry');
       throw new Error('Failed to create Razorpay order');
     }
 
@@ -360,10 +362,12 @@ const handleRazorpayPayment = async () => {
       email: formData.email, // Use the email from the form
       contact: formData.mobileNumber, // Use the mobile number from the form
       handler: function (response) {
+        console.log("response inside handler is ", response)
+        verifyPayment(response)
         // Validate payment at server - using webhooks is a better idea.
-        alert(response.razorpay_payment_id);
-        alert(response.razorpay_order_id);
-        alert(response.razorpay_signature);
+        // alert(response.razorpay_payment_id);
+        // alert(response.razorpay_order_id);
+        // alert(response.razorpay_signature);
       },
     };
 
@@ -373,22 +377,47 @@ const handleRazorpayPayment = async () => {
     // const phoneNo = formData.mobileNumber;
     // await sendWhatsAppNotification(phoneNo);
     //validation check and send whatsapp notifications
-    if (response.razorpay_payment_id == 'undefined' ||  response.razorpay_payment_id < 1) {
-      const contact = formData.mobileNumber;
-      await sendWhatsAppNotificationPaymentFailed(contact);
-      history.push('/Sorry_page');
-    } else {
-      const phoneNo = formData.mobileNumber;
-      await sendWhatsAppNotification(phoneNo);
-      history.push('/thank-you');
-    }
+    console.log("response payment id is  ", response.razorpay_payment_id);
+    console.log("response order Id is  ", response.razorpay_order_id);
+    console.log("response signature is  ", response.razorpay_signature);
+
+    // if (response.razorpay_payment_id == 'undefined' ||  response.razorpay_payment_id < 1) {
+    //   // const contact = formData.mobileNumber;
+    //   // await sendWhatsAppNotificationPaymentFailed(contact);
+    //   // history.push('/sorry');
+    //   navigate('/sorry');
+    // } else {
+    //   // const phoneNo = formData.mobileNumber;
+    //   // await sendWhatsAppNotification(phoneNo);
+    //   navigate('/thank-you');
+    // }
+
+    // processRazorpayPayment();
 
   } catch (error) {
-    const contact = formData.mobileNumber;
-    await sendWhatsAppNotificationPaymentFailed(contact);
+    // const contact = formData.mobileNumber;
+    // await sendWhatsAppNotificationPaymentFailed(contact);
+    navigate('/sorry');
     console.error('Error processing Razorpay payment:', error);
   }
 };
+
+const verifyPayment = async(response)=>{
+  try {
+    console.log("Verify payment m aaya frontend ");
+    // const phoneNo = formData.mobileNumber;
+    // await sendWhatsAppNotification(phoneNo);
+    const verfiyUrl = "http://localhost:8888/api/verify";
+    const {data} = await axios.post(verfiyUrl, response);
+    navigate('thank-you');
+    console.log("payment verification status is ", data);
+  } catch (error) {
+    //  const contact = formData.mobileNumber;
+    //  await sendWhatsAppNotificationPaymentFailed(contact);
+    navigate('/sorry');
+    console.log(`Error occured while verifying payment`);
+  }
+}
 
 // const handleSuccessfulPayment = () => {
 //   setPaymentStatus('captured');
@@ -402,24 +431,38 @@ const handleRazorpayPayment = async () => {
 // };
 
 // Assuming you have a function to process Razorpay payment and call the appropriate function based on payment status
-const processRazorpayPayment = async () => {
-  try {
-    // Process payment and determine status
-    if (paymentIsSuccessful) {
-      handleSuccessfulPayment();
-    } else {
-      handleFailedPayment();
-    }
-  } catch (error) {
-    console.error('Error processing payment:', error);
-    handleFailedPayment();
-  }
-};
+// const processRazorpayPayment = async () => {
+//   try {
+//     // Process payment and determine status
+//     axios.get('https://ngo-node.onrender.com/api/razorpay_payments')
+//     .then(response => {
+//       // Set the payments state with the fetched data
+//       if (response.data.items[0].status === 'Captured') {
+//         // handleSuccessfulPayment();
+//         //  const phoneNo = response.data.items[0].status.contact;
+//         // await sendWhatsAppNotification(phoneNo);
+//         navigate('/thank-you');
+//       } else if(response.data.items[0].status === 'Failed') {
+//         navigate('/sorry');
+//       }
+//       setPayments(response.data.items);
+//     })
+//     .catch(error => {
+//       // Handle errors
+//       console.error('Error fetching payments:', error);
+//     });
+//     console.log("payment data", payments);
+//   } catch (error) {
+//     console.error('Error processing payment:', error);
+//     // handleFailedPayment();
+//     navigate('/sorry');
+//   }
+// };
 
-useEffect(() => {
-  // Call your function to process Razorpay payment when component mounts
-  processRazorpayPayment();
-}, []);
+// useEffect(() => {
+//   // Call your function to process Razorpay payment when component mounts
+//   processRazorpayPayment();
+// }, []);
 //send whatsapp message for successfull payments
 async function sendWhatsAppNotification(phoneNo) {
   try {
