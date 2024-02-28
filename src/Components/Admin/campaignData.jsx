@@ -35,7 +35,7 @@ const campaignData = () => {
 
   useEffect(() => {
     fetchCampaigns();
-    // fetchItems();
+    fetchCampaignDatas();
   }, []);
 
 //   const fetchItems = async () => {
@@ -95,6 +95,25 @@ const campaignData = () => {
       // Handle error case if needed
     }
   };
+
+  const fetchCampaignDatas = async() =>{
+    try {
+      // Make a GET request to fetch Data from the API
+      const response = await axios.get("http://localhost:8888/api/get-all-data");
+
+      // Check if the request was successful
+      if (response.status === 200) {
+        // Update the campaigns state with the fetched data
+        setItems(response.data.data);
+      } else {
+        console.error("Failed to fetch campaigns:", response.data);
+        // Handle error case if needed
+      }
+    } catch (error) {
+      console.error("Error fetching campaigns:", error);
+      // Handle error case if needed
+    }
+  }
 
   const handleInputChange = (e) => {
     setItemData((prevData) => ({
@@ -188,6 +207,44 @@ const campaignData = () => {
     }
   };
 
+  const handleUpdateData = async (itemId) => {
+    try {
+
+      if(!uploadedImage1 || !uploadedImage2 || !uploadedImage3 || !itemData.description1 
+        || !itemData.description2 || !itemData.description3 ){
+          toast.warning("All fields are mandatory, TRY AGAIN", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+      }
+      const updateDataObject = {
+        imageUrl1: uploadedImage1,
+        imageUrl2: uploadedImage2,
+        imageUrl3: uploadedImage3,
+        description1: itemData.description1,
+        description2: itemData.description2,
+        description3: itemData.description3,
+        campaignId: selectedCampaignId,
+    };
+
+      const response = await axios.put(
+        `http://localhost:8888/api/update-data/${itemId}`, updateDataObject);
+
+      // Check if the request was successful
+      if (response.status === 200) {
+        toast.success("Campaign Data Updated successfully", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+        setItems((prevItems) =>
+          prevItems.filter((item) => item._id !== itemId)
+        );
+      } else {
+        console.error("Failed to Update Campaign Data :", response.data);
+      }
+    } catch (error) {
+      console.error("Error updating Item:", error);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -200,7 +257,7 @@ const campaignData = () => {
         description1: itemData.description1,
         description2: itemData.description2,
         description3: itemData.description3,
-        campaignId: '65c473dc53946f111b2b6a74',
+        campaignId: selectedCampaignId,
     };
 
     // make a post request to API to create Campaign Data
@@ -426,6 +483,58 @@ const campaignData = () => {
           </Button>
         </div>
       </form>
+      <div>
+        <h2>All Campaign Data</h2>
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Campaign Name</TableCell>
+                <TableCell>Image 1 </TableCell>
+                <TableCell>Image 2</TableCell>
+                <TableCell>Image 3</TableCell>
+                {/* Add additional headers for other properties */}
+                <TableCell>Description 1</TableCell>
+                <TableCell>Description 2</TableCell>
+                <TableCell>description 3</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+            {items.map((item) => (
+                <TableRow key={item._id}>
+                  {/* <TableCell>{item.campaignData.title}</TableCell> */}
+                  <TableCell>{item?.campaignId?.title}</TableCell>
+                  <TableCell>
+                    <img src={item.imageUrl1} alt="Image 1" loading="lazy" />
+                  </TableCell>
+                  <TableCell>
+                    <img src={item.imageUrl2} alt="Image 1" loading="lazy" />
+                  </TableCell>
+                  <TableCell>
+                    <img src={item.imageUrl3} alt="Image 1" loading="lazy" />
+                  </TableCell>
+                  <TableCell>{item.description1}</TableCell>
+                  <TableCell>{item.description2}</TableCell>
+                  <TableCell>{item.description3}</TableCell>
+                  {/* Add additional cells for other properties */}
+                  <TableCell>
+                    <Button
+                      variant="contained"
+                      color="error"
+                      style={{
+                        backgroundColor:"green",
+                      }}
+                      onClick={() => handleUpdateData(item._id)}
+                    >
+                      Update
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
       <ToastContainer />
     </div>
   )

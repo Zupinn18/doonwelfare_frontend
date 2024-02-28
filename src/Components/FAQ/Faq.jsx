@@ -48,7 +48,21 @@ const Faq = () => {
 
   return (
     <div className="faq-section">
-        <h1>FAQs</h1>
+        <h2
+                className="text-left mb-3"
+                style={{
+                  fontSize: "30px",
+                  fontWeight: "bold",
+                }}
+              >
+                <span style={{
+                  fontSize: "30px",
+                  fontWeight: "bold",
+                  padding: "10px",
+                  color: "#ff6a00",
+                  textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)"
+                }}>FAQs</span>
+              </h2>
         <div>
             {faqData.map((item, index) => (
                     <div className="faq-item1" key={index}>
