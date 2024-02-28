@@ -64,7 +64,6 @@ function ItemTab() {
             }
           })
         );
-  
         setItems(updateItems);
       } else {
         console.error("Failed to fetch items:", response.data);
@@ -194,6 +193,8 @@ function ItemTab() {
       console.error("Error deleting Item:", error);
     }
   };
+
+  console.log("items data is:", items);
 
   return (
     <div
@@ -329,7 +330,7 @@ function ItemTab() {
             <TableBody>
               {items.map((item) => (
                 <TableRow key={item._id}>
-                  <TableCell>{item.campaignData.title}</TableCell>
+                  {/* <TableCell>{item.campaignData.title}</TableCell> */}
                   <TableCell>{item.name}</TableCell>
                   <TableCell>{item.description}</TableCell>
                   <TableCell>{item.amount}</TableCell>
