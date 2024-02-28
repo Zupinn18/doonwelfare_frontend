@@ -75,6 +75,8 @@ function ItemTab() {
     }
   };
 
+  console.log("items are ", items);
+
   const fetchCampaigns = async () => {
     try {
       // Make a GET request to fetch campaigns from the API
@@ -318,7 +320,7 @@ function ItemTab() {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Campaign Name</TableCell>
+                <TableCell>Campaign Id</TableCell>
                 <TableCell>Item Name</TableCell>
                 <TableCell>Description</TableCell>
                 <TableCell>Amount</TableCell>
@@ -330,7 +332,8 @@ function ItemTab() {
             <TableBody>
               {items.map((item) => (
                 <TableRow key={item._id}>
-                  {/* <TableCell>{item.campaignData.title}</TableCell> */}
+                {/* campagin id because campaign data is not populated till now */}
+                  <TableCell>{item.campaignId}</TableCell>
                   <TableCell>{item.name}</TableCell>
                   <TableCell>{item.description}</TableCell>
                   <TableCell>{item.amount}</TableCell>

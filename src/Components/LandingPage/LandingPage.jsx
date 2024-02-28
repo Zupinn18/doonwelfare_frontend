@@ -536,7 +536,13 @@ const handleButtonClick = () => {
       });
   }, []);
 
-  console.log("note ", note);
+  // date and month
+  const d = new Date(Date.now());
+  var year = d.getFullYear();
+
+  const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  const newMonth = new Date();
+  let currMonth = month[newMonth.getMonth()];
   
   return (
     <>
@@ -754,11 +760,11 @@ const handleButtonClick = () => {
           
       
 
-      <div className="container-fluid bg-light" style={{borderBottom:"3px solid orange"}}>
+      <div className="container-fluid bg-light" style={{borderBottom:"3px solid orange", marginTop:"-160px"}}>
       <div className="container my-5 py-0">
         <div className="row">
-          <h2 style={{ fontWeight: 700, color: "black", textAlign:"center" }}>Make a Donation</h2>
-          <h2 style={{ fontSize: "22px", fontWeight: 700, textAlign:"center" }}>
+          <h2 style={{ fontWeight: 700, color: "black", textAlign:"center",marginTop:"15px" }}>Make a Donation</h2>
+          <h2 style={{ fontSize: "22px", fontWeight: 700, textAlign:"center",marginTop:"10px" }}>
             Featured Campaign
           </h2>
           <div className="row mt-3">
@@ -1513,7 +1519,7 @@ Our mision
                   </div>
                   <div className="col-md-4">
                     <h6 className="text-center ps-3" style={{ fontWeight: 700 }}>
-                      January 2024 <br />
+                    {currMonth} {year}<br />
                       <span>Month</span>
                     </h6>
                   </div>

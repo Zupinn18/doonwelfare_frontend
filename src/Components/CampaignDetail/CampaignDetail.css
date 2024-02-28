@@ -80,6 +80,59 @@ body,a,span,p,h1,h2,h3{
     background-color: orangered;
 }
 
+.products-section{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 40%);
+    justify-content: center;
+    align-items: center;
+    grid-gap: 20px;
+}
+
+/* product card */
+.product-card{
+    display: flex;
+    gap: 30px;
+    padding: 20px 20px;
+    background-color: white;
+    border-radius: 10px;
+    align-items: center;
+    box-shadow: 3px 4px 12px rgb(0 0 0 / 0.3);
+}
+
+.product-description{
+    width: 250px;
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+}
+
+.product-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-price{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    justify-content: start;
+}
+
+.product-name{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.product-btn{
+    display: flex;
+    width: 100%;
+}
+
+
 .campagin-text{
     font-size: 17px;
     display: flex;
