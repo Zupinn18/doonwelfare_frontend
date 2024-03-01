@@ -100,7 +100,7 @@ const campaignData = () => {
     try {
       // Make a GET request to fetch Data from the API
 
-      const response = await axios.get("https://ngo-node.onrender.com/api/campaign_data");
+      // const response = await axios.get("https://ngo-node.onrender.com/api/campaign_data");
 
       const response = await axios.get("https://ngo-node.onrender.com/api/get-all-data");
 
@@ -233,7 +233,7 @@ const campaignData = () => {
 
         `https://ngo-node.onrender.com/api/campaign_data/${itemId}`, updateDataObject);
 
-        `https://ngo-node.onrender.com/api/update-data/${itemId}`, updateDataObject);
+        (`https://ngo-node.onrender.com/api/update-data/${itemId}`, updateDataObject);
 
 
       // Check if the request was successful
