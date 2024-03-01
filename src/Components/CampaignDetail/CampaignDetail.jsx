@@ -179,6 +179,20 @@ const CampaignDetail = () => {
       },
     ],
   };
+
+  const customAmount = [
+      {
+        donationAmount:"1000",
+      },
+      {
+        donationAmount:"1800",
+      },
+      {
+        donationAmount:"3000",
+      },
+  ];
+
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -207,6 +221,7 @@ const CampaignDetail = () => {
     const [showFullDescription, setShowFullDescription] = useState(false);
     const [recentDonors, setRecentDonors] = useState([]);
     const [product, setProduct] = useState([]);
+    const [customRupees, setCustomRupees] = useState(0);
 
     const settings = {
       dots: true,
@@ -408,6 +423,23 @@ const CampaignDetail = () => {
         [campaignId]: amount,
       }));
     };
+
+    const handleCustomAmount= (amount) => {
+      setCustomRupees(amount);
+      setTotalCartAmount(amount);
+    };
+
+    // const handleCustomAmountFix= (index,amount) => {
+    //   setCustomRupees(amount);
+    //   setTotalCartAmount(amount);
+    // };
+
+    // const handleCustomAmount = (campaignId, amount) => {
+    //   setCustomAmounts((prevAmounts) => ({
+    //     ...prevAmounts,
+    //     [campaignId]: amount,
+    //   }));
+    // };
     
     const handlePaymentSuccess = (donorName) => {
       const currentTime = new Date().toLocaleString();
@@ -473,6 +505,10 @@ const CampaignDetail = () => {
         setTotalCartAmount(updatedTotalCartAmount);
         setCartItems(updatedCartItems);
       }, [campaignQuantities, customAmounts, featuredCampaigns]);
+
+      useEffect(()=>{
+        setTotalCartAmount(customRupees);
+      },[customRupees]);
      
       useEffect(() => {
         const handleScroll = () => {
@@ -520,7 +556,7 @@ const CampaignDetail = () => {
         try{
           const campaign_Id = window.location.pathname.split('/').at(-1);
 
-          const response = await axios.get(`http://localhost:8888/api/get-data/${campaign_Id}`);
+          const response = await axios.get(`https://ngo-node.onrender.com/api/campaign_data/${campaign_Id}`);
 
           if (response.status === 200) {
             // Update the campaigns state with the fetched data
@@ -554,7 +590,6 @@ const CampaignDetail = () => {
         }
       }
 
-      console.log("product is ", product);
       // const id_camp = window.location.pathname.split('/').at(-1);
       // //const responseData = product.filter(item => item.campaignId === id_camp).foo;
       // for(var i=0;i<product.length;i++){
@@ -882,6 +917,10 @@ const CampaignDetail = () => {
                               marginTop:"-40px"
                             }}
                           ></iframe>
+
+                         <div style={{alignSelf:"center"}} >
+                              <img src={paytm} alt="QR Code" style={{ width: '200px', height: '200px', marginLeft:"10px", marginTop: "20px" }} />
+                        </div>
 
                           {/* content-text */}
                           <div className='campagin-text' style={{
@@ -1232,37 +1271,69 @@ const CampaignDetail = () => {
               ))}
             </div>
           </div>
-          <div className="row mb-5 ">
+          <div className="">
             {/* Left Column */}
-            <div className="col-md-6">
+            <div className="">
               <p style={{ fontSize: "18px" }}>
                 <strong>Total Cart value: </strong>Rs {totalCartAmount}
                 <br />
               </p>
+              {
+                <>
+                    <div style={{
+                          display:"flex",
+                          justifyContent:"space-between",
+                          alignItems:"center",
+                          padding:"8px 12px",
+                          cursor:"pointer",
+                        }}  >
+                    {
+                      customAmount.map((amount,index)=>(
+                        <div style={{
+                           height:"40px !important ",
+                          border:"1px solid orange",
+                          padding:"8px 8px",
+                          borderRadius:"5px",
+                        }}
+                         key={index}>
+                        <p style={{marginTop:"8px"}} >₹{amount.donationAmount}</p>
+                        </div>
+                      ))
+                    }
+                    </div>
+                           <input
+                              type="number"
+                              className="form-control form-control-lg text-center me-2 ip "
+                              placeholder="Enter custom Amount"
+                              onChange={(e) => handleCustomAmount(parseInt(e.target.value, 10) || 0)}
+                              style={{ width: '100%', fontSize:'20px',color: 'balck' }}
+                            />
+                           </>  
+              }
               <button
-                  className={`btn Add to cart burst-12 ${buttonText === "Add Item to Donate" ? "glow" : ""}`}
+                  className={`btn Add to cart ${buttonText === "Add Item to Donate" ? "glow" : ""}`}
                   onClick={handleButtonClick}
                   style={{
+                    width:"100%",
                     background: "linear-gradient(to right, #ff9900, #ff6a00) #eb9006",
                     color: "white",
                     fontWeight: "bold",
-                    fontSize:"20px",
+                    fontSize:"18px",
                     marginTop: "20px",
-                    marginLeft: "50px",
-                    marginRight: "auto",
-                    borderRadius: "0"
+                    // marginLeft: "50px",
+                    // marginRight: "auto",
+                    marginBottom:"50px",
+                    borderRadius: "0",
+                    alignSelf:"center",
                   }}
                 >
                   {buttonText}
-                  <span>Add item to Donate</span>
+                  <span></span>
                 </button>
 
             </div>
             
-            {/* Right Column */}
-            <div className="col-md-6">
-            <img src={paytm} alt="QR Code" style={{ width: '150px', height: '150px', marginLeft:"10px", marginTop: "20px" }} />
-            </div>
+
           </div>
           {buttonText === "Donate" && (
             <button
