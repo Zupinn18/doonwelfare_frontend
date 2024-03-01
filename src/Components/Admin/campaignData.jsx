@@ -99,7 +99,11 @@ const campaignData = () => {
   const fetchCampaignDatas = async() =>{
     try {
       // Make a GET request to fetch Data from the API
+
+      const response = await axios.get("https://ngo-node.onrender.com/api/campaign_data");
+
       const response = await axios.get("https://ngo-node.onrender.com/api/get-all-data");
+
 
       // Check if the request was successful
       if (response.status === 200) {
@@ -139,7 +143,7 @@ const campaignData = () => {
         );
 
         const imageUrl1 = response.data.secure_url;
-
+       
         setUploadedImage1(imageUrl1);
         setItemData({
             ...itemData,
@@ -167,7 +171,6 @@ const campaignData = () => {
         );
 
         const imageUrl2 = response.data.secure_url;
-
         setUploadedImage2(imageUrl2);
         setItemData({
             ...itemData,
@@ -227,7 +230,11 @@ const campaignData = () => {
     };
 
       const response = await axios.put(
+
+        `https://ngo-node.onrender.com/api/campaign_data/${itemId}`, updateDataObject);
+
         `https://ngo-node.onrender.com/api/update-data/${itemId}`, updateDataObject);
+
 
       // Check if the request was successful
       if (response.status === 200) {
@@ -262,7 +269,11 @@ const campaignData = () => {
 
     // make a post request to API to create Campaign Data
     const response = await axios.post(
+
+            "https://ngo-node.onrender.com/api/campaign_data",
+
             "https://ngo-node.onrender.com/api/create-data",
+
             dataObject
           );
 
