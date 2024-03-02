@@ -47,7 +47,7 @@ const Faq = () => {
   };
 
   return (
-    <div className="faq-section">
+    <div className="faq-section m-3">
         <h2
                 className="text-left mb-3"
                 style={{

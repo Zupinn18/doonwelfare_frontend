@@ -11,12 +11,12 @@ body,a,span,p,h1,h2,h3{
     max-width: 100%;
 }
   
-.campaign-main{
+/* .campaign-main{
     display: flex;
     align-items: center;
     margin-left: 3%;
     margin-bottom: 100px;
-}
+} */
 
 .campagin-first{
     display: flex;
@@ -40,7 +40,7 @@ body,a,span,p,h1,h2,h3{
 }
 
 .cards-campaign{
-    display: flex;
+    display: flex ;
     gap: 20px;
     justify-content: space-evenly;
     align-items: center;
@@ -145,3 +145,38 @@ body,a,span,p,h1,h2,h3{
     font-size: 18px;
     font-weight: 600;
 }
+
+
+@media (max-width: 768px) {
+    
+    .campaign-main{
+        justify-content: center ;
+        
+    }
+    .campaign-content{
+        width: auto;
+    }
+    .campagin-title {
+        font-size: 17px;
+        font-weight: 600;
+        text-align: center;
+        /* background: linear-gradient(to right, #ff9900, #ff6a00) #eb9006; */
+        padding: 8px 12px;
+        border-radius: 10px;
+        color: black;
+    }
+    .product-card {
+        display: flex;
+        gap: 130px;
+        padding: 10px 10px;
+        background-color: white;
+        justify-content: space-between;
+    }
+    .faq-section {
+        /* max-width: 60%; */
+        /* margin-left: 40px; */
+        margin-bottom: 80px !important;
+        /* margin-top: -90px; */
+    }
+  }
+

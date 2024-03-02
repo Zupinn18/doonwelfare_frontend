@@ -733,15 +733,15 @@ const CampaignDetail = () => {
         <div>
             <Navbar/>
         </div>
-        <div className='wrapper-campaign'>
-            <div className='campaign-main' >
+        <div className='wrapper-campaign p-3'>
+            <div className='campaign-main' justifyContent = 'center' >
                 {/* Content */}
-                <div className='campaign-content' >
+                <div className='campaign-content p-3' >
                     <div className='campagin-first' >
                         {/* campagin image */}
-                        <img src={campaign[0]?.imageUrl} width='40%' style={{
+                        <img src={campaign[0]?.imageUrl} width='100%' style={{
                             marginTop:"150px",
-                            alignSelf:"center"
+                            alignSelf:"center",
                         }} />
                         {/* Campagin Title */}
                         <p className='campagin-title' >{campaign[0]?.title}</p>
@@ -1262,7 +1262,7 @@ const CampaignDetail = () => {
     <div className={`cart-box px-3 border bg-light ${isCartFixed ? 'fixed-cart-box' : ''}`} 
     style={{ margin: "2px 40px 0px 20px" }}> {/*t R b l*/}
     <p className="fw-bold fs-3">Items Added to Cart</p>
-            <div className="cart-items-container">
+            {/* <div className="cart-items-container">
             <div className="cart-items-list">
               {cartItems.map((item, index) => (
                 <p key={index} style={{fontWeight: 'bold'}}>
@@ -1270,7 +1270,7 @@ const CampaignDetail = () => {
                 </p>
               ))}
             </div>
-          </div>
+          </div> */}
           <div className="">
             {/* Left Column */}
             <div className="">

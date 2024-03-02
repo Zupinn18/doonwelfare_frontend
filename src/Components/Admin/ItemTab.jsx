@@ -333,7 +333,7 @@ function ItemTab() {
               {items.map((item) => (
                 <TableRow key={item._id}>
                 {/* campagin id because campaign data is not populated till now */}
-                  <TableCell>{item.campaignId}</TableCell>
+                  {/* <TableCell>{item.campaignId}</TableCell> */}
                   <TableCell>{item.name}</TableCell>
                   <TableCell>{item.description}</TableCell>
                   <TableCell>{item.amount}</TableCell>
