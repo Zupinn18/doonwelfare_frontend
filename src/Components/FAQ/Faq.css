@@ -13,7 +13,7 @@
   }
   
   .question {
-    display: flex;
+
     justify-content: space-between;
     align-items: center;
     background-color: #f0f0f0;
@@ -43,4 +43,15 @@
   .answer.open {
     display: block;
   }
-  
+  @media (max-width: 768px) {
+    
+    .faq-section {
+    max-width: 80%;
+    margin-left: 40px;
+    margin-bottom: 80px;
+    margin-top: -90px;}
+
+    .question {
+      font-size: 15px;
+    }
+}

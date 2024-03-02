@@ -119,10 +119,10 @@ function CampaignTab() {
         title: campaignData.title,
         description: campaignData.description,
         imageUrl: campaignData.imageUrl,
-        amount: campaignData.amount,
-        requirement: campaignData.requirement,
-        progress: campaignData.progress,
-        outOf: campaignData.outOf,
+        // amount: campaignData.amount,
+        // requirement: campaignData.requirement,
+        // progress: campaignData.progress,
+        // outOf: campaignData.outOf,
       };
   
       // Make a POST request to the API endpoint to create/update the campaign
@@ -262,7 +262,7 @@ function CampaignTab() {
             required
           />
         </div>
-        <div className="mb-3">
+        {/* <div className="mb-3">
           <TextField
             label="Amount"
             id="amount"
@@ -310,7 +310,7 @@ function CampaignTab() {
           type="number"
           required
         />
-      </div>
+      </div> */}
         <div>
           <FormControl fullWidth>
             <InputLabel>Campaign Image</InputLabel>
