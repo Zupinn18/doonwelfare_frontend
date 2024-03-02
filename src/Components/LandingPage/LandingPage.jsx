@@ -809,9 +809,10 @@ const handleButtonClick = () => {
                     >
                       <div className="card-body text-center" style={{ color: "black", boxShadow: "5px 5px 5px 0px" }}>
                         {/* <Link to={{
+
                               pathname: `/campaign/${campaign._id}`,
                               state: {campaign}
-                          }} className="text-decoration-none" > */}
+                          }} className="text-decoration-none" >
                           <h5
                             className="card-title text-dark mt-2"
                             style={{
@@ -821,7 +822,7 @@ const handleButtonClick = () => {
                           >
                             {campaign.title}
                           </h5>
-                        {/* </Link> */}
+                        </Link>
                         <p
                           className="card-text text-dark mt-3"
                           style={{ fontWeight: 500, fontSize: '16px', overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitBoxOrient: 'vertical', lineHeight: '1.5em' }}
@@ -1613,7 +1614,7 @@ Our mision
         <div className="donor-item" >
           <ul className="donors" >
             {recentDonors.map((donor, index) => (
-              <div key={index} className="donor-detail" style={{ marginBottom: "-5px", marginLeft:"-30px" ,padding: "5px", borderRadius: "10px", backgroundColor: "rgb(255 204 160)", display: "flex", alignItems: "center" }}>
+              <div key={index} className="donor-detail" style={{ marginBottom: "-5px", marginLeft:"20px" ,padding: "5px", borderRadius: "10px", backgroundColor: "rgb(255 204 160)", display: "flex", alignItems: "center" }}>
                 <div className="donor-img" style={{ marginRight: "10px" }}>
                   <img src={userImg} alt="User Image" loading="lazy" width="50px" style={{ borderRadius: "50%", border: "2px solid #fff" }} />
                 </div>

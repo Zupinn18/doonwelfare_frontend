@@ -13,7 +13,6 @@ body,a,span,p,h1,h2,h3{
   
 /* .campaign-main{
     display: flex;
-    align-items: center;
     margin-left: 3%;
     margin-bottom: 100px;
 } */
@@ -29,16 +28,45 @@ body,a,span,p,h1,h2,h3{
     left: 0;
 }
 
-.campagin-title{
+/* campaign-data right side */
+
+.campaign-data{
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 10px;
+    /* background-color: white;
+    padding: 20px 20px;
+    box-shadow: 3px 4px 12px rgb(0 0 0 / 0.3);
+    border-radius: 10px; */
+}
+
+/* .campagin-title{
+    font-size: 28px;
+    font-weight: 700;
+    line-height: normal;
     font-size: 30px;
     margin-bottom: -10px;
     font-weight: 700;
     text-align: center;
-    /* background: linear-gradient(to right, #ff9900, #ff6a00) #eb9006; */
+    background: linear-gradient(to right, #ff9900, #ff6a00) #eb9006;
     padding: 8px 12px;
     border-radius: 10px;
     color: black;
-}
+} */
+
+
+/* donation box */
+.scrollable-donation-box2 {
+    position: absolute;
+    right: 5%;
+    top: 450px;
+    z-index: 1;
+    /* max-height: calc(100vh - 220px); */
+    overflow-y: auto;
+  }
 
 .cards-campaign{
     display: flex ;
@@ -147,6 +175,12 @@ body,a,span,p,h1,h2,h3{
     font-weight: 600;
 }
 
+/* campaign cart */
+.campaign-cart{
+/*     margin-left: -60px; */
+    display: flex;
+    flex-direction: column;
+}
 
 @media (max-width: 768px) {
     
@@ -205,3 +239,4 @@ body,a,span,p,h1,h2,h3{
       background-color: orange; /* Change to your desired color */
     }
   }
+
