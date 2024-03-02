@@ -54,10 +54,10 @@ function CampaignTab() {
         // Upload the image to Cloudinary (replace with your Cloudinary API URL and preset)
         const formData = new FormData();
         formData.append("file", file);
-        formData.append("upload_preset", "lu1omcoz");
-
+        formData.append("upload_preset", "hlggrx90");
         const response = await axios.post(
-          "https://api.cloudinary.com/v1_1/djvo45ald/image/upload",
+          // "https://api.cloudinary.com/v1_1/dfwct3edy/image/upload",
+          "https://api.cloudinary.com/v1_1/dpnadazzb/image/upload",
           formData
         );
 
