@@ -252,6 +252,28 @@ const campaignData = () => {
     }
   };
 
+  const handleDeleteData = async (itemId) => {
+    try {
+      const response = await axios.delete(
+
+        `https://ngo-node.onrender.com/api/campaign_data/${itemId}`);
+        
+      // Check if the request was successful
+      if (response.status === 200) {
+        toast.success("Campaign Data Deleted successfully", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+        setItems((prevItems) =>
+          prevItems.filter((item) => item._id !== itemId)
+        );
+      } else {
+        console.error("Failed to delete Campaign Data :", response.data);
+      }
+    } catch (error) {
+      console.error("Error delete Item:", error);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -506,6 +528,7 @@ const campaignData = () => {
                 <TableCell>Description 1</TableCell>
                 <TableCell>Description 2</TableCell>
                 <TableCell>description 3</TableCell>
+                <TableCell>Action</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -536,6 +559,17 @@ const campaignData = () => {
                       onClick={() => handleUpdateData(item._id)}
                     >
                       Update
+                    </Button>
+                    <Button
+                      variant="contained"
+                      color="error"
+                      style={{
+                        marginTop:"5px",
+                        backgroundColor:"red",
+                      }}
+                      onClick={() => handleDeleteData(item._id)}
+                    >
+                      Delete
                     </Button>
                   </TableCell>
                 </TableRow>
