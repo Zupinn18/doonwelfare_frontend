@@ -100,9 +100,9 @@ const campaignData = () => {
     try {
       // Make a GET request to fetch Data from the API
 
-      // const response = await axios.get("https://ngo-node.onrender.com/api/campaign_data");
+      const response = await axios.get("https://ngo-node.onrender.com/api/campaign_data");
 
-      const response = await axios.get("https://ngo-node.onrender.com/api/get-all-data");
+      // const response = await axios.get("https://ngo-node.onrender.com/api/get-all-data");
 
 
       // Check if the request was successful
@@ -163,10 +163,10 @@ const campaignData = () => {
         const formData = new FormData();
         formData.append("file", file);
         // formData.append("upload_preset", "gscxpnyd"); // Replace with your Cloudinary preset
-        formData.append("upload_preset", "lu1omcoz");
+        formData.append("upload_preset", "hlggrx90");
         const response = await axios.post(
-          // "https://api.cloudinary.com/v1_1/dfwct3edy/upload", // Replace with your Cloudinary cloud name
-          "https://api.cloudinary.com/v1_1/djvo45ald/image/upload",
+          // "https://api.cloudinary.com/v1_1/dfwct3edy/image/upload",
+          "https://api.cloudinary.com/v1_1/dpnadazzb/image/upload",
           formData
         );
 
@@ -190,12 +190,13 @@ const campaignData = () => {
         const formData = new FormData();
         formData.append("file", file);
         // formData.append("upload_preset", "gscxpnyd"); // Replace with your Cloudinary preset
-        formData.append("upload_preset", "lu1omcoz");
+        formData.append("upload_preset", "hlggrx90");
         const response = await axios.post(
-          // "https://api.cloudinary.com/v1_1/dfwct3edy/upload", // Replace with your Cloudinary cloud name
-          "https://api.cloudinary.com/v1_1/djvo45ald/image/upload",
+          // "https://api.cloudinary.com/v1_1/dfwct3edy/image/upload",
+          "https://api.cloudinary.com/v1_1/dpnadazzb/image/upload",
           formData
         );
+
 
         const imageUrl3 = response.data.secure_url;
 
@@ -232,8 +233,7 @@ const campaignData = () => {
       const response = await axios.put(
 
         `https://ngo-node.onrender.com/api/campaign_data/${itemId}`, updateDataObject);
-
-        (`https://ngo-node.onrender.com/api/update-data/${itemId}`, updateDataObject);
+        
 
 
       // Check if the request was successful
@@ -271,8 +271,6 @@ const campaignData = () => {
     const response = await axios.post(
 
             "https://ngo-node.onrender.com/api/campaign_data",
-
-            "https://ngo-node.onrender.com/api/create-data",
 
             dataObject
           );
