@@ -859,7 +859,7 @@ const CampaignDetail = () => {
                         {/* campagin image */}
                         <div className='campaign_image'>
                         <img src={campaign[0]?.imageUrl} width='100%' style={{
-                            marginTop:"150px",
+                            marginTop:"250px",
                             alignSelf:"center",
                         }} />
                         </div>
@@ -1499,7 +1499,7 @@ const CampaignDetail = () => {
       </div>
       
   </div>
-  
+
 
 </div>
                 )}
