@@ -600,18 +600,9 @@ const CampaignDetail = () => {
         }
       }
 
-      // const id_camp = window.location.pathname.split('/').at(-1);
-      // //const responseData = product.filter(item => item.campaignId === id_camp).foo;
-      // for(var i=0;i<product.length;i++){
-      //   console.log("capaign id is ", product[i].campaignId);
-      //   if(product[i].campaignId === id_camp ){
-      //     console.log("campaign id of prodcut", id_camp);
-      //     setProductData(product[i]);
-      //   }
-      // }
-      // console.log("response data is ", productdata);
-
-
+        //for current campaign product
+        const id_camp = window.location.pathname.split('/').at(-1);
+        const responseData = product.filter(item => item.campaignId._id === id_camp);
       
       // Landing cart code
       const [list, setList] = useState(0);
@@ -904,7 +895,7 @@ const CampaignDetail = () => {
                         }} > 
 
                              {
-                              product.map((item,index)=>(
+                              responseData?.map((item,index)=>(
                                 <div className='product-card' key={index} >
                                 {/* Image  */}
                                     <img src={item.imageUrl} width="100px" height="100px" style={{
@@ -1278,7 +1269,7 @@ const CampaignDetail = () => {
                 <div className="d-block d-lg-none"> {/* Show on small screens, hide on large screens */}
       
     </div>
-    {buttonText !== "Donate" && (
+    {  buttonText !== "Donate" && (
       
   <div className="col-md-4 mt-0 m-0 p-0 px-3 donation-box scrollable-donation-box">
     <div className="p-3 border bg-light" style={{ margin: "2px 40px 0px 20px" }}>
@@ -1500,10 +1491,9 @@ const CampaignDetail = () => {
       
   </div>
   
-)}
-</div>
 
-                </div>
+</div>
+)}   
                 {/* <Link className="nav-link" to="/donate" aria-current="page">
           <div className="container donate-container-mobile py-3 text-center">
             <button
@@ -1522,7 +1512,8 @@ const CampaignDetail = () => {
         
         <Footer/>
     </div>
-  )
+  </div>
+</div>
+)
 }
-
-export default CampaignDetail
+export default CampaignDetail;
