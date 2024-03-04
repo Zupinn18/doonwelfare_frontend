@@ -808,7 +808,7 @@ const handleButtonClick = () => {
                       }}
                     >
                       <div className="card-body text-center" style={{ color: "black", boxShadow: "5px 5px 5px 0px" }}>
-                        {/* <Link to={{
+                        <Link to={{
 
                               pathname: `/campaign/${campaign._id}`,
                               state: {campaign}
@@ -841,7 +841,7 @@ const handleButtonClick = () => {
                           style={{ fontWeight: 500, fontSize: "16px" }}
                         >
                           Amount: ₹{campaign.amount || 0}
-                        </p> */}
+                        </p>
                         {/* <p
                       className="card-text text-dark mt-3"
                       style={{ fontWeight: 500, fontSize: "16px" }}
