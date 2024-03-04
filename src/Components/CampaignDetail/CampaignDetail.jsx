@@ -1500,21 +1500,9 @@ const CampaignDetail = () => {
       
   </div>
   
-)}
-</div>
 
-                </div>
-                {/* <Link className="nav-link" to="/donate" aria-current="page">
-          <div className="container donate-container-mobile py-3 text-center">
-            <button
-              className="btn glow fw-bold"
-              style={{ background: "yellow" }}
-              onClick={handleButtonClick}
-            >
-              Donate Now - ₹{totalCartAmount}
-            </button>    
-          </div>
-        </Link> */}
+</div>
+                )}
             </div>
             
             <Faq/>
@@ -1522,7 +1510,9 @@ const CampaignDetail = () => {
         
         <Footer/>
     </div>
-  )
-}
+    </div>
+    </div>
+  );
+};
 
-export default CampaignDetail
+export default CampaignDetail;
