@@ -740,11 +740,18 @@ const CampaignDetail = () => {
 
   return (
     
-    <div className='container' >
+    <div className='' >
         <div className='campaign-container'>
             <Navbar/>
-            <div className="d-block d-lg-none ">
-                          <div className="p-3 mobile-view p-3" >
+            </div>
+        
+        
+        <div className='wrapper-campaign p-3'>
+        
+            <div className='campaign-main' justifyContent = 'center' >
+                {/* Content */}
+                <div className="d-block d-lg-none ">
+                  <div className="p-3 mobile-view p-3" >
                     <div className="d-flex row gap-2">
                       <div className="box-image">
                       <p className='campagin-title' >{campaign[0]?.title}</p>
@@ -800,6 +807,11 @@ const CampaignDetail = () => {
                           <div className="d-flex align-items-center payment-option">
                             <div className="container">
                               <div className="row">
+                              <div className='campaign_image'>
+                        <img src={campaign[0]?.imageUrl} width='100%' style={{
+                            alignSelf:"center",
+                        }} />
+                        </div>
                                 <div className="col-md-4">
                                   <h6
                                     className="text-center glow"
@@ -845,25 +857,20 @@ const CampaignDetail = () => {
                       </div>
                     </div>
                 </div>
-            </div>
-        
-        
-        <div className='wrapper-campaign p-3'>
-        
-            <div className='campaign-main' justifyContent = 'center' >
-                {/* Content */}
-                
+                </div>
                 <div className='campaign-content p-3' >
                   
-                    <div className='campagin-first' >
+                    <div className='campagin-first' style={{ display: 'block' }} >
                             
                         {/* campagin image */}
-                        <div className='campaign_image'>
-                        <img src={campaign[0]?.imageUrl} width='100%' style={{
-                            marginTop:"100px",
-                            alignSelf:"center",
-                        }} />
-                        </div>
+                        <div className='campaign_image' >
+                          <img src={campaign[0]?.imageUrl} width='100%' style={{
+                              marginTop: "100px",
+                              alignSelf: "center",
+                              display: "block", // Ensure the image is displayed as a block element
+                          }} />
+                      </div>
+
 
 
                         {/* details */}
@@ -885,11 +892,11 @@ const CampaignDetail = () => {
 
                         {/* products */}
                         <h2
-                          className="text-left"
+                          className="text-left-product mb-5"
                           style={{
                             fontSize: "30px",
                             fontWeight: "bold",
-                            marginTop:"-40px"
+                            marginTop:"20px"
                           }}
                         >
                           <span style={{
@@ -899,10 +906,11 @@ const CampaignDetail = () => {
                             color: "#ff6a00",
                             textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)"
                           }}>Product</span>
+
                              </h2>
                              <div className='products-section' style={{
-  marginTop:"-30px"
-}}>
+                              marginTop:"-30px"
+                            }}>
   {
     product.map((item,index)=>(
       <div className='product-card' key={index}>
@@ -996,7 +1004,7 @@ const CampaignDetail = () => {
               
                         {/* project */}
                         <h2
-                          className="text-left"
+                          className="text-left mb-5"
                           style={{
                             fontSize: "30px",
                             fontWeight: "bold",
@@ -1499,7 +1507,6 @@ const CampaignDetail = () => {
         </div>
         
         <Footer/>
-    </div>
     </div>
     </div>
     </div>
