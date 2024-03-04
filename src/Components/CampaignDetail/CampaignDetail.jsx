@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router';
 import './CampaignDetail.css';
 import Faq from '../FAQ/Faq';
 import Navbar from '../Navbar/Navbar';
 import "slick-carousel/slick/slick.css";
+import { Link } from 'react-router-dom';
 import "slick-carousel/slick/slick-theme.css";
 import "../LandingPage/Langing.css";
 import "../LandingPage/Campaign.css";
@@ -448,23 +449,15 @@ const CampaignDetail = () => {
       // Add the new donor to the list of recent donors
       setRecentDonors([...recentDonors, newDonor]);
     };
-    
-    
+
     const handleButtonClick = () => {
       const totalAmount = cartItems.reduce((total, item) => total + item.totalAmount, 0) || totalCartAmount ;
-      alert(`Total Donation Amount: Rs ${totalAmount}`);
-      localStorage.setItem("amount", totalAmount);
-      navigate("/cart"); // Replace "/donation" with the actual path to your donation page
-      setShowQuantityInput(!showQuantityInput);
-      setShowQuantities(!showQuantities);
-      if(totalAmount<100){
-        alert(`Minimum Donation Amount should be Rs. 100  `);
+      if(totalAmount<200){
+        alert(`Minimum Donation Amount should be Rs. 200  `);
       }else{
         alert(`Total Donation Amount: Rs ${totalAmount}`);
         localStorage.setItem("amount", totalAmount);
         navigate("/cart"); // Replace "/donation" with the actual path to your donation page
-        setShowQuantityInput(!showQuantityInput);
-        setShowQuantities(!showQuantities);
       }
     };
     
@@ -731,129 +724,136 @@ const CampaignDetail = () => {
 
   return (
     
-    <div className='campaign-container' >
-        <div>
+        <div className='campaign-container'>
             <Navbar/>
             
-        </div>
+        
         
         <div className='wrapper-campaign p-3'>
         
             <div className='campaign-main' justifyContent = 'center' >
                 {/* Content */}
-                
-                <div className='campaign-content p-3' >
-                    <div className='campagin-first' >
-                    <div className="d-block d-lg-none p-3">
+                <div className="d-block d-lg-none ">
                   <div className="p-3 mobile-view p-3" >
-            <div className="d-flex row gap-2">
-              <div className="box-image">
-              <p className='campagin-title' >{campaign[0]?.title}</p>
-                <span style={{ color: "red", fontSize: "10px", fontWeight: 700 }}>
-                  Tax exempted under section 80G(5)(iii) of Income tax registration No AAICD1894QF20206
-                </span>
+                    <div className="d-flex row gap-2">
+                      <div className="box-image">
+                      <p className='campagin-title' >{campaign[0]?.title}</p>
+                        <span style={{ color: "red", fontSize: "10px", fontWeight: 700 }}>
+                          Tax exempted under section 80G(5)(iii) of Income tax registration No AAICD1894QF20206
+                        </span>
 
-              </div>
-
-            {/* Buttons in a row */}
-            <div className="button-row">
-                {/* Button 1 */}
-                <div className="dropdown">
-                  <button className="dropdown-btn">Tax benefit</button>
-                  <div className="dropdown-content" style={{ left: "50%", transform: "translateX(-50%)" }}>
-                    <p>
-                      <strong>Tax Benefits</strong>
-                      <br />
-                      Donations Exempted Under Section 80G & 12A
-                    </p>
-                  </div>
-                </div>
-
-                {/* Button 2 */}
-                <div className="dropdown">
-                  <button className="dropdown-btn" style={{background: "linear-gradient(to right, #ff9900, #ff6a00) #eb9006"}}>Assured</button>
-                  <div className="dropdown-content" style={{ left: "50%", transform: "translateX(-50%)"}}>
-                    
-                    <p>
-                      <strong>Animal Welfare Board Of India</strong>
-                      <br />
-                      Recognized by animal welfare organization
-                    </p>
-                  </div>
-                </div>
-
-                {/* Button 3 */}
-                <div className="dropdown">
-                  <button className="dropdown-btn" style={{background: "linear-gradient(to right, #ff9900, #ff6a00) #eb9006"}}>Verified NGO</button>
-                  <div className="dropdown-content" style={{ left: "50%", transform: "translateX(-50%)" }}>
-                  <p>
-                      <strong>Doon Animal Welfare Foundation</strong>
-                      <br/>Regd. under Section(8)<br/>of the Companies Act-2013.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-
-
-              <div className="box-content">
-                <div className="cmn-sidebar bg-white border p-2">
-                  <div className="d-flex align-items-center payment-option">
-                    <div className="container">
-                      <div className="row">
-                        <div className="col-md-4">
-                          <h6
-                            className="text-center glow"
-                            style={{
-                              fontWeight: 700,
-                              borderRadius: "50%",
-                              padding: "15px 5px 25px 5px",
-                              border: "4px solid gray",
-                              borderRight: "4px solid yellow",
-                              borderTop: "4px solid yellow",
-                              marginLeft: "50px",
-                              marginRight: "50px"
-                            }}
-                          >
-                            20% <br />
-                            <span>completed</span>{" "}
-                          </h6>
-                        </div>
-                        <div className="col-md-4">
-                          <h6 className="text-center ps-3" style={{ fontWeight: 700 }}>
-                          {currMonth} {year} <br />
-                            <span>Month</span>
-                          </h6>
-                        </div>
-                        {/* <div className="col-md-3">
-                          {id === "6571c72e00fc94b3a8a81ea5" ? (
-                            <h6 className="text-center ps-2" style={{ fontWeight: 700 }}>
-                              2000 Blanket <br />
-                              <span>Total Required</span>
-                            </h6>
-                          ) : (
-                            <h6 className="text-center ps-3" style={{ fontWeight: 700 }}>
-                              20 Lakh KG <br />
-                              <span>Total Fodder Required</span>
-                            </h6>
-                          )}
-                        </div> */}
                       </div>
-                    </div>
-                  </div>
-                </div>
-                
-              </div>
-            </div>
-            </div>
-            </div>
-                        {/* campagin image */}
-                        <div className='campaign_image'>
+
+                    {/* Buttons in a row */}
+                    <div className="button-row">
+                        {/* Button 1 */}
+                        <div className="dropdown">
+                          <button className="dropdown-btn">Tax benefit</button>
+                          <div className="dropdown-content" style={{ left: "50%", transform: "translateX(-50%)" }}>
+                            <p>
+                              <strong>Tax Benefits</strong>
+                              <br />
+                              Donations Exempted Under Section 80G & 12A
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Button 2 */}
+                        <div className="dropdown">
+                          <button className="dropdown-btn" style={{background: "linear-gradient(to right, #ff9900, #ff6a00) #eb9006"}}>Assured</button>
+                          <div className="dropdown-content" style={{ left: "50%", transform: "translateX(-50%)"}}>
+                            
+                            <p>
+                              <strong>Animal Welfare Board Of India</strong>
+                              <br />
+                              Recognized by animal welfare organization
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Button 3 */}
+                        <div className="dropdown">
+                          <button className="dropdown-btn" style={{background: "linear-gradient(to right, #ff9900, #ff6a00) #eb9006"}}>Verified NGO</button>
+                          <div className="dropdown-content" style={{ left: "50%", transform: "translateX(-50%)" }}>
+                          <p>
+                              <strong>Doon Animal Welfare Foundation</strong>
+                              <br/>Regd. under Section(8)<br/>of the Companies Act-2013.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                      <div className="box-content">
+                        <div className="cmn-sidebar bg-white border p-2">
+                          <div className="d-flex align-items-center payment-option">
+                            <div className="container">
+                              <div className="row">
+                              <div className='campaign_image'>
                         <img src={campaign[0]?.imageUrl} width='100%' style={{
-                            marginTop:"150px",
                             alignSelf:"center",
                         }} />
                         </div>
+                                <div className="col-md-4" >
+                                  <h6
+                                    className="text-center glow"
+                                    style={{
+                                      fontWeight: 700,
+                                      borderRadius: "50%",
+                                      padding: "15px 5px 25px 5px",
+                                      border: "4px solid gray",
+                                      borderRight: "4px solid yellow",
+                                      borderTop: "4px solid yellow",
+                                      marginLeft: "50px",
+                                      marginRight: "50px"
+                                    }}
+                                  >
+                                    20% <br />
+                                    <span>completed</span>{" "}
+                                  </h6>
+                                </div>
+                                <div className="col-md-4">
+                                  <h6 className="text-center ps-3" style={{ fontWeight: 700 }}>
+                                  {currMonth} {year} <br />
+                                    <span>Month</span>
+                                  </h6>
+                                </div>
+                                {/* <div className="col-md-3">
+                                  {id === "6571c72e00fc94b3a8a81ea5" ? (
+                                    <h6 className="text-center ps-2" style={{ fontWeight: 700 }}>
+                                      2000 Blanket <br />
+                                      <span>Total Required</span>
+                                    </h6>
+                                  ) : (
+                                    <h6 className="text-center ps-3" style={{ fontWeight: 700 }}>
+                                      20 Lakh KG <br />
+                                      <span>Total Fodder Required</span>
+                                    </h6>
+                                  )}
+                                </div> */}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                </div>
+                </div>
+                <div className='campaign-content p-3' >
+                  
+                    <div className='campagin-first' style={{ display: 'block' }} >
+                            
+                        {/* campagin image */}
+                        <div className='campaign_image' >
+                          <img src={campaign[0]?.imageUrl} width='100%' style={{
+                              marginTop: "100px",
+                              alignSelf: "center",
+                              display: "block", // Ensure the image is displayed as a block element
+                          }} />
+                      </div>
+
 
 
                         {/* details */}
@@ -875,11 +875,11 @@ const CampaignDetail = () => {
 
                         {/* products */}
                         <h2
-                          className="text-left"
+                          className="text-left-product mb-5 product-head "
                           style={{
                             fontSize: "30px",
                             fontWeight: "bold",
-                            marginTop:"-40px"
+                            marginTop:"20px"
                           }}
                         >
                           <span style={{
@@ -889,16 +889,17 @@ const CampaignDetail = () => {
                             color: "#ff6a00",
                             textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)"
                           }}>Product</span>
+
                              </h2>
                         <div className='products-section' style={{
                           marginTop:"-30px"
                         }} > 
 
                              {
-                              responseData?.map((item,index)=>(
+                              responseData.map((item,index)=>(
                                 <div className='product-card' key={index} >
                                 {/* Image  */}
-                                    <img src={item.imageUrl} width="100px" height="100px" style={{
+                                    <img src={item.imageUrl} className='product-img' width="100px" height="100px" style={{
                                       borderRadius:"10px"
                                     }} />
 
@@ -934,71 +935,67 @@ const CampaignDetail = () => {
                           </>
                                 )}
 
-                                       {!customAmounts[item._id] && campaignQuantities[item._id] !== undefined && (
-                          <>
-                          
-                            {(campaignQuantities[item._id] > 0) && (
-                              <>
-                              {!campaignQuantities[item._id] && (
-                                  <>
-                                  <input
-                                    type="number"
-                                    className="form-control form-control-lg text-center me-2"
-                                    placeholder="Enter custom Amount"
-                                    onChange={(e) => handleCustomAmountChange(item._id, parseInt(e.target.value, 10) || 0)}
-                                    style={{ width: '40px', fontSize:'20px',color: 'black' }}
-                                  />
-                                 </>
-                                )}
-                                <button
-                                  className="btn btn-outline-secondary btn-sm me-2"
-                                  onClick={() => handleQuantityChange(item._id, -1)}
-                                  style={{ background:'#ff6a00', fontWeight: '700', fontSize: '20px'}}
-                                  
-                                >
-                                  -
-                                </button>
-                                <input
-                                  type="number"
-                                  className="form-control form-control-lg text-center"
-                                  value={campaignQuantities[item._id]}
-                                  readOnly
-                                />
-                                <button
-                                  className="btn btn-outline-secondary btn-sm ms-2"
-                                  onClick={() => handleQuantityChange(item._id, 1)}
-                                  style={{ background:'#ff6a00', fontWeight: '700', fontSize: '20px',}}
-                                >
-                                  +
-                                </button>
-                              </>
-                            )}
+              {!customAmounts[item._id] && campaignQuantities[item._id] !== undefined && (
+                <>
+                  {(campaignQuantities[item._id] > 0) && (
+                    <>
+                      {!campaignQuantities[item._id] && (
+                        <>
+                          <input
+                            type="number"
+                            className="form-control form-control-lg text-center me-2"
+                            placeholder="Enter custom Amount"
+                            onChange={(e) => handleCustomAmountChange(item._id, parseInt(e.target.value, 10) || 0)}
+                            style={{ width: '40px', fontSize:'20px',color: 'black' }}
+                          />
+                        </>
+                      )}
+                      <button
+                        className="btn btn-outline-secondary btn-sm me-2"
+                        onClick={() => handleQuantityChange(item._id, -1)}
+                        style={{ background:'#ff6a00', fontWeight: '700', fontSize: '20px'}}
+                      >
+                        -
+                      </button>
+                      <input
+                        type="number"
+                        className="form-control form-control-lg text-center"
+                        value={campaignQuantities[item._id]}
+                        readOnly
+                      />
+                      <button
+                        className="btn btn-outline-secondary btn-sm ms-2"
+                        onClick={() => handleQuantityChange(item._id, 1)}
+                        style={{ background:'#ff6a00', fontWeight: '700', fontSize: '20px',}}
+                      >
+                        +
+                      </button>
+                    </>
+                  )}
 
-                            {(campaignQuantities[item._id] === 0) && (
-                              <button
-                              className="btn btn-outline-secondary btn-sm"
-                              onClick={() => handleQuantityChange(item._id, 1)}
-                              style={{width: '150px', alignSelf:"center" , background:'#ff6a00', color: 'white', fontWeight: '700', fontSize: '20px'}}
-                            >
-                              ₹{item.amount}
-                            </button>
-                            )}
-                          </>
-                        )}
-                                    </div>
+                  {(campaignQuantities[item._id] === 0) && (
+                    <button
+                      className="btn btn-outline-secondary btn-sm"
+                      onClick={() => handleQuantityChange(item._id, 1)}
+                      style={{width: '150px', alignSelf:"center" , background:'#ff6a00', color: 'white', fontWeight: '700', fontSize: '20px'}}
+                    >
+                      ₹{item.amount}
+                    </button>
+                  )}
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    ))
+  }
+</div>
 
-                                  </div>
-                                </div>
-
-                             </div>
-                              ))
-                             }
-
-                        </div>
               
                         {/* project */}
                         <h2
-                          className="text-left"
+                          className="text-left mb-5"
                           style={{
                             fontSize: "30px",
                             fontWeight: "bold",
@@ -1269,6 +1266,7 @@ const CampaignDetail = () => {
                 <div className="d-block d-lg-none"> {/* Show on small screens, hide on large screens */}
       
     </div>
+    <>
     {  buttonText !== "Donate" && (
       
   <div className="col-md-4 mt-0 m-0 p-0 px-3 donation-box scrollable-donation-box">
@@ -1328,6 +1326,7 @@ const CampaignDetail = () => {
             <div className="d-flex align-items-center payment-option">
               <div className="container">
                 <div className="row">
+                  
                   <div className="col-md-4">
                     <h6
                       className="text-center glow"
@@ -1373,7 +1372,7 @@ const CampaignDetail = () => {
     </div>
     {/* Recent Donor Box */}
     <div className={`cart-box px-3 border bg-light ${isCartFixed ? 'fixed-cart-box' : ''}`} 
-    style={{ margin: "2px 40px 0px 20px" }}> {/*t R b l*/}
+    style={{ margin: "2px 0px 0px 0px" }}> {/*t R b l*/}
     <p className="fw-bold fs-3">Items Added to Cart</p>
             {/* <div className="cart-items-container">
             <div className="cart-items-list">
@@ -1491,10 +1490,9 @@ const CampaignDetail = () => {
       
   </div>
   
-
-</div>
-)}   
-                {/* <Link className="nav-link" to="/donate" aria-current="page">
+)}
+</div>)}</>
+ <Link className="nav-link" to="/donate" aria-current="page">
           <div className="container donate-container-mobile py-3 text-center">
             <button
               className="btn glow fw-bold"
@@ -1504,16 +1502,16 @@ const CampaignDetail = () => {
               Donate Now - ₹{totalCartAmount}
             </button>    
           </div>
-        </Link> */}
+        </Link>
+              </div>
             </div>
             
             <Faq/>
         </div>
-        
+        </div>
         <Footer/>
     </div>
-  </div>
-</div>
-)
+  )
 }
-export default CampaignDetail;
+
+export default CampaignDetail
