@@ -201,7 +201,7 @@ body,a,span,p,h1,h2,h3{
         width: auto;
     }
     .campagin-title {
-        font-size: 30px;
+        font-size: 25px;
         margin-top: -25px;
         font-weight: 600;
         text-align: center;
@@ -210,22 +210,30 @@ body,a,span,p,h1,h2,h3{
         border-radius: 10px;
         color: black;
     }
-    .product-card {
-        position: relative;
-        display: flex;
-        gap: 50px;
-        padding: 10px 10px;
-        background-color: white;
-        justify-content: space-between;
-    }
+    .products-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+  .product-card {
+    margin-bottom: 20px; /* Adjust spacing between items */
+    gap: 3px;
+  }
       .campagin-first .campaign_image{
-        margin-top: 240px;
+        margin-top: 400px;
       }
       .top-vid{
         height: 300px !important;
         width: 100%;
       }
-      
+      .product-btn {
+        display: flex;
+        width: 50%;
+        font-size: 15px;
+    
+    }
   }
 
   @keyframes glow {
