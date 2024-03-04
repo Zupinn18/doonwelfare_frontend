@@ -740,10 +740,9 @@ const CampaignDetail = () => {
 
   return (
     
-    <div className='' >
         <div className='campaign-container'>
             <Navbar/>
-            </div>
+            
         
         
         <div className='wrapper-campaign p-3'>
