@@ -779,24 +779,25 @@ const handleButtonClick = () => {
                     backgroundColor:
                       cardBackgroundColors[index % cardBackgroundColors.length],
                     boxShadow: "5px 5px 5px 0px",
+                    borderRadius: "10px"
                   }}
                   className="d-flex"
                 >
                   <div className="row no-gutters">
-                    {/* <Link to={{
+                    <Link to={{
                               pathname: `/campaign/${campaign._id}`,
                               state: {campaign}
-                          }} > */}
+                          }} >
                       <div className="col-md-12 p-0 cursor-pointer ">
                         <img
                           loading="lazy"
                           src={campaign.imageUrl}
                           className="card-img"
                           alt={campaign.title}
-                          style={{ maxHeight: "400px" }}
+                          style={{ maxHeight: "400px" , borderRadius: "10px"}}
                         />
                       </div>
-                    {/* </Link> */}
+                    </Link>
                     <div
                       className="col-md-12 d-flex align-items-center"
                       style={{
@@ -806,11 +807,12 @@ const handleButtonClick = () => {
                           ],
                       }}
                     >
-                      <div className="card-body text-center" style={{ color: "black" }}>
+                      <div className="card-body text-center" style={{ color: "black", boxShadow: "5px 5px 5px 0px" }}>
                         {/* <Link to={{
+
                               pathname: `/campaign/${campaign._id}`,
                               state: {campaign}
-                          }} className="text-decoration-none" > */}
+                          }} className="text-decoration-none" >
                           <h5
                             className="card-title text-dark mt-2"
                             style={{
@@ -820,7 +822,7 @@ const handleButtonClick = () => {
                           >
                             {campaign.title}
                           </h5>
-                        {/* </Link> */}
+                        </Link>
                         <p
                           className="card-text text-dark mt-3"
                           style={{ fontWeight: 500, fontSize: '16px', overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitBoxOrient: 'vertical', lineHeight: '1.5em' }}
@@ -834,22 +836,22 @@ const handleButtonClick = () => {
                         >
                           {showFullDescription ? 'Read Less' : 'Read More'}
                         </button>
-                        <p
+                        {/* <p
                           className="card-text text-dark mt-3"
                           style={{ fontWeight: 500, fontSize: "16px" }}
                         >
                           Amount: ₹{campaign.amount || 0}
-                        </p>
-                        <p
+                        </p> */}
+                        {/* <p
                       className="card-text text-dark mt-3"
                       style={{ fontWeight: 500, fontSize: "16px" }}
                     >
                       {campaign.requirements}
-                    </p>
-                        <div className="progress mt-3" style={{ height: '10px' }}>
+                    </p> */}
+                        {/* <div className="progress mt-3" style={{ height: '10px' }}>
                           <div className="progress-bar" role="progressbar" style={{ width: `${(campaign.progress / campaign.outOf) * 100}%`, backgroundColor: '#ff6a00', color: '#ff6a00' }} aria-valuenow={campaign.progress} aria-valuemin="0" aria-valuemax={campaign.outOf}>{campaign.progress} / {campaign.outOf} </div>
-                        </div>
-                        <div className="d-flex align-items-center justify-content-center mt-3">
+                        </div> */}
+                        {/* <div className="d-flex align-items-center justify-content-center mt-3">
                         
                         {(!customAmounts[campaign._id] && campaignQuantities[campaign._id] === undefined) && (
                           <>
@@ -926,7 +928,7 @@ const handleButtonClick = () => {
                             />
                            </>                
                           )}
-                      </div>
+                      </div> */}
                       <div className={`amount-note ${note === true ? "show":"not-show" } `}
                                   >Minimum Donation amount should be Rs. 100</div>  
                       </div>
@@ -1551,7 +1553,7 @@ Our mision
     <div className={`cart-box px-3 border bg-light ${isCartFixed ? 'fixed-cart-box' : ''}`} 
     style={{ margin: "2px 40px 0px 20px" }}> {/*t R b l*/}
     <p className="fw-bold fs-3">Items Added to Cart</p>
-            <div className="cart-items-container">
+            {/* <div className="cart-items-container">
             <div className="cart-items-list">
               {cartItems.map((item, index) => (
                 <p key={index} style={{fontWeight: 'bold'}}>
@@ -1559,7 +1561,7 @@ Our mision
                 </p>
               ))}
             </div>
-          </div>
+          </div> */}
           <div className="row mb-5 ">
             {/* Left Column */}
             <div className="col-md-6">
@@ -1612,7 +1614,7 @@ Our mision
         <div className="donor-item" >
           <ul className="donors" >
             {recentDonors.map((donor, index) => (
-              <div key={index} className="donor-detail" style={{ marginBottom: "-5px", marginLeft:"-30px" ,padding: "5px", borderRadius: "10px", backgroundColor: "rgb(255 204 160)", display: "flex", alignItems: "center" }}>
+              <div key={index} className="donor-detail" style={{ marginBottom: "-5px", marginLeft:"20px" ,padding: "5px", borderRadius: "10px", backgroundColor: "rgb(255 204 160)", display: "flex", alignItems: "center" }}>
                 <div className="donor-img" style={{ marginRight: "10px" }}>
                   <img src={userImg} alt="User Image" loading="lazy" width="50px" style={{ borderRadius: "50%", border: "2px solid #fff" }} />
                 </div>

@@ -429,10 +429,11 @@ const CampaignDetail = () => {
       setTotalCartAmount(amount);
     };
 
-    // const handleCustomAmountFix= (index,amount) => {
-    //   setCustomRupees(amount);
-    //   setTotalCartAmount(amount);
-    // };
+    const handleCustomAmountFix= (index) => {
+      const fixMoney = customAmount[index].donationAmount;
+      setCustomRupees(fixMoney);
+      setTotalCartAmount(fixMoney);
+    };
 
     // const handleCustomAmount = (campaignId, amount) => {
     //   setCustomAmounts((prevAmounts) => ({
@@ -450,12 +451,21 @@ const CampaignDetail = () => {
     
     
     const handleButtonClick = () => {
-      const totalAmount = cartItems.reduce((total, item) => total + item.totalAmount, 0);
+      const totalAmount = cartItems.reduce((total, item) => total + item.totalAmount, 0) || totalCartAmount ;
       alert(`Total Donation Amount: Rs ${totalAmount}`);
       localStorage.setItem("amount", totalAmount);
       navigate("/cart"); // Replace "/donation" with the actual path to your donation page
       setShowQuantityInput(!showQuantityInput);
       setShowQuantities(!showQuantities);
+      if(totalAmount<100){
+        alert(`Minimum Donation Amount should be Rs. 100  `);
+      }else{
+        alert(`Total Donation Amount: Rs ${totalAmount}`);
+        localStorage.setItem("amount", totalAmount);
+        navigate("/cart"); // Replace "/donation" with the actual path to your donation page
+        setShowQuantityInput(!showQuantityInput);
+        setShowQuantities(!showQuantities);
+      }
     };
     
     
@@ -508,7 +518,7 @@ const CampaignDetail = () => {
 
       useEffect(()=>{
         setTotalCartAmount(customRupees);
-      },[customRupees]);
+      },[customRupees, totalCartAmount]);
      
       useEffect(() => {
         const handleScroll = () => {
@@ -729,22 +739,131 @@ const CampaignDetail = () => {
   let currMonth = month[newMonth.getMonth()];
 
   return (
+    
     <div className='campaign-container' >
         <div>
             <Navbar/>
+            
         </div>
-        <div className='wrapper-campaign'>
-            <div className='campaign-main' >
+        
+        <div className='wrapper-campaign p-3'>
+        
+            <div className='campaign-main' justifyContent = 'center' >
                 {/* Content */}
-                <div className='campaign-content' >
+                
+                <div className='campaign-content p-3' >
                     <div className='campagin-first' >
+                    <div className="d-block d-lg-none p-3">
+                  <div className="p-3 mobile-view p-3" >
+            <div className="d-flex row gap-2">
+              <div className="box-image">
+              <p className='campagin-title' >{campaign[0]?.title}</p>
+                <span style={{ color: "red", fontSize: "10px", fontWeight: 700 }}>
+                  Tax exempted under section 80G(5)(iii) of Income tax registration No AAICD1894QF20206
+                </span>
+
+              </div>
+
+            {/* Buttons in a row */}
+            <div className="button-row">
+                {/* Button 1 */}
+                <div className="dropdown">
+                  <button className="dropdown-btn">Tax benefit</button>
+                  <div className="dropdown-content" style={{ left: "50%", transform: "translateX(-50%)" }}>
+                    <p>
+                      <strong>Tax Benefits</strong>
+                      <br />
+                      Donations Exempted Under Section 80G & 12A
+                    </p>
+                  </div>
+                </div>
+
+                {/* Button 2 */}
+                <div className="dropdown">
+                  <button className="dropdown-btn" style={{background: "linear-gradient(to right, #ff9900, #ff6a00) #eb9006"}}>Assured</button>
+                  <div className="dropdown-content" style={{ left: "50%", transform: "translateX(-50%)"}}>
+                    
+                    <p>
+                      <strong>Animal Welfare Board Of India</strong>
+                      <br />
+                      Recognized by animal welfare organization
+                    </p>
+                  </div>
+                </div>
+
+                {/* Button 3 */}
+                <div className="dropdown">
+                  <button className="dropdown-btn" style={{background: "linear-gradient(to right, #ff9900, #ff6a00) #eb9006"}}>Verified NGO</button>
+                  <div className="dropdown-content" style={{ left: "50%", transform: "translateX(-50%)" }}>
+                  <p>
+                      <strong>Doon Animal Welfare Foundation</strong>
+                      <br/>Regd. under Section(8)<br/>of the Companies Act-2013.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div className="box-content">
+                <div className="cmn-sidebar bg-white border p-2">
+                  <div className="d-flex align-items-center payment-option">
+                    <div className="container">
+                      <div className="row">
+                        <div className="col-md-4">
+                          <h6
+                            className="text-center glow"
+                            style={{
+                              fontWeight: 700,
+                              borderRadius: "50%",
+                              padding: "15px 5px 25px 5px",
+                              border: "4px solid gray",
+                              borderRight: "4px solid yellow",
+                              borderTop: "4px solid yellow",
+                              marginLeft: "50px",
+                              marginRight: "50px"
+                            }}
+                          >
+                            20% <br />
+                            <span>completed</span>{" "}
+                          </h6>
+                        </div>
+                        <div className="col-md-4">
+                          <h6 className="text-center ps-3" style={{ fontWeight: 700 }}>
+                          {currMonth} {year} <br />
+                            <span>Month</span>
+                          </h6>
+                        </div>
+                        {/* <div className="col-md-3">
+                          {id === "6571c72e00fc94b3a8a81ea5" ? (
+                            <h6 className="text-center ps-2" style={{ fontWeight: 700 }}>
+                              2000 Blanket <br />
+                              <span>Total Required</span>
+                            </h6>
+                          ) : (
+                            <h6 className="text-center ps-3" style={{ fontWeight: 700 }}>
+                              20 Lakh KG <br />
+                              <span>Total Fodder Required</span>
+                            </h6>
+                          )}
+                        </div> */}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+            </div>
+            </div>
                         {/* campagin image */}
-                        <img src={campaign[0]?.imageUrl} width='40%' style={{
+                        <div className='campaign_image'>
+                        <img src={campaign[0]?.imageUrl} width='100%' style={{
                             marginTop:"150px",
-                            alignSelf:"center"
+                            alignSelf:"center",
                         }} />
-                        {/* Campagin Title */}
-                        <p className='campagin-title' >{campaign[0]?.title}</p>
+                        </div>
+
 
                         {/* details */}
                         {/* <div className='cards-campaign' >
@@ -788,11 +907,9 @@ const CampaignDetail = () => {
                               product.map((item,index)=>(
                                 <div className='product-card' key={index} >
                                 {/* Image  */}
-                                <div>
                                     <img src={item.imageUrl} width="100px" height="100px" style={{
                                       borderRadius:"10px"
                                     }} />
-                                </div>
 
                                 <div className='product-info' >
                                   {/* name */}
@@ -843,7 +960,7 @@ const CampaignDetail = () => {
                                  </>
                                 )}
                                 <button
-                                  className="btn btn-outline-secondary btn-lg me-2"
+                                  className="btn btn-outline-secondary btn-sm me-2"
                                   onClick={() => handleQuantityChange(item._id, -1)}
                                   style={{ background:'#ff6a00', fontWeight: '700', fontSize: '20px'}}
                                   
@@ -857,7 +974,7 @@ const CampaignDetail = () => {
                                   readOnly
                                 />
                                 <button
-                                  className="btn btn-outline-secondary btn-lg ms-2"
+                                  className="btn btn-outline-secondary btn-sm ms-2"
                                   onClick={() => handleQuantityChange(item._id, 1)}
                                   style={{ background:'#ff6a00', fontWeight: '700', fontSize: '20px',}}
                                 >
@@ -906,7 +1023,7 @@ const CampaignDetail = () => {
                              </h2>
 
                         {/* video */}
-                        <iframe
+                        <iframe className='top-vid'
                             width="80%"
                             height="400"
                             src="https://www.youtube.com/embed/snuAvoQRN_w"
@@ -927,11 +1044,11 @@ const CampaignDetail = () => {
                             width:"80%",
                             alignSelf:"center"
                           }} >
-                            <p style={{
+                            {/* <p style={{
                               width:"100%",
                               textAlign:"justify",
                             }}
-                            >{campaign[0]?.description}</p>
+                            >{campaign[0]?.description}</p> */}
 
                             {/* image 1 */}
                             <img src={campaignData?.imageUrl1} width='100%' style={{
@@ -1155,24 +1272,29 @@ const CampaignDetail = () => {
                         
                     </div>
                 </div>
-                {/* cart idhar */}
-                <div className='campaign-cart' >
+                <div className='campaign-cart' style={{marginTop:"150px"}} >
+                {/* cart for buying */}
                 <div className="col-md-4">
+                <div className="d-block d-lg-none"> {/* Show on small screens, hide on large screens */}
+      
+    </div>
     {buttonText !== "Donate" && (
+      
   <div className="col-md-4 mt-0 m-0 p-0 px-3 donation-box scrollable-donation-box">
     <div className="p-3 border bg-light" style={{ margin: "2px 40px 0px 20px" }}>
       <div className="d-flex row gap-2">
         <div className="box-image">
-          <span style={{ color: "red", fontSize: "18px", fontWeight: 700 }}>
+        <p className='campagin-title' >{campaign[0]?.title}</p>
+          <span style={{ color: "red", fontSize: "13px", fontWeight: 700 }}>
             Tax exempted under section 80G(5)(iii) of Income tax registration No AAICD1894QF20206
           </span>
-          <br />Hooves in Harmony, Hearts in Devotion: Serving Cows, Our Lifelong Commitment
+
         </div>
 
        {/* Buttons in a row */}
-       <div className="button-row">
+       {/* <div className="button-row"> */}
           {/* Button 1 */}
-          <div className="dropdown">
+          {/* <div className="dropdown">
             <button className="dropdown-btn">Tax benefit</button>
             <div className="dropdown-content" style={{ left: "50%", transform: "translateX(-50%)" }}>
               <p>
@@ -1181,10 +1303,10 @@ const CampaignDetail = () => {
                 Donations Exempted Under Section 80G & 12A
               </p>
             </div>
-          </div>
+          </div> */}
 
           {/* Button 2 */}
-          <div className="dropdown">
+          {/* <div className="dropdown">
             <button className="dropdown-btn" style={{background: "linear-gradient(to right, #ff9900, #ff6a00) #eb9006"}}>Assured</button>
             <div className="dropdown-content" style={{ left: "50%", transform: "translateX(-50%)"}}>
               
@@ -1194,10 +1316,10 @@ const CampaignDetail = () => {
                 Recognized by animal welfare organization
               </p>
             </div>
-          </div>
+          </div> */}
 
           {/* Button 3 */}
-          <div className="dropdown">
+          {/* <div className="dropdown">
             <button className="dropdown-btn" style={{background: "linear-gradient(to right, #ff9900, #ff6a00) #eb9006"}}>Verified NGO</button>
             <div className="dropdown-content" style={{ left: "50%", transform: "translateX(-50%)" }}>
             <p>
@@ -1205,8 +1327,8 @@ const CampaignDetail = () => {
                  <br/>Regd. under Section(8)<br/>of the Companies Act-2013.
               </p>
             </div>
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
 
 
 
@@ -1237,7 +1359,7 @@ const CampaignDetail = () => {
                       <span>Month</span>
                     </h6>
                   </div>
-                  <div className="col-md-4">
+                  {/* <div className="col-md-4">
                     {id === "6571c72e00fc94b3a8a81ea5" ? (
                       <h6 className="text-center ps-2" style={{ fontWeight: 700 }}>
                         2000 Blanket <br />
@@ -1249,20 +1371,20 @@ const CampaignDetail = () => {
                         <span>Total Fodder Required</span>
                       </h6>
                     )}
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
           </div>
           
         </div>
-      </div>
+      {/* </div> */}
     </div>
     {/* Recent Donor Box */}
     <div className={`cart-box px-3 border bg-light ${isCartFixed ? 'fixed-cart-box' : ''}`} 
     style={{ margin: "2px 40px 0px 20px" }}> {/*t R b l*/}
     <p className="fw-bold fs-3">Items Added to Cart</p>
-            <div className="cart-items-container">
+            {/* <div className="cart-items-container">
             <div className="cart-items-list">
               {cartItems.map((item, index) => (
                 <p key={index} style={{fontWeight: 'bold'}}>
@@ -1270,7 +1392,7 @@ const CampaignDetail = () => {
                 </p>
               ))}
             </div>
-          </div>
+          </div> */}
           <div className="">
             {/* Left Column */}
             <div className="">
@@ -1294,7 +1416,8 @@ const CampaignDetail = () => {
                           border:"1px solid orange",
                           padding:"8px 8px",
                           borderRadius:"5px",
-                        }}
+                        }} 
+                        onClick={()=> handleCustomAmountFix(index)}
                          key={index}>
                         <p style={{marginTop:"8px"}} >₹{amount.donationAmount}</p>
                         </div>
@@ -1335,6 +1458,7 @@ const CampaignDetail = () => {
             
 
           </div>
+          
           {buttonText === "Donate" && (
             <button
               className="btn Add to cart mx-3"
@@ -1355,7 +1479,7 @@ const CampaignDetail = () => {
         <div className="donor-item" >
           <ul className="donors" >
             {recentDonors.map((donor, index) => (
-              <div key={index} className="donor-detail" style={{ marginBottom: "-5px", marginLeft:"-30px" ,padding: "5px", borderRadius: "10px", backgroundColor: "rgb(255 204 160)", display: "flex", alignItems: "center" }}>
+              <div key={index} className="donor-detail" style={{ marginBottom: "-5px", marginLeft:"20px" ,padding: "5px", borderRadius: "10px", backgroundColor: "rgb(255 204 160)", display: "flex", alignItems: "center" }}>
                 <div className="donor-img" style={{ marginRight: "10px" }}>
                   <img src={userImg} alt="User Image" loading="lazy" width="50px" style={{ borderRadius: "50%", border: "2px solid #fff" }} />
                 </div>
@@ -1378,10 +1502,24 @@ const CampaignDetail = () => {
   
 )}
 </div>
+
                 </div>
+                {/* <Link className="nav-link" to="/donate" aria-current="page">
+          <div className="container donate-container-mobile py-3 text-center">
+            <button
+              className="btn glow fw-bold"
+              style={{ background: "yellow" }}
+              onClick={handleButtonClick}
+            >
+              Donate Now - ₹{totalCartAmount}
+            </button>    
+          </div>
+        </Link> */}
             </div>
+            
             <Faq/>
         </div>
+        
         <Footer/>
     </div>
   )
