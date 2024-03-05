@@ -105,7 +105,11 @@ body,a,span,p,h1,h2,h3{
       font-size: 14px !important;
     }
     .donate-container-mobile{
-      display: block !important;
+      display: flex !important;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
     }
    nav{
     text-align: center;

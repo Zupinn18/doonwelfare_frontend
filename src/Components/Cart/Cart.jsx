@@ -17,6 +17,10 @@ import qr from "../../assets/new_QrCode.jpeg";
 import FormHelperText from '@mui/material/FormHelperText';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
+import crypto from 'crypto-js';
+import sha256 from 'crypto-js/sha256';
+import hmacSHA512 from 'crypto-js/hmac-sha512';
+import Base64 from 'crypto-js/enc-base64';
 import Footer from  "../Footer/footer";
 import './Cart.css';
 import ThankYou from './ThankYou'; // Import ThankYou component
@@ -430,37 +434,58 @@ const handleRazorpayPayment = async () => {
       email: formData.email, // Use the email from the form
       contact: formData.mobileNumber, // Use the mobile number from the form
       handler: function (response) {
-        console.log("response inside handler is ", response)
-        verifyPayment(response)
+        console.log('succeeded');
+        console.log(response);
+
+        // Most important step to capture and authorize the payment. This can be done of Backend server.
+        const succeeded = crypto.HmacSHA256(`${order.id}|${response.razorpay_payment_id}`, keySecret).toString() === response.razorpay_signature;
+
+        // If successfully authorized. Then we can consider the payment as successful.
+        if (succeeded) {
+          console.log("Payment Completed Successfully");
+          navigate('/thank-you');
+        } else {
+          console.log("Error while completing Payment ");
+        }
         // Validate payment at server - using webhooks is a better idea.
         // alert(response.razorpay_payment_id);
         // alert(response.razorpay_order_id);
         // alert(response.razorpay_signature);
+      },
+      modal: {
+        confirm_close: true, // this is set to true, if we want confirmation when clicked on cross button.
+        // This function is executed when checkout modal is closed
+        // There can be 3 reasons when this modal is closed.
+        ondismiss: async (reason) => {
+          const {
+            reason: paymentReason, field, step, code,
+          } = reason && reason.error ? reason.error : {};
+          // Reason 1 - when payment is cancelled. It can happend when we click cross icon or cancel any payment explicitly. 
+          if (reason === undefined) {
+            console.log('cancelled');
+            // handlePayment('Cancelled');
+          } 
+          // Reason 2 - When modal is auto closed because of time out
+          else if (reason === 'timeout') {
+            console.log('timedout');
+            // handlePayment('timedout');
+          } 
+          // Reason 3 - When payment gets failed.
+          else {
+            console.log('failed');
+          }
+        },
       },
     };
 
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
 
+
+
     // const phoneNo = formData.mobileNumber;
     // await sendWhatsAppNotification(phoneNo);
     //validation check and send whatsapp notifications
-    console.log("response payment id is  ", response.razorpay_payment_id);
-    console.log("response order Id is  ", response.razorpay_order_id);
-    console.log("response signature is  ", response.razorpay_signature);
-
-    // if (response.razorpay_payment_id == 'undefined' ||  response.razorpay_payment_id < 1) {
-    //   // const contact = formData.mobileNumber;
-    //   // await sendWhatsAppNotificationPaymentFailed(contact);
-    //   // history.push('/sorry');
-    //   navigate('/sorry');
-    // } else {
-    //   // const phoneNo = formData.mobileNumber;
-    //   // await sendWhatsAppNotification(phoneNo);
-    //   navigate('/thank-you');
-    // }
-
-    // processRazorpayPayment();
 
   } catch (error) {
     // const contact = formData.mobileNumber;
@@ -470,22 +495,22 @@ const handleRazorpayPayment = async () => {
   }
 };
 
-const verifyPayment = async(response)=>{
-  try {
-    console.log("Verify payment m aaya frontend ");
-    // const phoneNo = formData.mobileNumber;
-    // await sendWhatsAppNotification(phoneNo);
-    const verfiyUrl = "http://localhost:8888/api/verify";
-    const {data} = await axios.post(verfiyUrl, response);
-    navigate('thank-you');
-    console.log("payment verification status is ", data);
-  } catch (error) {
-    //  const contact = formData.mobileNumber;
-    //  await sendWhatsAppNotificationPaymentFailed(contact);
-    navigate('/sorry');
-    console.log(`Error occured while verifying payment`);
-  }
-}
+// const verifyPayment = async(response)=>{
+//   try {
+//     console.log("Verify payment m aaya frontend ");
+//     // const phoneNo = formData.mobileNumber;
+//     // await sendWhatsAppNotification(phoneNo);
+//     const verfiyUrl = "http://localhost:8888/api/verify";
+//     const {data} = await axios.post(verfiyUrl, response);
+//     navigate('thank-you');
+//     console.log("payment verification status is ", data);
+//   } catch (error) {
+//     //  const contact = formData.mobileNumber;
+//     //  await sendWhatsAppNotificationPaymentFailed(contact);
+//     navigate('/sorry');
+//     console.log(`Error occured while verifying payment`);
+//   }
+// }
 
 // const handleSuccessfulPayment = () => {
 //   setPaymentStatus('captured');
@@ -880,7 +905,7 @@ async function sendWhatsAppNotificationPaymentFailed(phoneNo) {
                         value={supportValue}
                         onChange={handleSupportChange}
                       >
-                        <MenuItem value={180}>12% (180)</MenuItem>
+                        <MenuItem value={180} >12% (180)</MenuItem>
                         <MenuItem value={210}>14% (210)</MenuItem>
                         <MenuItem value={240}>16% (240)</MenuItem>
                         {/* <MenuItem value="other">Others</MenuItem> */}
@@ -926,7 +951,7 @@ async function sendWhatsAppNotificationPaymentFailed(phoneNo) {
                         onChange={handleRupeesAmountChange}  
                         onClick={handleNote}
                       />
-                      <div className={`amount-dollar ${note === true ? "show":"not-show" } `}>Min. Donation amount should be Rs 100</div> 
+                      <div className={`amount-dollar ${note === true ? "show":"not-show" } `}>Min. Donation amount should be Rs 200</div> 
                       </div>
                       <TextField
                         id="outlined-basic"
