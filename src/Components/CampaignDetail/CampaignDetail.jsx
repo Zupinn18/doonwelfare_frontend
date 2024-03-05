@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router';
 import './CampaignDetail.css';
 import Faq from '../FAQ/Faq';
 import Navbar from '../Navbar/Navbar';
 import "slick-carousel/slick/slick.css";
+import { Link } from 'react-router-dom';
 import "slick-carousel/slick/slick-theme.css";
 import "../LandingPage/Langing.css";
 import "../LandingPage/Campaign.css";
@@ -448,23 +449,15 @@ const CampaignDetail = () => {
       // Add the new donor to the list of recent donors
       setRecentDonors([...recentDonors, newDonor]);
     };
-    
-    
+
     const handleButtonClick = () => {
       const totalAmount = cartItems.reduce((total, item) => total + item.totalAmount, 0) || totalCartAmount ;
-      alert(`Total Donation Amount: Rs ${totalAmount}`);
-      localStorage.setItem("amount", totalAmount);
-      navigate("/cart"); // Replace "/donation" with the actual path to your donation page
-      setShowQuantityInput(!showQuantityInput);
-      setShowQuantities(!showQuantities);
-      if(totalAmount<100){
-        alert(`Minimum Donation Amount should be Rs. 100  `);
+      if(totalAmount<200){
+        alert(`Minimum Donation Amount should be Rs. 200  `);
       }else{
         alert(`Total Donation Amount: Rs ${totalAmount}`);
         localStorage.setItem("amount", totalAmount);
         navigate("/cart"); // Replace "/donation" with the actual path to your donation page
-        setShowQuantityInput(!showQuantityInput);
-        setShowQuantities(!showQuantities);
       }
     };
     
@@ -600,18 +593,9 @@ const CampaignDetail = () => {
         }
       }
 
-      // const id_camp = window.location.pathname.split('/').at(-1);
-      // //const responseData = product.filter(item => item.campaignId === id_camp).foo;
-      // for(var i=0;i<product.length;i++){
-      //   console.log("capaign id is ", product[i].campaignId);
-      //   if(product[i].campaignId === id_camp ){
-      //     console.log("campaign id of prodcut", id_camp);
-      //     setProductData(product[i]);
-      //   }
-      // }
-      // console.log("response data is ", productdata);
-
-
+        //for current campaign product
+        const id_camp = window.location.pathname.split('/').at(-1);
+        const responseData = product.filter(item => item.campaignId._id === id_camp);
       
       // Landing cart code
       const [list, setList] = useState(0);
@@ -811,7 +795,7 @@ const CampaignDetail = () => {
                             alignSelf:"center",
                         }} />
                         </div>
-                                <div className="col-md-4">
+                                <div className="col-md-4" >
                                   <h6
                                     className="text-center glow"
                                     style={{
@@ -891,7 +875,7 @@ const CampaignDetail = () => {
 
                         {/* products */}
                         <h2
-                          className="text-left-product mb-5"
+                          className="text-left-product mb-5 product-head "
                           style={{
                             fontSize: "30px",
                             fontWeight: "bold",
@@ -907,41 +891,49 @@ const CampaignDetail = () => {
                           }}>Product</span>
 
                              </h2>
-                             <div className='products-section' style={{
-                              marginTop:"-30px"
-                            }}>
-  {
-    product.map((item,index)=>(
-      <div className='product-card' key={index}>
-        {/* Image */}
-        <img src={item.imageUrl} width="100px" height="100px" style={{
-          borderRadius:"10px"
-        }} />
-        <div className='product-info'>
-          {/* name */}
-          <p className='product-name'>
-            {item.name}
-          </p>
-          <div className='product-price'>
-            {/* price */}
-            <p style={{
-              fontWeight:"700",
-            }}>
-              ₹{item.amount}/unit
-            </p>
-            {/* button add */}
-            <div className='product-btn'>
-              {(!customAmounts[item._id] && campaignQuantities[item._id] === undefined) && (
-                <>
-                  <button
-                    className="product-btn-change btn btn-outline-secondary btn-sm "
-                    onClick={() => handleQuantityChange(item._id, 1)}
-                    style={{width: '150px', background:'#ff6a00', color: 'white', fontWeight: '700', fontSize: '20px'}}
-                  >
-                    ADD +
-                  </button>
-                </>
-              )}
+                        <div className='products-section' style={{
+                          marginTop:"-30px"
+                        }} > 
+
+                             {
+                              responseData.map((item,index)=>(
+                                <div className='product-card' key={index} >
+                                {/* Image  */}
+                                    <img src={item.imageUrl} className='product-img' width="100px" height="100px" style={{
+                                      borderRadius:"10px"
+                                    }} />
+
+                                <div className='product-info' >
+                                  {/* name */}
+                                  <p className='product-name' >
+                                    {item.name}
+                                  </p>
+
+                                  {/* <p className='product-description' >
+                                    {item.description}
+                                  </p> */}
+
+                                  <div className='product-price' >
+                                    {/* price */}
+                                    <p style={{
+                                      fontWeight:"700",
+                                    }}
+                                    >₹{item.amount}/unit</p>
+
+                                    {/* button add */}
+                                    {/* <button className='product-btn' >ADD +</button> */}
+                                    <div className='product-btn' >
+                                    {(!customAmounts[item._id] && campaignQuantities[item._id] === undefined) && (
+                          <>
+                            <button
+                              className="btn btn-outline-secondary btn-sm "
+                              onClick={() => handleQuantityChange(item._id, 1)}
+                            style={{width: '150px', background:'#ff6a00', color: 'white', fontWeight: '700', fontSize: '20px'}}
+                            >
+                              ADD +
+                            </button>
+                          </>
+                                )}
 
               {!customAmounts[item._id] && campaignQuantities[item._id] !== undefined && (
                 <>
@@ -1274,7 +1266,8 @@ const CampaignDetail = () => {
                 <div className="d-block d-lg-none"> {/* Show on small screens, hide on large screens */}
       
     </div>
-    {buttonText !== "Donate" && (
+    <>
+    {  buttonText !== "Donate" && (
       
   <div className="col-md-4 mt-0 m-0 p-0 px-3 donation-box scrollable-donation-box">
     <div className="p-3 border bg-light" style={{ margin: "2px 40px 0px 20px" }}>
@@ -1496,20 +1489,29 @@ const CampaignDetail = () => {
       </div>
       
   </div>
-
-
-</div>
-                )}
+  
+)}
+</div>)}</>
+ <Link className="nav-link" to="/donate" aria-current="page">
+          <div className="container donate-container-mobile py-3 text-center">
+            <button
+              className="btn glow fw-bold"
+              style={{ background: "yellow" }}
+              onClick={handleButtonClick}
+            >
+              Donate Now - ₹{totalCartAmount}
+            </button>    
+          </div>
+        </Link>
+              </div>
             </div>
             
             <Faq/>
         </div>
-        
+        </div>
         <Footer/>
     </div>
-    </div>
-    </div>
-  );
-};
+  )
+}
 
-export default CampaignDetail;
+export default CampaignDetail
