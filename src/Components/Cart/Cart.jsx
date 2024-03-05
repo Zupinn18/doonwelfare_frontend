@@ -463,19 +463,16 @@ const handleRazorpayPayment = async () => {
           // Reason 1 - when payment is cancelled. It can happend when we click cross icon or cancel any payment explicitly. 
           if (reason === undefined) {
             console.log('cancelled');
-            navigate('/sorry');
             // handlePayment('Cancelled');
           } 
           // Reason 2 - When modal is auto closed because of time out
           else if (reason === 'timeout') {
             console.log('timedout');
-            navigate('/sorry');
             // handlePayment('timedout');
           } 
           // Reason 3 - When payment gets failed.
           else {
             console.log('failed');
-            navigate('/sorry');
           }
         },
       },
@@ -908,7 +905,7 @@ async function sendWhatsAppNotificationPaymentFailed(phoneNo) {
                         value={supportValue}
                         onChange={handleSupportChange}
                       >
-                        <MenuItem value={180}>12% (180)</MenuItem>
+                        <MenuItem value={180} >12% (180)</MenuItem>
                         <MenuItem value={210}>14% (210)</MenuItem>
                         <MenuItem value={240}>16% (240)</MenuItem>
                         {/* <MenuItem value="other">Others</MenuItem> */}
@@ -954,7 +951,7 @@ async function sendWhatsAppNotificationPaymentFailed(phoneNo) {
                         onChange={handleRupeesAmountChange}  
                         onClick={handleNote}
                       />
-                      <div className={`amount-dollar ${note === true ? "show":"not-show" } `}>Min. Donation amount should be Rs 100</div> 
+                      <div className={`amount-dollar ${note === true ? "show":"not-show" } `}>Min. Donation amount should be Rs 200</div> 
                       </div>
                       <TextField
                         id="outlined-basic"
