@@ -1419,7 +1419,7 @@ const CampaignDetail = () => {
                               className="form-control form-control-lg text-center me-2 ip "
                               placeholder="Enter custom Amount"
                               onChange={(e) => handleCustomAmount(parseInt(e.target.value, 10) || 0)}
-                              style={{ width: '100%', fontSize:'20px',color: 'balck' }}
+                              style={{ width: '100%', fontSize:'20px',color: 'black' }}
                             />
                            </>  
               }
@@ -1489,11 +1489,17 @@ const CampaignDetail = () => {
       </div>
       
   </div>
-  
-)}
-</div>)}</>
- <Link className="nav-link" to="/donate" aria-current="page">
+</div>
+)}</>
           <div className="container donate-container-mobile py-3 text-center">
+           <><input
+                              type="number"
+                              className="form-control form-control-lg text-center me-2 ip "
+                              placeholder="Enter custom Amount"
+                              onChange={(e) => handleCustomAmount(parseInt(e.target.value, 10) || 0)}
+                              style={{ width: '80%', fontSize:'14px',color: 'black', }}
+                            /></>
+            <Link className="nav-link" to="/donate" aria-current="page">
             <button
               className="btn glow fw-bold"
               style={{ background: "yellow" }}
@@ -1501,8 +1507,8 @@ const CampaignDetail = () => {
             >
               Donate Now - ₹{totalCartAmount}
             </button>    
+            </Link>
           </div>
-        </Link>
               </div>
             </div>
             
