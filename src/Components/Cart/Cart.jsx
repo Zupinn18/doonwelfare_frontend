@@ -70,7 +70,7 @@ const Cart = () => {
   const [token,setToken] = useState('');
   const [note, setNote] = useState(false);
   const [payments, setPayments] = useState([]);
-  const [supportValue, setSupportValue] = useState(180); // Default value for support
+  const [supportValue, setSupportValue] = useState(0); // Default value for support
   const [customAmount, setCustomAmount] = useState('');
 
   const handleSupportChange = (event) => {
@@ -880,10 +880,10 @@ async function sendWhatsAppNotificationPaymentFailed(phoneNo) {
                         value={supportValue}
                         onChange={handleSupportChange}
                       >
-                        <MenuItem value={360}>12% (180)</MenuItem>
-                        <MenuItem value={390}>14% (210)</MenuItem>
-                        <MenuItem value={420}>16% (240)</MenuItem>
-                        <MenuItem value="other">Others</MenuItem>
+                        <MenuItem value={180}>12% (180)</MenuItem>
+                        <MenuItem value={210}>14% (210)</MenuItem>
+                        <MenuItem value={240}>16% (240)</MenuItem>
+                        {/* <MenuItem value="other">Others</MenuItem> */}
                       </Select>
                       {supportValue === "other" && (
                         <TextField
@@ -923,7 +923,7 @@ async function sendWhatsAppNotificationPaymentFailed(phoneNo) {
                         type="number"
                         name="amount"
                         value={amountInRupees}
-                        onChange={handleRupeesAmountChange} 
+                        onChange={handleRupeesAmountChange}  
                         onClick={handleNote}
                       />
                       <div className={`amount-dollar ${note === true ? "show":"not-show" } `}>Min. Donation amount should be Rs 100</div> 
