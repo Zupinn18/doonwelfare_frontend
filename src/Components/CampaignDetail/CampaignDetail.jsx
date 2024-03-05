@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate, useParams } from 'react-router';
+import { Link, useNavigate, useParams } from "react-router-dom";
 import './CampaignDetail.css';
 import Faq from '../FAQ/Faq';
 import Navbar from '../Navbar/Navbar';
 import "slick-carousel/slick/slick.css";
-import { Link } from 'react-router-dom';
 import "slick-carousel/slick/slick-theme.css";
 import "../LandingPage/Langing.css";
 import "../LandingPage/Campaign.css";
@@ -509,9 +508,9 @@ const CampaignDetail = () => {
         setCartItems(updatedCartItems);
       }, [campaignQuantities, customAmounts, featuredCampaigns]);
 
-      useEffect(()=>{
-        setTotalCartAmount(customRupees);
-      },[customRupees, totalCartAmount]);
+      // useEffect(()=>{
+      //   setTotalCartAmount(customRupees);
+      // },[customRupees, totalCartAmount]);
      
       useEffect(() => {
         const handleScroll = () => {
@@ -738,7 +737,7 @@ const CampaignDetail = () => {
                     <div className="d-flex row gap-2">
                       <div className="box-image">
                       <p className='campagin-title' >{campaign[0]?.title}</p>
-                        <span style={{ color: "red", fontSize: "10px", fontWeight: 700 }}>
+                        <span style={{ color: "red", fontSize: "10px", fontWeight: 700, textAlign: "center" }}>
                           Tax exempted under section 80G(5)(iii) of Income tax registration No AAICD1894QF20206
                         </span>
 
@@ -786,7 +785,7 @@ const CampaignDetail = () => {
 
 
                       <div className="box-content">
-                        <div className="cmn-sidebar bg-white border p-2">
+                        <div className="cmn-sidebar bg-white p-2">
                           <div className="d-flex align-items-center payment-option">
                             <div className="container">
                               <div className="row">
@@ -843,7 +842,7 @@ const CampaignDetail = () => {
                 </div>
                 <div className='campaign-content p-3' >
                   
-                    <div className='campagin-first' style={{ display: 'block' }} >
+                    <div className='campagin-first'>
                             
                         {/* campagin image */}
                         <div className='campaign_image' >
@@ -1489,11 +1488,12 @@ const CampaignDetail = () => {
       </div>
       
   </div>
-  
+  </div>
 )}
-</div>)}</>
- <Link className="nav-link" to="/donate" aria-current="page">
-          <div className="container donate-container-mobile py-3 text-center">
+
+</>
+ <Link className="nav-link" to="/donate" aria-current="page" justifyContent="center">
+          <div className="container donate-container-mobile p-3 text-center" style={{marginLeft:"-16px"}}>
             <button
               className="btn glow fw-bold"
               style={{ background: "yellow" }}
@@ -1511,7 +1511,6 @@ const CampaignDetail = () => {
         </div>
         <Footer/>
     </div>
-  )
-}
-
-export default CampaignDetail
+  );
+};
+export default CampaignDetail;
