@@ -57,6 +57,11 @@ body,a,span,p,h1,h2,h3{
     color: black;
 } */
 
+.campagin-title{
+        font-weight: bold;
+        font-size: 24px;
+}
+
 
 /* donation box */
 .scrollable-donation-box2 {
@@ -149,6 +154,7 @@ body,a,span,p,h1,h2,h3{
     gap: 5px;
     align-items: center;
     justify-content: start;
+    margin-top: -10px;
 }
 
 .product-name{
@@ -189,7 +195,7 @@ body,a,span,p,h1,h2,h3{
         
     }
     .mobile-view {
-        position: absolute !important;
+        position: relative !important;
         top: 100px;
         left: 0;
         z-index: 1; /* Adjust z-index as needed */
@@ -197,6 +203,13 @@ body,a,span,p,h1,h2,h3{
         /* padding: 10px; Adjust padding as needed */
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
       }
+      
+      
+      .mobile-view .span{
+        text-align: center !important;
+      }
+
+
     .campaign-content{
         width: auto;
     }
@@ -211,8 +224,14 @@ body,a,span,p,h1,h2,h3{
         color: black;
     }
     .text-left-product{
-        margin-top: 650px !important;
         margin-bottom: 10px !important;
+    }
+    .product-head{
+        margin-top: 100px !important;
+    }
+    .product-img{
+        width: 50px;
+        height: 50px;
     }
 
     .products-section {
@@ -222,8 +241,12 @@ body,a,span,p,h1,h2,h3{
     margin-top: 20px !important;
   }
 
+  .product-price{
+    margin-top: -10px;
+  }
 
   .product-card {
+    width: 100%;
     margin-bottom: 20px; /* Adjust spacing between items */
     gap: 3px;
   }
@@ -238,7 +261,7 @@ body,a,span,p,h1,h2,h3{
       }
       .product-btn {
         display: flex;
-        width: 50%;
+        width: 70%;
         font-size: 15px;
     
     }
