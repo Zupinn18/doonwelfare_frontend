@@ -74,7 +74,80 @@ const Cart = () => {
   const [token,setToken] = useState('');
   const [note, setNote] = useState(false);
   const [payments, setPayments] = useState([]);
+  const [supportValue, setSupportValue] = useState(180); // Default value for support
+  const [customAmount, setCustomAmount] = useState('');
 
+  const handleSupportChange = (event) => {
+    const selectedValue = event.target.value;
+  
+    if (selectedValue === "other") {
+      // If the selected value is "Other", set the custom amount
+      setSupportValue(selectedValue);
+      // No need to clear custom amount here, as we want to add it to the existing amount
+      return;
+    }
+  
+    // Convert the newly selected support value to a number
+    const supportAmount = parseFloat(selectedValue);
+  
+    // Update the support value directly to the newly selected value
+    setSupportValue(selectedValue);
+  
+    // If custom amount is set, include it in the calculation
+    let updatedAmount = parseFloat(amountInRupees);
+    if (customAmount !== "") {
+      updatedAmount += parseFloat(customAmount);
+    }
+  
+    // Update the amount with the sum of the previous amount and the new support value
+    updatedAmount -= parseFloat(supportValue);
+    updatedAmount += supportAmount;
+    setAmountInRupees(updatedAmount.toFixed(2));
+  };
+  
+  
+  const handleCustomAmountChange = (event) => {
+    const customAmountValue = event.target.value;
+    setCustomAmount(customAmountValue);
+  
+    // Convert the custom amount to a number
+    const customAmountNumber = parseFloat(customAmountValue);
+  
+    // Calculate the updated amount by adding the custom amount to the support value
+    let updatedAmount = customAmountNumber + parseFloat(supportValue);
+  
+    // If custom amount is set, include it in the calculation
+    if (supportValue !== "other") {
+      updatedAmount -= parseFloat(supportValue);
+    }
+    
+    // Update the amount with the sum of the custom amount and the support value
+    setAmountInRupees(updatedAmount.toFixed(2));
+  };
+  
+  
+  
+  
+
+  
+    
+  // const handleSupportChange = (event) => {
+  //   const selectedValue = event.target.value;
+    
+  //   if (selectedValue === "other") {
+  //     // If the selected value is "Other", set the custom amount
+  //     setSupportValue(selectedValue);
+  //   } else {
+  //     // If the selected value is not "Other", calculate the new total amount
+  //     let newAmount = parseFloat(amountInRupees);
+  //     let supportAmount = parseFloat(selectedValue);
+  //     let updatedAmount = newAmount + supportAmount;
+      
+  //     // Update the amount with the new total
+  //     setAmountInRupees(updatedAmount.toFixed(2));
+  //   }
+  // };
+  
   const handleNote = () => {
     if(note==false){
       setNote(true);
@@ -116,6 +189,7 @@ const Cart = () => {
   //   }
   // }
 
+  
 const makePayment = (txnToken) => {
   var config = {
       "root":"",
@@ -186,22 +260,16 @@ function notifyMerchant(eventName,data){
 //   }
 }
   
-  const handleRupeesAmountChange = (e) => {
-    const { value } = e.target;
-    setAmountInRupees(value);
-    
-    const newOrderId = uuidv4();
-    setOrderId(newOrderId);
-    // Calculate and update the corresponding Dollar amount
-    const rupeesAmount = parseFloat(value);
-    const exchangeRate = 75; // Exchange rate from Rupees to Dollars
-    setAmountInDollars((rupeesAmount / exchangeRate).toFixed(2)); // Fixed to 2 decimal places
-  };
- // Default to Indian Rupee
-const handleDollarAmountChange = (e) => {
-  const { name, value } = e.target;
-  setDollarFormData({ ...dollarFormData, [name]: value });
+const handleRupeesAmountChange = (e) => {
+  const { value } = e.target;
+  setAmountInRupees(value);
+  
+  // Calculate the corresponding Dollar amount
+  const rupeesAmount = parseFloat(value);
+  const exchangeRate = 75; // Exchange rate from Rupees to Dollars
+  setAmountInDollars((rupeesAmount / exchangeRate).toFixed(2)); // Fixed to 2 decimal places
 };
+
 
 // Handle submission of the dollar amount form
 const handleDollarAmountSubmit = (e) => {
@@ -831,7 +899,33 @@ async function sendWhatsAppNotificationPaymentFailed(phoneNo) {
                     </p>
                     <p></p>
                   </div>
-
+                  <div className="d-flex justify-content-between align-items-center mt-3">
+                    <p className="fw-bold">Support us by:</p>
+                    <div>
+                      <Select
+                        labelId="support-dropdown-label"
+                        id="support-dropdown"
+                        value={supportValue}
+                        onChange={handleSupportChange}
+                      >
+                        <MenuItem value={360}>12% (180)</MenuItem>
+                        <MenuItem value={390}>14% (210)</MenuItem>
+                        <MenuItem value={420}>16% (240)</MenuItem>
+                        <MenuItem value="other">Others</MenuItem>
+                      </Select>
+                      {supportValue === "other" && (
+                        <TextField
+                          id="outlined-basic"
+                          label="Custom Amount"
+                          variant="outlined"
+                          type="number"
+                          value={customAmount}
+                          onChange={handleCustomAmountChange}
+                          className="ml-2"
+                        />
+                      )}
+                    </div>
+                  </div>
                   <form onSubmit={handleSubmit}>
                     <FormControl fullWidth className="mt-3">
                       <InputLabel id="donation-type-label">

@@ -203,6 +203,13 @@ body,a,span,p,h1,h2,h3{
         /* padding: 10px; Adjust padding as needed */
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
       }
+      
+      
+      .mobile-view .span{
+        text-align: center !important;
+      }
+
+
     .campaign-content{
         width: auto;
     }
