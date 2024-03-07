@@ -21,9 +21,28 @@
     margin: 20px 0; /* Add spacing above and below the line */
   }
 
+  .info-main{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 50px;
+  }
+
   @media (max-width: 767px) {
     .content-container{
         padding: 0px !important;
       }
-  
+    .info-main{
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px !important;
+    }
+    .info-card{
+      width: 100% !important ;
+    }
+    .info-card p{
+      font-size: 12px !important;
+    }
 }

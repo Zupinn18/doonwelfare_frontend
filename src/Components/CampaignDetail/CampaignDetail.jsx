@@ -1413,13 +1413,16 @@ const CampaignDetail = () => {
                       ))
                     }
                     </div>
-                           <input
+                           <input 
                               type="number"
                               className="form-control form-control-lg text-center me-2 ip "
                               placeholder="Enter custom Amount"
+                              onClick={handleNote}
                               onChange={(e) => handleCustomAmount(parseInt(e.target.value, 10) || 0)}
                               style={{ width: '100%', fontSize:'20px',color: 'black' }}
                             />
+                            <div className={`amount-note ${note === true ? "show":"not-show" } `}
+                                  >Minimum Donation amount should be Rs. 200</div> 
                            </>  
               }
               <button
