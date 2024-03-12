@@ -661,7 +661,7 @@ const CampaignDetail = () => {
           const totalAmount = customAmounts[campaign._id] || quantity * campaign.amount;
           return {
             campaignName: campaign.title,
-            quantity,
+            quantity, 
             totalAmount,
           };
         });
@@ -845,7 +845,7 @@ const CampaignDetail = () => {
                     <div className='campagin-first'>
                             
                         {/* campagin image */}
-                        <div className='campaign_image' >
+                        <div className='campaign_image p-5' >
                           <img src={campaign[0]?.imageUrl} width='100%' style={{
                               marginTop: "100px",
                               alignSelf: "center",
@@ -1022,9 +1022,9 @@ const CampaignDetail = () => {
                             }}
                           ></iframe>
 
-                         <div style={{alignSelf:"center"}} >
+                         {/* <div style={{alignSelf:"center"}} >
                               <img src={paytm} alt="QR Code" style={{ width: '200px', height: '200px', marginLeft:"10px", marginTop: "20px" }} />
-                        </div>
+                        </div> */}
 
                           {/* content-text */}
                           <div className='campagin-text' style={{

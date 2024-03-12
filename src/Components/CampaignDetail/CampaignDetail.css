@@ -188,22 +188,6 @@ body,a,span,p,h1,h2,h3{
     flex-direction: column;
 }
 
-.amount-note{
-    margin: 15px;
-    text-align: center;
-    font-size: 14px;
-    color: red;
-    font-weight: 500;
-  }
-
-  .show{
-    display: block;
-  }
-
-  .not-show{
-    display: none;
-  }
-
 @media (max-width: 768px) {
     
     .campaign-main{
@@ -221,10 +205,6 @@ body,a,span,p,h1,h2,h3{
       }
       
       
-      .mobile-view .span{
-        text-align: center !important;
-      }
-
 
     .campaign-content{
         width: auto;

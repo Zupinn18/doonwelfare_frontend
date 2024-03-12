@@ -499,7 +499,7 @@ const handleButtonClick = () => {
     setCartItems(updatedCartItems);
   }, [campaignQuantities, customAmounts, featuredCampaigns]);
 
-
+  
 
  
   useEffect(() => {

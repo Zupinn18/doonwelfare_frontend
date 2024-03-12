@@ -102,6 +102,13 @@ const Cart = () => {
     //   updatedAmount += parseFloat(customAmount);
     // }
 
+    if(selectedValue === 0){
+      const tip = parseFloat(total) + parseFloat(total*(0/100));
+      setSupportValue(0);
+      setValue1(tip.toFixed(2));
+      setAmountInRupees(tip.toFixed(2));
+      return;
+    }
 
     if(selectedValue === 180){
       const tip = parseFloat(total) + parseFloat(total*(12/100));
@@ -933,6 +940,7 @@ async function sendWhatsAppNotificationPaymentFailed(phoneNo) {
                         value={supportValue}
                         onChange={handleSupportChange}
                       >
+                        <MenuItem value={0} >0% {`${value1 ? `(${value1})` : `(${parseFloat(total) + parseFloat(total*(0/100))})`}`}</MenuItem>
                         <MenuItem value={180} >12% {`${value1 ? `(${value1})` : `(${parseFloat(total) + parseFloat(total*(12/100))})`}`}</MenuItem>
                         <MenuItem value={210}>14% {`${value2 ? `(${value2})` : `(${parseFloat(total) + parseFloat(total*(14/100))})`}`}</MenuItem>
                         <MenuItem value={240}>16% {`${value3 ? `(${value3})` : `(${parseFloat(total) + parseFloat(total*(16/100))})`}`}</MenuItem>

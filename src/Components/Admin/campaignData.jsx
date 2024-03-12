@@ -213,13 +213,13 @@ const campaignData = () => {
 
   const handleUpdateData = async (itemId) => {
     try {
-
-      if(!uploadedImage1 || !uploadedImage2 || !uploadedImage3 || !itemData.description1 
-        || !itemData.description2 || !itemData.description3 ){
-          toast.warning("All fields are mandatory, TRY AGAIN", {
-            position: toast.POSITION.TOP_RIGHT,
-          });
+      if (!uploadedImage1 || !uploadedImage2 || !uploadedImage3 || !itemData.description1 || !itemData.description2 || !itemData.description3) {
+        toast.warning("All fields are mandatory, TRY AGAIN", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+        return;
       }
+  
       const updateDataObject = {
         imageUrl1: uploadedImage1,
         imageUrl2: uploadedImage2,
@@ -228,21 +228,24 @@ const campaignData = () => {
         description2: itemData.description2,
         description3: itemData.description3,
         campaignId: selectedCampaignId,
-    };
-
+      };
+  
       const response = await axios.put(
-
-        `https://ngo-node.onrender.com/api/campaign_data/${itemId}`, updateDataObject);
-        
-
-
+        `https://ngo-node.onrender.com/api/campaign_data/${itemId}`,
+        updateDataObject
+      );
+  
       // Check if the request was successful
       if (response.status === 200) {
         toast.success("Campaign Data Updated successfully", {
           position: toast.POSITION.TOP_RIGHT,
         });
+  
+        // Update the item in the state with the new data
         setItems((prevItems) =>
-          prevItems.filter((item) => item._id !== itemId)
+          prevItems.map((item) =>
+            item._id === itemId ? { ...item, ...updateDataObject } : item
+          )
         );
       } else {
         console.error("Failed to Update Campaign Data :", response.data);
@@ -251,28 +254,32 @@ const campaignData = () => {
       console.error("Error updating Item:", error);
     }
   };
-
-  const handleDeleteData = async (itemId) => {
+  
+  
+  
+  
+  const handleDeleteData = async (Id) => {
     try {
       const response = await axios.delete(
-
-        `https://ngo-node.onrender.com/api/campaign_data/${itemId}`);
-        
+        `https://ngo-node.onrender.com/api/campaign_data/${Id}`
+      );
+  
       // Check if the request was successful
       if (response.status === 200) {
         toast.success("Campaign Data Deleted successfully", {
           position: toast.POSITION.TOP_RIGHT,
         });
-        setItems((prevItems) =>
-          prevItems.filter((item) => item._id !== itemId)
-        );
+        // Remove the deleted item from the local state
+        setItems((prevItems) => prevItems.filter((item) => item._id !== Id));
       } else {
         console.error("Failed to delete Campaign Data :", response.data);
       }
     } catch (error) {
-      console.error("Error delete Item:", error);
+      console.error("Error deleting item:", error);
     }
   };
+  
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
