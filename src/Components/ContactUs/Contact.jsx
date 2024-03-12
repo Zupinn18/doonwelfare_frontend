@@ -1,6 +1,27 @@
 import React, { useState,useEffect } from "react";
 import Footer from "../Footer/footer";
 import "./contact.css"; // Import a CSS file for styling
+import Phone from "../../assets/phone.png";
+import Mail from "../../assets/mail.png";
+import Location from "../../assets/location.png";
+
+const infoData = [
+  {
+    image:`${Phone}`,
+    title:"Helpline Number",
+    desc:"+917900273333, +917900283333"
+  },
+  {
+    image:`${Mail}`,
+    title:"Email Us",
+    desc:"doonanimalwelfarefoundation@gmail.com"
+  },
+  {
+    image:`${Location}`,
+    title:"Address",
+    desc:"Shimla by pass road gram hasanpur dehradun near shivalik college.(248011) "
+  }
+]
 
 const Contact=()=> {
   useEffect(() => {
@@ -91,17 +112,40 @@ const Contact=()=> {
         <button className="btn text-light fw-bold glow my-3" type="submit" style={{background:"orange"}}>Submit</button>
         
       </form>
-      <h3 className="fw-bold mt-3 text-center horizontal-line">Location</h3>
+      <h3 className="fw-bold mt-3 text-center horizontal-line"></h3>
       <div className="container">
      
       <div className="row">
-     
+          <div className="info-main" >
+              {
+                infoData.map((item,index)=>(
+                  <div key={index} className="info-card" style={{
+                    background:"white",
+                    borderRadius:"10px",
+                    padding:"12px 18px",
+                    width:"30%",
+                    display:"flex",
+                    flexDirection:"column",
+                    alignItems:"center",
+                    gap:"2px"
+                  }} >
+                      <img src={item.image} width="60px" height="60px" />
+                      <p  style={{
+                        fontSize:"18px",
+                        fontWeight:"bold"
+                      }}
+                      >{item.title }</p>
+                      <p>{item.desc}</p>
+                  </div>
+                ))
+              }
+          </div>
        
-                    <div className="col-12 col-md-6 fw-bold fs-5 text-center mx-auto">
+                    {/* <div className="col-12 col-md-6 fw-bold fs-5 text-center mx-auto">
                     <p>Gaushala Shimla Bypass Road,<br/>
             Gram Hinduwala Sabhawala,</p>
-            <p>Dehradun - 248197</p>
-        </div>
+            <p>Dehradun - 248197</p> */}
+        {/* </div> */}
       </div>
     </div>
     </div>

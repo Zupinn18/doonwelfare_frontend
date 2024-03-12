@@ -20,7 +20,7 @@ import { v4 as uuidv4 } from 'uuid';
 import crypto from 'crypto-js';
 import sha256 from 'crypto-js/sha256';
 import hmacSHA512 from 'crypto-js/hmac-sha512';
-import Base64 from 'crypto-js/enc-base64';
+import Base64, { parse } from 'crypto-js/enc-base64';
 import Footer from  "../Footer/footer";
 import './Cart.css';
 import ThankYou from './ThankYou'; // Import ThankYou component
@@ -76,10 +76,14 @@ const Cart = () => {
   const [payments, setPayments] = useState([]);
   const [supportValue, setSupportValue] = useState(0); // Default value for support
   const [customAmount, setCustomAmount] = useState('');
+  const [value1,setValue1] = useState('');
+  const [value2,setValue2] = useState('');
+  const [value3,setValue3] = useState('');
+  const [total, setTotal] = useState(0);
 
   const handleSupportChange = (event) => {
     const selectedValue = event.target.value;
-  
+
     if (selectedValue === "other") {
       // If the selected value is "Other", set the custom amount
       setSupportValue(selectedValue);
@@ -87,22 +91,54 @@ const Cart = () => {
       return;
     }
   
-    // Convert the newly selected support value to a number
-    const supportAmount = parseFloat(selectedValue);
+    // // Convert the newly selected support value to a number
+    // const supportAmount = parseFloat(selectedValue);
+    // // Update the support value directly to the newly selected value
+    // setSupportValue(selectedValue);
   
-    // Update the support value directly to the newly selected value
-    setSupportValue(selectedValue);
-  
-    // If custom amount is set, include it in the calculation
-    let updatedAmount = parseFloat(amountInRupees);
-    if (customAmount !== "") {
-      updatedAmount += parseFloat(customAmount);
+    
+    // let updatedAmount = parseFloat(amountInRupees);
+    // if (customAmount !== "") {
+    //   updatedAmount += parseFloat(customAmount);
+    // }
+
+    if(selectedValue === 0){
+      const tip = parseFloat(total) + parseFloat(total*(0/100));
+      setSupportValue(0);
+      setValue1(tip.toFixed(2));
+      setAmountInRupees(tip.toFixed(2));
+      return;
+    }
+
+    if(selectedValue === 180){
+      const tip = parseFloat(total) + parseFloat(total*(12/100));
+      setSupportValue(180);
+      setValue1(tip.toFixed(2));
+      setAmountInRupees(tip.toFixed(2));
+      return;
+    }
+
+    if(selectedValue === 210){
+      const tip = parseFloat(total) + parseFloat(total*(14/100));
+      setSupportValue(210);
+      setValue2(tip.toFixed(2));
+      setAmountInRupees(tip.toFixed(2));
+      return;
+    }
+
+    if(selectedValue === 240){
+      const tip = parseFloat(total) + parseFloat(total*(16/100));
+      setSupportValue(240);
+      setValue3(tip.toFixed(2));
+      setAmountInRupees(tip.toFixed(2));
+      return;
     }
   
     // Update the amount with the sum of the previous amount and the new support value
-    updatedAmount -= parseFloat(supportValue);
-    updatedAmount += supportAmount;
-    setAmountInRupees(updatedAmount.toFixed(2));
+    //updatedAmount -= parseFloat(supportValue);
+    // updatedAmount += parseFloat(val);
+    // console.log("updated amount is ",updatedAmount);
+    // setAmountInRupees(updatedAmount.toFixed(2));
   };
   
   
@@ -124,12 +160,6 @@ const Cart = () => {
     // Update the amount with the sum of the custom amount and the support value
     setAmountInRupees(updatedAmount.toFixed(2));
   };
-  
-  
-  
-  
-
-  
     
   // const handleSupportChange = (event) => {
   //   const selectedValue = event.target.value;
@@ -147,6 +177,10 @@ const Cart = () => {
   //     setAmountInRupees(updatedAmount.toFixed(2));
   //   }
   // };
+
+  useState(()=>{
+    setSupportValue(180);
+  },[])
   
   const handleNote = () => {
     if(note==false){
@@ -166,8 +200,9 @@ const Cart = () => {
     // Check if 'amountFromStorage' is not null or undefined
     if (amountFromStorage !== null && amountFromStorage !== undefined) {
       // Set the 'amountInRupees' with the value from localStorage
-      setAmountInRupees(amountFromStorage);
-      
+      const tipMoney = parseFloat(amountFromStorage) + parseFloat(amountFromStorage*(12/100));
+      setAmountInRupees(parseFloat(tipMoney));
+      setTotal(amountFromStorage);
       // Calculate the 'amountInDollars' based on the Rupees amount
       const rupeesAmount = parseFloat(amountFromStorage);
       const exchangeRate = 75; // Exchange rate from Rupees to Dollars
@@ -188,7 +223,6 @@ const Cart = () => {
   //     console.error('Error calling API after successful transaction:', error);
   //   }
   // }
-
   
 const makePayment = (txnToken) => {
   var config = {
@@ -361,8 +395,8 @@ const handleDollarAmountSubmit = (e) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // You can handle form submission here
-    if(amountInRupees<100 || amountInDollars<1){
-      alert("Min. Donation amount should be Rs 100 or 1$ ");
+    if(amountInRupees<200 || amountInDollars<2){
+      alert("Min. Donation amount should be Rs 200 or 1$ ");
     }else{
       // Move to the next step
       if (currentStep < 2) {
@@ -436,17 +470,18 @@ const handleRazorpayPayment = async () => {
       handler: function (response) {
         console.log('succeeded');
         console.log(response);
+        navigate('/thank-you');
 
         // Most important step to capture and authorize the payment. This can be done of Backend server.
-        const succeeded = crypto.HmacSHA256(`${order.id}|${response.razorpay_payment_id}`, keySecret).toString() === response.razorpay_signature;
+        // const succeeded = crypto.HmacSHA256(`${order.id}|${response.razorpay_payment_id}`, keySecret).toString() === response.razorpay_signature;
 
-        // If successfully authorized. Then we can consider the payment as successful.
-        if (succeeded) {
-          console.log("Payment Completed Successfully");
-          navigate('/thank-you');
-        } else {
-          console.log("Error while completing Payment ");
-        }
+        // // If successfully authorized. Then we can consider the payment as successful.
+        // if (succeeded) {
+        //   console.log("Payment Completed Successfully");
+        //   navigate('/thank-you');
+        // } else {
+        //   console.log("Error while completing Payment ");
+        // }
         // Validate payment at server - using webhooks is a better idea.
         // alert(response.razorpay_payment_id);
         // alert(response.razorpay_order_id);
@@ -896,7 +931,7 @@ async function sendWhatsAppNotificationPaymentFailed(phoneNo) {
                     </p>
                     <p></p>
                   </div>
-                  <div className="d-flex justify-content-between align-items-center mt-3">
+                  <div className="d-flex justify-content-between align-items-center mt-3" >
                     <p className="fw-bold">Support us by:</p>
                     <div>
                       <Select
@@ -905,9 +940,10 @@ async function sendWhatsAppNotificationPaymentFailed(phoneNo) {
                         value={supportValue}
                         onChange={handleSupportChange}
                       >
-                        <MenuItem value={180} >12% (180)</MenuItem>
-                        <MenuItem value={210}>14% (210)</MenuItem>
-                        <MenuItem value={240}>16% (240)</MenuItem>
+                        <MenuItem value={0} >0% {`${value1 ? `(${value1})` : `(${parseFloat(total) + parseFloat(total*(0/100))})`}`}</MenuItem>
+                        <MenuItem value={180} >12% {`${value1 ? `(${value1})` : `(${parseFloat(total) + parseFloat(total*(12/100))})`}`}</MenuItem>
+                        <MenuItem value={210}>14% {`${value2 ? `(${value2})` : `(${parseFloat(total) + parseFloat(total*(14/100))})`}`}</MenuItem>
+                        <MenuItem value={240}>16% {`${value3 ? `(${value3})` : `(${parseFloat(total) + parseFloat(total*(16/100))})`}`}</MenuItem>
                         {/* <MenuItem value="other">Others</MenuItem> */}
                       </Select>
                       {supportValue === "other" && (
