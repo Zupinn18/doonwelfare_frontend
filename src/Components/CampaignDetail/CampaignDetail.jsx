@@ -721,6 +721,8 @@ const CampaignDetail = () => {
   const newMonth = new Date();
   let currMonth = month[newMonth.getMonth()];
 
+  console.log("cah data", campaignData);
+
   return (
     
         <div className='campaign-container'>
@@ -1013,7 +1015,7 @@ const CampaignDetail = () => {
                         <iframe className='top-vid'
                             width="80%"
                             height="400"
-                            src="https://www.youtube.com/embed/snuAvoQRN_w"
+                            src={campaignData?.youtubeLink}
                             allowFullScreen
                             title="Doon Animal Welfare Trust Video"
                             style={{

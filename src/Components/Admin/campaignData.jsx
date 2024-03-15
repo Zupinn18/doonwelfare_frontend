@@ -28,6 +28,7 @@ const campaignData = () => {
     description2: "",
     description3: "",
   });
+  const [youtubeLink, setYoutubeLink] = useState('');
   const [uploadedImage1, setUploadedImage1] = useState(null);
   const [uploadedImage2, setUploadedImage2] = useState(null);
   const [uploadedImage3, setUploadedImage3] = useState(null);
@@ -213,7 +214,7 @@ const campaignData = () => {
 
   const handleUpdateData = async (itemId) => {
     try {
-      if (!uploadedImage1 || !uploadedImage2 || !uploadedImage3 || !itemData.description1 || !itemData.description2 || !itemData.description3) {
+      if (!uploadedImage1 || !youtubeLink || !uploadedImage2 || !uploadedImage3 || !itemData.description1 || !itemData.description2 || !itemData.description3) {
         toast.warning("All fields are mandatory, TRY AGAIN", {
           position: toast.POSITION.TOP_RIGHT,
         });
@@ -224,6 +225,7 @@ const campaignData = () => {
         imageUrl1: uploadedImage1,
         imageUrl2: uploadedImage2,
         imageUrl3: uploadedImage3,
+        youtubeLink: youtubeLink,
         description1: itemData.description1,
         description2: itemData.description2,
         description3: itemData.description3,
@@ -255,11 +257,12 @@ const campaignData = () => {
     }
   };
   
-  
+  console.log("itesms are ", items);
   
   
   const handleDeleteData = async (Id) => {
     try {
+      console.log("id camaps is ",Id);
       const response = await axios.delete(
         `https://ngo-node.onrender.com/api/campaign_data/${Id}`
       );
@@ -290,6 +293,7 @@ const campaignData = () => {
         imageUrl1: uploadedImage1,
         imageUrl2: uploadedImage2,
         imageUrl3: uploadedImage3,
+        youtubeLink: youtubeLink,
         description1: itemData.description1,
         description2: itemData.description2,
         description3: itemData.description3,
@@ -316,6 +320,7 @@ const campaignData = () => {
           imageUrl2:"",
           imageUrl3:""
         });
+        setYoutubeLink('');
         setUploadedImage1(null);
         setUploadedImage2(null);
         setUploadedImage3(null);
@@ -371,6 +376,20 @@ const campaignData = () => {
               ))}
             </Select>
           </FormControl>
+        </div>
+
+        <div className="m-3">
+          <TextField
+            label="Enter Youtube Link"
+            id="youtubeLink"
+            name="youtubeLink"
+            value={youtubeLink}
+            onChange={(e)=>setYoutubeLink(e.target.value)}
+            fullWidth
+            multiline
+            rows={4}
+            required
+          />
         </div>
 
         <div className="m-3">
