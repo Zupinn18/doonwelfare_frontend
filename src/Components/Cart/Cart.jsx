@@ -902,12 +902,12 @@ async function sendWhatsAppNotificationPaymentFailed(phoneNo) {
                 Scan and Pay as Anonymous
               </p>
             </div>
-            <img
+            {/* <img
               className="img-fluid"
               src={qr}
               alt="scanner"
               style={{ border: "2px solid black" }}
-            />
+            /> */}
           </CustomTabPanel>
           <CustomTabPanel value={value} index={0}>
            

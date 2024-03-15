@@ -97,12 +97,12 @@ function Footer() {
               DOON ANIMAL WELFARE FOUNDATION<br />
               ACCOUNT NUMBER -10063703675<br />
               IFSC CODE IDFB0021231</p>
-              <img
+              {/* <img
               src={paytm}
               alt="Hi How Are You"
               className="img-fluid"
               style={{ maxWidth: "50%", height: "auto" }}
-            />
+            /> */}
           </div>
         </div>
         <div className="row gx-2"> {/* Added the gx-2 class */}
